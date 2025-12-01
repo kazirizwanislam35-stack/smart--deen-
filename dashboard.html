@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Deen Dashboard</title>
+
+<style>
+    :root {
+        --bg: #0a0d10;
+        --card: #121418;
+        --text: #ffffff;
+        --accent: #2df4a6;
+    }
+
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .header {
+        padding: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 26px;
+        font-weight: 700;
+    }
+    .logo span {
+        color: var(--accent);
+    }
+
+    /* HAMBURGER */
+    .menu {
+        width: 32px;
+        cursor: pointer;
+    }
+    .menu div {
+        height: 4px;
+        background: var(--text);
+        margin: 5px 0;
+        border-radius: 3px;
+    }
+
+    /* FULLY FIXED SIDEBAR */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100%;
+        background: var(--card);
+        padding: 20px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 2000;
+        box-shadow: 3px 0 20px rgba(0,0,0,0.6);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .close-btn {
+        font-size: 26px;
+        margin-bottom: 20px;
+        text-align: right;
+        cursor: pointer;
+    }
+
+    .side-link {
+        padding: 14px 0;
+        font-size: 18px;
+        border-bottom: 1px solid #1c1f23;
+        cursor: pointer;
+    }
+
+    .side-link:hover {
+        color: var(--accent);
+    }
+
+    /* OVERLAY */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.55);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s ease;
+        z-index: 1500;
+    }
+
+    .overlay.show {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* DASHBOARD */
+    .glow-circle {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        margin: 20px auto;
+        background: radial-gradient(circle, rgba(45,244,166,0.28), transparent);
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+        100% { transform: translateY(0); }
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .card {
+        background: var(--card);
+        padding: 22px;
+        border-radius: 14px;
+        text-align: center;
+        font-size: 17px;
+        font-weight: 600;
+        border: 1px solid #1c1f23;
+        transition: 0.25s;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 12px rgba(45,244,166,0.25);
+    }
+</style>
+<style>
+/* SMART DEEN FAST JUMP GRADIENT (MAX 60% HEIGHT) */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+
+    /* Smooth blended gradient */
+    background: linear-gradient(
+        180deg,
+        #000000 0%,
+        #0a0a0a 20%,
+        #121212 40%,
+        #1a1a1a 60%,
+        #1f1f1f 100%
+    );
+
+    /* Gradient height moved to only 150% */
+    background-size: 100% 150%;
+
+    /* Fast jump animation */
+    animation: smartdeenJump 2.2s cubic-bezier(0.4, 0.0, 0.2, 1) infinite alternate;
+}
+
+/* Moves only 0% → 60% (never full) */
+@keyframes smartdeenJump {
+    0%   { background-position: 0% 0%; }
+    100% { background-position: 0% 60%; }
+}
+
+/* Make sections transparent */
+.dashboard-container,
+.main-content,
+.content-area {
+    background: transparent !important;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <div class="close-btn" onclick="closeSidebar()">✕</div>
+
+    <div class="side-link" onclick="location.href='accountsetting.html'">Account Settings</div>
+    
+    <div class="side-link" onclick="location.href='savednotes.html'">Saved Notes</div>
+    
+    <div class="side-link" onclick="location.href='tasbihcounter.html'">Tasbih Counter</div>
+    
+    <div class="side-link" onclick="location.href='islamiccalender.html'">Islamic Calendar</div>
+    
+    <div class="side-link" onclick="location.href='community.html'">Community</div>
+    
+    <div class="side-link" onclick="location.href='smartdeen.html">About Smart Deen</div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">Smart <span>Deen</span> </div>
+    <h2 id="welcome"></h2>
+    <script>
+    const name = localStorage.getItem("sd_username") || "User";
+    document.getElementById("greetUser").innerHTML = `Assalamu Alaikum, ${name}`;
+</script>
+ 
+
+    <div class="menu" onclick="openSidebar()">
+        <div></div><div></div><div></div>
+    </div>
+</div>
+
+<div class="glow-circle"></div>
+
+<h2>Your Dashboard</h2>
+
+<!-- MAIN TABS -->
+<div class="grid">
+
+ <div class="card" onclick="location.href='quran.html'"> Quran</div>
+
+ <div class="card" onclick="window.location.href='hadith.html'"> Hadith</div>
+ 
+ <div class="card" onclick="location.href='namazguide.html'"> Namaz Guide</div>
+
+ <div class="card" onclick="location.href='duas.html'"> Duas</div>
+ 
+ <div class="card" onclick="location.href='notes.html'"> Islamic Notes</div>
+
+ <div class="card" onclick="location.href='../Prophets/prophets.html'"> Prophet Stories</div>
+
+</div>
+<!-- SMART DEEN – Centered + Swipeable Quote Slider -->
+<style>
+.quote-box {
+    width: 90%;
+    height: 100px;
+    margin: 10px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #00331f, #00245a, #00472d, #00306f);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.28);
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.quote-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    /* FIXED — FULL CENTER */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.quote-text.active {
+    opacity: 1;
+}
+
+.quote-dots {
+    position: absolute;
+    bottom: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.quote-dots span {
+    width: 7px;
+    height: 7px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+}
+
+.quote-dots .active {
+    background: white;
+}
+</style>
+
+<div class="quote-box">
+    <div class="quote-slider" id="smartDeenSlider">
+        <div class="quote-text active">“Allah does not burden a soul beyond what it can bear.”</div>
+        <div class="quote-text">“Verily, in the remembrance of Allah do hearts find rest.”</div>
+        <div class="quote-text">“Whoever relies upon Allah — He is sufficient for him.”</div>
+        <div class="quote-text">“Indeed, with hardship comes ease.”</div>
+        <div class="quote-text">“The best among you are those who have the best manners.”</div>
+
+        <div class="quote-dots">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<script>
+let index = 0;
+const quotes = document.querySelectorAll(".quote-text");
+const dots = document.querySelectorAll(".quote-dots span");
+const slider = document.getElementById("smartDeenSlider");
+
+function showQuote(i) {
+    quotes.forEach(q => q.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
+    quotes[i].classList.add("active");
+    dots[i].classList.add("active");
+}
+
+setInterval(() => {
+    index = (index + 1) % quotes.length;
+    showQuote(index);
+}, 3000);
+
+/* Dot Click Slide */
+dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+        index = i;
+        showQuote(index);
+    });
+});
+
+/* SWIPE SLIDE SYSTEM */
+let startX = 0;
+
+slider.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", (e) => {
+    let endX = e.changedTouches[0].clientX;
+    let diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            index = (index + 1) % quotes.length;   // swipe left → next
+        } else {
+            index = (index - 1 + quotes.length) % quotes.length; // swipe right → previous
+        }
+        showQuote(index);
+    }
+});
+</script>
+
+<script>
+function openSidebar() {
+    document.getElementById("sidebar").classList.add("active");
+    document.getElementById("overlay").classList.add("show");
+}
+
+function closeSidebar() {
+    document.getElementById("sidebar").classList.remove("active");
+    document.getElementById("overlay").classList.remove("show");
+}
+</script>
+
+</body>
+</html>

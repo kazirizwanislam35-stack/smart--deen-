@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Namaz Guide — Smart Deen</title>
+<style>
+  :root{
+    --bg:#0a0d10;
+    --card:#121418;
+    --text:#ffffff;
+    --muted:#bfc7cc;
+    --accent:#2df4a6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Poppins, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    padding:18px;
+  }
+  .container{max-width:960px;margin:0 auto;}
+  .topbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .back{background:none;color:var(--accent);border:1px solid var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer}
+  h1{margin:8px 0 16px;font-size:24px}
+  .lead{color:var(--muted);margin-bottom:18px}
+  .card{background:var(--card);padding:18px;border-radius:12px;margin:12px 0;border:1px solid #1e2126}
+  .section-title{color:var(--accent);font-weight:700;margin-bottom:8px}
+  .subtle{color:var(--muted);font-size:14px}
+  ul{padding-left:20px;margin:8px 0}
+  ol{padding-left:20px;margin:8px 0}
+  pre{background:#0f1113;padding:12px;border-radius:8px;overflow:auto;font-family:monospace;color:var(--muted)}
+  .tip{background:linear-gradient(90deg, rgba(45,244,166,0.06), transparent);padding:12px;border-left:4px solid var(--accent);border-radius:8px;margin:10px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+  .small{font-size:14px;color:var(--muted)}
+  .anchor{color:var(--accent);text-decoration:none}
+  .footer{margin:28px 0;color:var(--muted);font-size:13px;text-align:center}
+  /* responsive spacing for very small screens */
+  @media (max-width:420px){
+    body{padding:12px}
+    h1{font-size:20px}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <button class="back" onclick="history.back()">← Back</button>
+    <div style="flex:1">
+      <div style="font-weight:700;font-size:18px">Smart <span style="color:var(--accent)">Deen</span></div>
+      <div class="small subtle">Complete Namaz (Salah) Guide — step by step</div>
+    </div>
+  </div>
+
+  <h1>🕌 Complete Namaz Guide</h1>
+  <div class="lead subtle">
+    A practical, step-by-step guide to performing daily prayers (Salah/ Namaz).  
+    This page focuses on clear actions, short reminders, and common mistakes to avoid — built to match your Smart Deen theme.
+  </div>
+
+  <!-- 1. Introduction -->
+  <div class="card" id="intro">
+    <div class="section-title">Introduction</div>
+    <div class="small subtle">What is Salah?</div>
+    <p>
+      Salah (Namaz) is the five daily prayers ordained upon every adult Muslim. It is the second pillar of Islam.
+      Prayers structure our day, strengthen connection with Allah (SWT), and cultivate discipline. This guide covers
+      preparation, the core actions, and variations for common situations.
+    </p>
+    <div class="tip"><strong>Quick checklist before prayer:</strong> Clean clothes, clean place, face & hands washed (wudū), correct time, qiblah direction.</div>
+  </div>
+
+  <!-- 2. Preparations -->
+  <div class="card" id="preparation">
+    <div class="section-title">Preparation — Intention & Wudū (Ablution)</div>
+    <div class="small subtle">Step-by-step Wudū</div>
+    <ol>
+      <li>Make the intention (niyyah) in your heart to perform wudū for prayer.</li>
+      <li>Say <em>“Bismillah”</em> (in the name of Allah).</li>
+      <li>Wash both hands up to the wrists three times.</li>
+      <li>Rinse mouth three times and sniff water into the nose and clear it three times.</li>
+      <li>Wash the face three times (from forehead to chin and ear to ear).</li>
+      <li>Wash the right arm up to and including the elbow three times, then the left arm the same.</li>
+      <li>Wipe the head once (masah) with wet hands — from forehead to back and back to front.</li>
+      <li>Wipe the ears once (inside and behind) using the same wet fingers.</li>
+      <li>Wash both feet up to the ankles three times, starting with the right.</li>
+    </ol>
+    <div class="tip">If you make a major impurity (e.g., after intimate relations), perform full ghusl (bath) before prayer.</div>
+  </div>
+
+  <!-- 3. Essentials & Conditions -->
+  <div class="card" id="conditions">
+    <div class="section-title">Conditions of Valid Salah</div>
+    <ul>
+      <li>Muslim, sane, adult (puberty reached).</li>
+      <li>Correct time for the prayer.</li>
+      <li>Facing the Qiblah (towards Kaʿbah).</li>
+      <li>Cleanliness (wudū or ghusl when required).</li>
+      <li>Covering the 'awrah (proper clothing).</li>
+      <li>Sequence of actions and minimal silence when required (avoid innovation).</li>
+    </ul>
+    <div class="small subtle">If any condition is missing, the prayer may be incomplete — consult a scholar for specific cases.</div>
+  </div>
+
+  <!-- 4. Step-by-step Salah (Generic template for 1 Rakah) -->
+  <div class="card" id="rakah">
+    <div class="section-title">Step-by-step — One Rakʿah (Core Actions)</div>
+    <p class="small subtle">A rakʿah is the unit of prayer. Each prayer has a set number of rakʿāt (e.g., Fajr = 2, Dhuhr = 4).</p>
+
+    <ol>
+      <li><strong>Stand (Qiyam)</strong> — Face the Qiblah, make the intention in your heart for the specific prayer.</li>
+      <li><strong>Takbir</strong> — Raise hands to ears and say <em>Allahu Akbar</em> (the opening takbir).</li>
+      <li><strong>Qiyam — Recitation</strong> — While standing: recite Surah Al-Fatiha (Fatiha) in every rakʿah; then another short surah (1st and 2nd rakʿah for Fajr, etc.).</li>
+      <li><strong>Rukuʿ</strong> — Bow down, place hands on knees, say <em>Subhana Rabbiyal Adheem</em> (3x).</li>
+      <li><strong>Sujood</strong> — After rising from Rukuʿ say <em>Sami'Allahu liman Hamidah</em> and then go into prostration placing forehead, nose, palms, knees and toes on ground; say <em>Subhana Rabbiyal A'la</em> (3x).</li>
+      <li><strong>Sitting (Jalsa)</strong> — Sit between the two prostrations and recite short dua.</li>
+      <li><strong>Second Sujood</strong> — Perform second prostration similarly.</li>
+      <li>Complete required number of rakʿāt (stand up for next rakʿah if needed).</li>
+    </ol>
+
+    <div class="tip">The forehead, nose, palms, knees and toes must touch the ground in sujood. Maintain humility and focus.</div>
+  </div>
+
+  <!-- 5. Surah Al-Fatiha text (short) -->
+  <div class="card" id="fatiha">
+    <div class="section-title">Surah Al-Fatiha (Recitation for every Rakʿah)</div>
+    <p class="small subtle">Arabic — short form for memorization:</p>
+    <pre>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+الرَّحْمَٰنِ الرَّحِيمِ
+مَالِكِ يَوْمِ الدِّينِ
+إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ
+اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</pre>
+    <p class="small subtle">English meaning (short): In the name of Allah, the Most Merciful... Guide us to the straight path.</p>
+  </div>
+
+  <!-- 6. Prayer-by-prayer instructions -->
+  <div class="card" id="fardh">
+    <div class="section-title">Fard / Sunnah — Prayer by Prayer</div>
+
+    <div class="grid">
+      <div>
+        <strong>Fajr</strong>
+        <p class="small subtle">2 Rakʿāt Fard (with 2 Rakʿāt Sunnah before).</p>
+        <ol>
+          <li>Make intention for Fajr.</li>
+          <li>Perform 2 Rakʿāt — In the 1st and 2nd rakʿah recite Al-Fatiha + a short surah.</li>
+          <li>Complete and finish with Taslim (turn head right and left saying As-salamu alaikum).</li>
+        </ol>
+      </div>
+
+      <div>
+        <strong>Dhuhr</strong>
+        <p class="small subtle">4 Rakʿāt Fard (2 or 4 Sunnah before, 2 Sunnah after).</p>
+        <ol>
+          <li>Perform 4 Rakʿāt with the correct recitations.</li>
+          <li>In 3rd and 4th rakʿah, recite Al-Fatiha only or short surah quietly.</li>
+        </ol>
+      </div>
+
+      <div>
+        <strong>Asr</strong>
+        <p class="small subtle">4 Rakʿāt Fard (some schools recommend 4 Sunnah/nafl before).</p>
+        <ol>
+          <li>Perform as Dhuhr, maintain calm and focus.</li>
+        </ol>
+      </div>
+
+      <div>
+        <strong>Maghrib</strong>
+        <p class="small subtle">3 Rakʿāt Fard (2 Sunnah after, 3rd sunnah optional).</p>
+        <ol>
+          <li>1st & 2nd rakʿah like normal; 3rd rakʿah is short with only Al-Fatiha + short dua then taslim.</li>
+        </ol>
+      </div>
+
+      <div>
+        <strong>Isha</strong>
+        <p class="small subtle">4 Rakʿāt Fard (2 Sunnah after, Witr recommended).</p>
+        <ol>
+          <li>Perform 4 rakʿāt then pray Witr (odd number, e.g., 1 or 3) as preferred.</li>
+        </ol>
+      </div>
+
+      <div>
+        <strong>Jumu'ah</strong>
+        <p class="small subtle">Friday congregational prayer replaces Dhuhr for men (2 sermons + 2 rakʿāt fard).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Sunnahs and recommended actions -->
+  <div class="card" id="sunnah">
+    <div class="section-title">Sunnahs & Recommended Acts</div>
+    <ul>
+      <li>Make Ghusal for Friday (Jumu'ah) and Eid prayers when appropriate.</li>
+      <li>Perform Sunnah Rawatib (before/after Dhuhr & Fajr Sunnah of two rakʿāt).</li>
+      <li>Try to sit and listen to the khutbah during Jumu'ah with full attention.</li>
+      <li>Say the opening duʿa (Dua al-istiftah) quietly after takbir if you know it.</li>
+      <li>Make short duʿa in the sitting position between prostrations and after final tashahhud before taslim.</li>
+    </ul>
+  </div>
+
+  <!-- 8. Common du'as for Salah -->
+  <div class="card" id="duas">
+    <div class="section-title">Useful Duʿāʼs (Short & Common)</div>
+
+    <div class="small subtle">After Rukuʿ (on standing):</div>
+    <pre>سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ
+سُبْحَانَ رَبِّيَ الْعَظِيم</pre>
+
+    <div class="small subtle">After Sujood:</div>
+    <pre>سُبْحَانَ رَبِّيَ الأَعْلَى</pre>
+
+    <div class="small subtle">Final Tashahhud (short):</div>
+    <pre>اَلتَّحِيَّاتُ لِلَّهِ ... اَشْهَدُ اَنْ لاَ اِلَهَ اِلَّا اللَّهُ ...</pre>
+
+    <div class="tip">Memorize short duʿāʼs for sitting and sujood; these are highly recommended and easy to learn.</div>
+  </div>
+
+  <!-- 9. Mistakes & Corrections -->
+  <div class="card" id="mistakes">
+    <div class="section-title">Common Mistakes & How to Fix Them</div>
+    <ul>
+      <li>Not performing proper wudū — repeat wudū before prayer.</li>
+      <li>Missing Qiblah direction — use a compass app to confirm.</li>
+      <li>Forgetting certain actions (e.g., tashahhud) — if you remember during the prayer, act immediately; if remembered after taslim, perform sujud as-sahw or consult guidance.</li>
+      <li>Speaking during prayer — avoid talking; if necessary, make repentance (seek forgiveness).</li>
+      <li>Rushing — perform each action calmly; the Prophet (pbuh) taught moderation and tranquility in prayer.</li>
+    </ul>
+    <div class="small subtle">If you are unsure about a mistake, keep learning and consult a teacher. Many small errors can be corrected with simple compensations (sujud as-sahw, extra prostrations).</div>
+  </div>
+
+  <!-- 10. Special cases -->
+  <div class="card" id="special">
+    <div class="section-title">Special Situations</div>
+
+    <div style="margin-bottom:10px"><strong>Prayer while travelling</strong>
+      <div class="small subtle">Shorten (qasr) Dhuhr, Asr, and Isha to two rakʿāt when traveling (according to most schools).</div>
+    </div>
+
+    <div style="margin-bottom:10px"><strong>Prayer when sick or unable to stand</strong>
+      <div class="small subtle">Pray sitting if you cannot stand; pray lying if you cannot sit. Actions of ruku and sujood can be made by nodding or by gesture.</div>
+    </div>
+
+    <div style="margin-bottom:10px"><strong>Women & Men — modesty & placement</strong>
+      <div class="small subtle">Women may join congregational prayer; ensure modest clothing and understanding of local masjid rules. Men should maintain respectful behavior and avoid unnecessary contact.</div>
+    </div>
+
+    <div style="margin-bottom:10px"><strong>Children</strong>
+      <div class="small subtle">Teach children step-by-step: standing, takbir, short surah, ruku, sujood. Start with short, regular practice sessions.</div>
+    </div>
+  </div>
+
+  <!-- 11. Practical tips (lots of quick tips) -->
+  <div class="card" id="tips">
+    <div class="section-title">Practical Tips & Best Practices</div>
+
+    <ol>
+      <li>Make intention (niyyah) mentally before takbir — pure intention matters most.</li>
+      <li>Keep a small prayer mat and a pocket Quran or phone app for quick revision.</li>
+      <li>Use a compass app to confirm Qiblah; many apps display exact degrees.</li>
+      <li>Memorize Surah Al-Fatiha and a few short surahs first — these are the core recitations.</li>
+      <li>Slow down the recitation occasionally to understand meanings; this increases khushu (concentration).</li>
+      <li>Pray in congregation when possible — rewards are multiplied.</li>
+      <li>Learn the meanings of what you recite — even a small translation helps focus.</li>
+      <li>Practice the Sunnah regularly — these actions increase reward and spiritual benefit.</li>
+      <li>Keep water and wipes handy for quick cleaning if you are outside.</li>
+    </ol>
+
+    <div class="tip">Tip: Create a daily routine: Fajr, Dhuhr, Asr, Maghrib, Isha reminders on your phone can help to keep consistency.</div>
+  </div>
+
+  <!-- 12. Checklist for a perfect Salah -->
+  <div class="card" id="checklist">
+    <div class="section-title">Quick Checklist Before You Start</div>
+    <ul>
+      <li>Am I in the correct time window for the prayer?</li>
+      <li>Have I wudū (ablution)?</li>
+      <li>Is my clothing covering awrah?</li>
+      <li>Is the place clean?</li>
+      <li>Am I facing the Qiblah?</li>
+      <li>Did I make the correct niyyah?</li>
+    </ul>
+  </div>
+
+  <!-- 13. Common lengths & durations -->
+  <div class="card" id="durations">
+    <div class="section-title">Typical Durations</div>
+    <ul>
+      <li>Short prayer (2 rakʿāt) — 3 to 6 minutes (if spoken)</li>
+      <li>Regular prayer (4 rakʿāt) — 5 to 10 minutes</li>
+      <li>With long recitation — 10 to 20 minutes</li>
+    </ul>
+    <div class="small subtle">Quality matters more than speed. Take enough time to ensure focused recitation and humility.</div>
+  </div>
+
+  <!-- 14. Sujud as-sahw (prostration of forgetfulness) -->
+  <div class="card" id="sahw">
+    <div class="section-title">Sujud as-Sahw (Prostration of Forgetfulness)</div>
+    <p class="small subtle">If you forget a brief action or add an extra action, you may need to perform two small prostrations (sujud as-sahw) before or after the final tashahhud depending on your school. When in doubt, consult a local scholar or a trusted fiqh source.</p>
+  </div>
+
+  <!-- 15. Witr and Tahajjud -->
+  <div class="card" id="witr">
+    <div class="section-title">Witr & Tahajjud</div>
+    <ul>
+      <li><strong>Witr:</strong> An odd-numbered prayer after Isha — commonly 1 or 3 rakʿāt. Recite duʿāʼ of witr if you know it.</li>
+      <li><strong>Tahajjud:</strong> Late-night voluntary prayers. Wake after sleeping and pray with sincere devotion; highly recommended.</li>
+    </ul>
+  </div>
+
+  <!-- 16. Prayers in congregation & imam etiquettes -->
+  <div class="card" id="cong">
+    <div class="section-title">Congregational Prayer & Imam Etiquette</div>
+    <ul>
+      <li>Follow the Imam: remain silent when he speaks during the prayer and follow his actions (ruku, sujood, standing).</li>
+      <li>Keep rows straight, shoulder-to-shoulder, to remove gaps.</li>
+      <li>Men usually stand in front rows, women behind (follow local masjid rules).</li>
+      <li>Do not lead movement before the imam; follow the imam’s timing for recitation and bowing.</li>
+    </ul>
+  </div>
+
+  <!-- 17. Short guided sequences for each prayer (practical) -->
+  <div class="card" id="sequences">
+    <div class="section-title">Practical Sequences — Short Version</div>
+    <div class="small subtle">Memorize these short checklists for each prayer:</div>
+
+    <ul>
+      <li><strong>Fajr (2 R):</strong> Niyyah → Takbir → Fatiha+surah → Ruku → Sujood → Sit → Sujood → Stand → 2nd rakʿah → tashahhud → Taslim.</li>
+      <li><strong>Dhuhr / Asr / Isha (4 R):</strong> Niyyah → Takbir → 1st rakʿah (Fatiha+surah) → Ruku → Sujood → Sit → Sujood → Stand → 2nd rakʿah → ... (3rd & 4th shorter recitation) → Tashahhud → Taslim.</li>
+      <li><strong>Maghrib (3 R):</strong> Niyyah → 1st and 2nd as normal → Stand for 3rd rakʿah → Tashahhud → Taslim.</li>
+    </ul>
+  </div>
+
+  <!-- 18. What to say during actions (short reminders) -->
+  <div class="card" id="phrases">
+    <div class="section-title">Short Phrases to Recite</div>
+    <ul>
+      <li>Opening Takbir – <em>Allahu Akbar</em></li>
+      <li>After Ruku when standing – <em>Sami'Allahu liman hamidah</em></li>
+      <li>In ruku – <em>Subhana Rabbiyal Adheem</em></li>
+      <li>In sujood – <em>Subhana Rabbiyal A'la</em></li>
+      <li>Between prostrations – short duʿa (e.g., <em>Rabbighfir li</em>)</li>
+    </ul>
+  </div>
+
+  <!-- 19. Learning path & practice schedule -->
+  <div class="card" id="learning">
+    <div class="section-title">Learning Path — 30 Day Practice Plan</div>
+    <ol>
+      <li>Days 1–3: Learn and memorize Surah Al-Fatiha.</li>
+      <li>Days 4–7: Add Surah Al-Ikhlas and short surahs for 2nd rakʿah.</li>
+      <li>Days 8–14: Practice full 2-rakʿah prayer with focus; do Fajr + 2 rakʿahs Sunnah.</li>
+      <li>Days 15–21: Add Dhuhr & Asr structure; start praying 4-rakʿah slowly.</li>
+      <li>Days 22–30: Consolidate all five prayers; practice in congregation once per week if possible.</li>
+    </ol>
+    <div class="tip">Consistency over intensity — 5 minutes daily with focus beats longer distracted sessions.</div>
+  </div>
+
+  <!-- 20. Resources & further reading -->
+  <div class="card" id="resources">
+    <div class="section-title">Resources & References</div>
+    <ul>
+      <li>Local mosque/Imam — best for live guidance and corrections.</li>
+      <li>Trusted books on fiqh (school-specific) — for detailed rulings.</li>
+      <li>Smartphone apps for prayer times and qiblah direction.</li>
+    </ul>
+  </div>
+
+  <!-- 21. Final notes -->
+  <div class="card" id="final">
+    <div class="section-title">Final Notes</div>
+    <p class="small subtle">
+      Salah is a journey. Start where you are, learn the basics and improve gradually. Focus on sincerity (ikhlas) and stability. For complex or exceptional cases (e.g., missed prayers, combining, menstruation rules), consult a reliable scholar or local authority.
+    </p>
+    <div style="margin-top:10px;text-align:center">
+      <a class="anchor" href="#preparation">Jump to Preparation</a> •
+      <a class="anchor" href="#rakah">Rakʿah Steps</a> •
+      <a class="anchor" href="#sunnah">Sunnahs</a>
+    </div>
+  </div>
+
+  <div class="footer">Made with ♥ for Smart Deen — pray with focus & humility.</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Smart Deen Community — Chat</title>
+<style>
+/* =======================
+   SMART DEEN CHAT THEME
+   ======================= */
+:root{
+  --bg:#060807;                 /* very dark */
+  --panel:#0f1412;              /* panel card */
+  --muted:#98dcb6;              /* soft muted green */
+  --accent:#8df6c4;             /* very light soft green */
+  --text:#e8fef4;
+  --glass: rgba(141,246,196,0.06);
+  --shadow: 0 16px 40px rgba(0,0,0,0.6);
+  --radius:14px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+body{background:linear-gradient(180deg,var(--bg),#020403); color:var(--text);}
+
+/* Top bar */
+.topbar{
+  height:66px; display:flex; align-items:center; gap:12px;
+  padding:10px 16px; border-bottom:1px solid rgba(141,246,196,0.04);
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), transparent);
+  position:sticky; top:0; z-index:40;
+}
+.top-left{display:flex;align-items:center;gap:12px;}
+.btn-back{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:transparent;border:1px solid rgba(141,246,196,0.04); color:var(--accent); cursor:pointer; font-weight:700;}
+.header-title{font-weight:800;color:var(--accent);font-size:18px}
+.header-sub{font-size:12px;color:rgba(232,253,240,0.7);margin-top:4px}
+
+/* layout */
+.container{max-width:980px;margin:14px auto;height:calc(100vh - 94px);display:flex;flex-direction:column;padding:0 12px;gap:12px}
+
+/* chat card */
+.chat-card{flex:1;border-radius:var(--radius);background:linear-gradient(180deg, rgba(8,12,10,0.6), rgba(6,9,8,0.6));
+  border:1px solid rgba(141,246,196,0.025); box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden;}
+
+/* messages viewport */
+.msgs{flex:1;padding:18px;overflow:auto;display:flex;flex-direction:column;gap:12px}
+
+/* message row */
+.row{display:flex;gap:12px;align-items:flex-end}
+.row.me{justify-content:flex-end}
+.row.them{justify-content:flex-start}
+
+/* bubble */
+.bubble{
+  position:relative; max-width:76%; padding:10px 12px; border-radius:12px; background:linear-gradient(180deg, rgba(12,18,16,0.9), rgba(6,8,6,0.95));
+  border:1px solid rgba(141,246,196,0.04); box-shadow:0 8px 20px rgba(0,0,0,0.6); color:var(--text); font-size:15px; line-height:1.45;
+  word-break:break-word;
+  transform-origin: center;
+  animation: fadeIn .12s ease;
+}
+.bubble.me{ background: linear-gradient(180deg, rgba(8,40,28,0.95), rgba(4,28,20,0.98)); border-color: rgba(141,246,196,0.14); box-shadow: 0 14px 40px rgba(10,36,28,0.45);}
+.bubble .meta{ display:flex; gap:8px; align-items:center; margin-bottom:6px;}
+.user { font-weight:800; color:var(--accent); font-size:13px; }
+.time { margin-left:auto; font-size:11px; color:rgba(232,253,240,0.7); font-weight:700; }
+
+/* text and attachments */
+.bubble .text{font-size:15px; color:var(--text)}
+.bubble img{width:100%; border-radius:10px; margin-top:8px; display:block; border:1px solid rgba(255,255,255,0.03)}
+.file-pill{display:inline-block;margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--glass);border:1px solid rgba(141,246,196,0.06);color:var(--muted); font-weight:700}
+
+/* contextual menu (positioned near message) */
+.ctx{
+  position:fixed; display:flex; gap:8px; z-index:9999;
+  background: linear-gradient(180deg, rgba(6,9,7,0.98), rgba(8,12,10,0.98));
+  border-radius:12px; padding:8px; border:1px solid rgba(141,246,196,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6); transform-origin:top left;
+}
+.ctx button{ background:transparent; border:none; color:var(--text); padding:8px 10px; border-radius:8px; cursor:pointer; font-weight:800; font-size:13px}
+.ctx button:hover{ background: rgba(141,246,196,0.06); color:var(--accent)}
+
+/* composer */
+.composer{display:flex; gap:10px; padding:12px; border-top:1px solid rgba(141,246,196,0.02); align-items:center; background:linear-gradient(180deg, rgba(0,0,0,0.04), transparent);}
+.attach { width:48px; height:48px; border-radius:12px; display:grid; place-items:center; background:var(--glass); color:var(--accent); font-weight:900; font-size:22px; cursor:pointer; border:1px solid rgba(141,246,196,0.06)}
+.input { flex:1; padding:12px 14px; border-radius:12px; border:none; background:rgba(10,12,10,0.6); color:var(--text); outline:none; font-size:15px; border:1px solid rgba(141,246,196,0.03)}
+.send { padding:11px 18px; background:linear-gradient(180deg,var(--accent), #6fe9b7); color:#001f12; border:none; border-radius:12px; font-weight:900; cursor:pointer; box-shadow:0 10px 30px rgba(8,30,22,0.2)}
+
+/* small watermark */
+.watermark{position:absolute; right:18px; bottom:18px; opacity:0.04; font-weight:900; letter-spacing:6px; color:var(--accent); pointer-events:none}
+
+/* attachment modal */
+.modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:10000}
+.modal-card{ background: linear-gradient(180deg, #0b130f, #07100d); padding:18px; border-radius:14px; width:92%; max-width:420px; border:1px solid rgba(141,246,196,0.06); box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+.modal-card h3{ color:var(--accent); margin:0 0 8px 0; text-align:center}
+.modal-actions{ display:flex; flex-direction:column; gap:10px; margin-top:10px}
+.modal-btn{ padding:12px; border-radius:10px; background:transparent; border:1px solid rgba(141,246,196,0.06); color:var(--text); font-weight:800; cursor:pointer}
+.modal-cancel{ margin-top:8px; padding:10px; width:100%; border-radius:10px; background:#111; color:#bbb; border:1px solid rgba(255,255,255,0.02)}
+
+/* image viewer */
+.viewer{ position:fixed; inset:0; background:rgba(2,6,4,0.92); display:none; align-items:center; justify-content:center; z-index:12000}
+.viewer img{ max-width:96%; max-height:92%; border-radius:10px; box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+
+/* toast */
+.toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:34px; background:rgba(0,0,0,0.6); color:var(--text); padding:10px 14px; border-radius:10px; border:1px solid rgba(141,246,196,0.04); z-index:13000; display:none}
+
+/* responsive */
+@media(max-width:720px){
+  .bubble{ font-size:15px; max-width:86% }
+  .topbar{height:60px}
+  .header-title{font-size:16px}
+  .composer .attach{ width:44px; height:44px; }
+  .composer .send{ padding:10px 12px; }
+}
+@keyframes fadeIn{ from{opacity:0; transform: translateY(6px)} to{opacity:1; transform:translateY(0)} }
+</style>
+</head>
+<body>
+
+<!-- top bar -->
+<div class="topbar" role="banner">
+  <div class="top-left">
+    <div class="btn-back" title="Back" onclick="location.href='dashboard.html'">←</div>
+    <div>
+      <div class="header-title">Smart <span style="color:var(--text)">Deen</span> Community</div>
+      <div class="header-sub">Respectful Islamic discussion — keep it beneficial</div>
+    </div>
+  </div>
+  <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+    <div id="syncIndicator" style="font-size:13px; color:rgba(232,253,240,0.6)">synced</div>
+  </div>
+</div>
+
+<!-- main -->
+<div class="container">
+  <div class="chat-card" role="main" aria-label="Smart Deen Chat">
+    <div class="msgs" id="msgs" aria-live="polite" tabindex="0"></div>
+
+    <div class="composer" role="region" aria-label="Message composer">
+      <div class="attach" id="attachBtn" title="Attach files (images or docs)">＋</div>
+      <input id="textInput" class="input" aria-label="Message input" placeholder="Share an Islamic thought, dua or reflection..." />
+      <button id="sendBtn" class="send" title="Send message">Send</button>
+    </div>
+
+    <div class="watermark">SMART DEEN</div>
+  </div>
+</div>
+
+<!-- attachment modal (modern) -->
+<div id="attachModal" class="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="attachTitle">
+    <h3 id="attachTitle">Select Attachment</h3>
+    <div class="modal-actions">
+      <button class="modal-btn" id="attachImageBtn">📷 Add Image</button>
+      <button class="modal-btn" id="attachDocBtn">📄 Add Document</button>
+      <button class="modal-cancel" id="attachCancelBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- image viewer -->
+<div id="viewer" class="viewer" aria-hidden="true"><img id="viewerImg" alt="attached image preview"></div>
+
+<!-- hidden inputs -->
+<input type="file" id="imgInput" accept="image/*" style="display:none" />
+<input type="file" id="docInput" accept=".pdf,.doc,.docx,.txt,.ppt,.pptx,.xlsx" style="display:none" />
+
+<!-- toast -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===========================
+   Smart Deen Community Chat
+   Single file client-side app
+   =========================== */
+
+/* ======= Configuration ======= */
+const STORAGE_KEY = 'smartdeen_chat_v2';
+const SYNC_KEY = 'smartdeen_chat_sync_v2';
+const LONG_PRESS_MS = 700; // hold duration for mobile contextual menu
+
+/* ======= Utilities ======= */
+const qs = s => document.querySelector(s);
+const qsa = s => Array.from(document.querySelectorAll(s));
+const el = id => document.getElementById(id);
+const showToast = (t, ms=1400) => {
+  const node = el('toast');
+  node.textContent = t;
+  node.style.display = 'block';
+  clearTimeout(node._t);
+  node._t = setTimeout(()=> node.style.display='none', ms);
+};
+
+/* ======= User identity (simple local) ======= */
+let username = localStorage.getItem('sd_username_v2');
+if(!username || username.trim()===''){
+  username = prompt("Enter your display name for Smart Deen community:", "Kazi Rizwan Islam") || "Guest";
+  username = username.trim();
+  localStorage.setItem('sd_username_v2', username);
+}
+
+/* ======= State ======= */
+let messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); // array of {id,user,text,img,file,time,from}
+let blockedUsers = JSON.parse(localStorage.getItem('sd_blocked_v2') || '[]'); // array of usernames blocked by owner (owner only)
+let isOwner = (localStorage.getItem('sd_owner_v2') || '') === username; // owner marker (set manually by you if needed)
+const msgsEl = el('msgs');
+
+/* ======= Render ======= */
+function formatTime(ts){
+  const d = new Date(ts);
+  return `${d.toLocaleDateString()} · ${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}`;
+}
+
+function createBubble(m){
+  const row = document.createElement('div');
+  row.className = 'row ' + (m.from ? 'me' : 'them');
+  // if message owner not current user but from property from indicates authored by current user? We'll use m.user compare
+  const fromMe = (m.user === username);
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble ' + (fromMe ? 'me' : '');
+  bubble.dataset.id = m.id;
+  bubble.dataset.user = m.user;
+
+  // meta
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  meta.innerHTML = `<div class="user">${escapeHtml(m.user)}</div><div class="time">${formatTime(m.time)}</div>`;
+  bubble.appendChild(meta);
+
+  // text
+  if(m.text){
+    const t = document.createElement('div');
+    t.className = 'text';
+    t.innerText = m.text;
+    bubble.appendChild(t);
+  }
+  // image
+  if(m.img){
+    const img = document.createElement('img');
+    img.src = m.img;
+    img.alt = 'attachment';
+    img.loading = 'lazy';
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', ()=> openViewer(m.img));
+    bubble.appendChild(img);
+  }
+  // file
+  if(m.file){
+    const a = document.createElement('a');
+    a.href = m.file.data;
+    a.download = m.file.name || 'file';
+    a.className = 'file-pill';
+    a.innerText = '📎 ' + (m.file.name || 'Attachment');
+    bubble.appendChild(a);
+  }
+
+  // attach events for contextual menu
+  attachContextualMenu(bubble, m);
+
+  row.appendChild(bubble);
+  return row;
+}
+
+function renderAll(){
+  msgsEl.innerHTML = '';
+  // filter blocked users (if you are owner you may still see)
+  const toShow = messages.filter(m => !blockedUsers.includes(m.user));
+  toShow.forEach(m => msgsEl.appendChild(createBubble(m)));
+  // scroll to bottom
+  setTimeout(()=> msgsEl.scrollTop = msgsEl.scrollHeight, 40);
+}
+
+/* ======= Storage Sync ======= */
+function saveMessages(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+  // broadcast small signal to other tabs
+  localStorage.setItem(SYNC_KEY, Date.now().toString());
+  el('syncIndicator').textContent = 'synced';
+  setTimeout(()=> el('syncIndicator').textContent='synced', 900);
+}
+
+/* listen for sync from other tab */
+window.addEventListener('storage', (e)=>{
+  if(e.key === SYNC_KEY){
+    // reload messages
+    messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    renderAll();
+    el('syncIndicator').textContent = 'updated';
+    setTimeout(()=> el('syncIndicator').textContent='synced', 900);
+  }
+});
+
+/* ======= Message Creation ======= */
+function sendText(){
+  const input = el('textInput');
+  const text = input.value.trim();
+  if(!text) return;
+  // basic profanity/prohibited words check
+  const lower = text.toLowerCase();
+  const prohibited = ['fuck','shit','idiot','insult','nonsense'];
+  if(prohibited.some(w=> lower.includes(w))){
+    showToast('Please keep messages respectful and Islamic.');
+    return;
+  }
+  const msg = {
+    id: 'm_' + Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+    user: username,
+    text,
+    img: null,
+    file: null,
+    time: Date.now(),
+    from: true
+  };
+  messages.push(msg);
+  saveMessages();
+  renderAll();
+  input.value = '';
+}
+
+el('sendBtn').addEventListener('click', sendText);
+el('textInput').addEventListener('keydown', (e)=> { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendText(); } });
+
+/* ======= Attachments (modern modal triggers) ======= */
+el('attachBtn').addEventListener('click', ()=> {
+  openAttachModal();
+});
+el('attachImageBtn').addEventListener('click', ()=> {
+  closeAttachModal();
+  el('imgInput').click();
+});
+el('attachDocBtn').addEventListener('click', ()=> {
+  closeAttachModal();
+  el('docInput').click();
+});
+el('attachCancelBtn').addEventListener('click', ()=> closeAttachModal());
+
+function openAttachModal(){
+  const modal = el('attachModal');
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+}
+function closeAttachModal(){
+  const modal = el('attachModal');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+/* handle file inputs */
+el('imgInput').addEventListener('change', function(){
+  const f = this.files[0]; if(!f) return;
+  if(!f.type.startsWith('image/')){ showToast('Please choose an image file.'); this.value=''; return; }
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const m = {
+      id: 'm_' + Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+      user: username,
+      text: '',
+      img: e.target.result,
+      file: null,
+      time: Date.now(),
+      from: true
+    };
+    messages.push(m); saveMessages(); renderAll();
+  }
+  reader.readAsDataURL(f);
+  this.value = '';
+});
+el('docInput').addEventListener('change', function(){
+  const f = this.files[0]; if(!f) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const m = {
+      id: 'm_' + Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+      user: username,
+      text: '',
+      img: null,
+      file: { name: f.name, data: e.target.result },
+      time: Date.now(),
+      from: true
+    };
+    messages.push(m); saveMessages(); renderAll();
+  }
+  reader.readAsDataURL(f);
+  this.value = '';
+});
+
+/* ======= Viewer (full-screen image preview) ======= */
+function openViewer(src){
+  el('viewerImg').src = src;
+  el('viewer').style.display = 'flex';
+  el('viewer').setAttribute('aria-hidden','false');
+}
+el('viewer').addEventListener('click', ()=> { el('viewer').style.display='none'; el('viewer').setAttribute('aria-hidden','true'); });
+
+/* ======= Contextual menu near bubble ======= */
+/* Behavior:
+   - long press on mobile -> show menu
+   - right-click on desktop -> show menu
+   - menu options: Copy, Save (if attachment), Delete (if owner)
+   - copy uses Clipboard API
+   - save triggers download where applicable
+*/
+
+let activeCtx = null;
+
+function attachContextualMenu(bubble, msg){
+  // bubble is DOM element, msg is message object (from messages array)
+  // remove existing listeners if any (defensive)
+  bubble.oncontextmenu = null;
+  bubble.onmousedown = null;
+  bubble.ontouchstart = null;
+  bubble.ontouchend = null;
+
+  // right-click
+  bubble.addEventListener('contextmenu', (ev) => {
+    ev.preventDefault(); ev.stopPropagation();
+    showContextMenuAt(bubble, msg, ev.clientX, ev.clientY);
+  });
+
+  // long-press (mobile)
+  let timer = null;
+  bubble.addEventListener('touchstart', (ev)=> {
+    ev.stopPropagation();
+    timer = setTimeout(()=> showContextMenuAt(bubble, msg), LONG_PRESS_MS);
+  }, {passive:true});
+  bubble.addEventListener('touchend', ()=> { if(timer) clearTimeout(timer); });
+}
+
+function showContextMenuAt(bubble, msg, clientX=null, clientY=null){
+  // remove existing
+  removeContextMenu();
+
+  // build menu
+  const menu = document.createElement('div');
+  menu.className = 'ctx';
+  // Copy
+  const copyBtn = document.createElement('button'); copyBtn.innerText = 'Copy';
+  copyBtn.addEventListener('click', (e)=>{ e.stopPropagation(); doCopy(msg); removeContextMenu(); });
+  menu.appendChild(copyBtn);
+  // Save (if img or file)
+  if(msg.img || msg.file){
+    const saveBtn = document.createElement('button'); saveBtn.innerText = 'Save';
+    saveBtn.addEventListener('click', (e)=>{ e.stopPropagation(); doSave(msg); removeContextMenu(); });
+    menu.appendChild(saveBtn);
+  }
+  // Delete (only for your messages)
+  if(msg.user === username || isOwner){
+    const delBtn = document.createElement('button'); delBtn.innerText = 'Delete';
+    delBtn.style.color = '#ff9aa2';
+    delBtn.addEventListener('click', (e)=>{ e.stopPropagation(); confirmDelete(msg.id); removeContextMenu(); });
+    menu.appendChild(delBtn);
+  }
+
+  document.body.appendChild(menu);
+  activeCtx = menu;
+
+  // position logic: prefer to the right of bubble, else left
+  const rect = bubble.getBoundingClientRect();
+  const pad = 8;
+  let left = rect.right + pad;
+  let top = rect.top;
+  // if overflow right -> place to left
+  const mw = menu.offsetWidth || 180;
+  if(left + mw > window.innerWidth - 10){
+    left = rect.left - mw - pad;
+  }
+  // clamp vertical
+  if(top + menu.offsetHeight > window.innerHeight - 10){
+    top = Math.max(10, window.innerHeight - menu.offsetHeight - 10);
+  }
+  menu.style.left = left + 'px';
+  menu.style.top = top + 'px';
+  // stop propagation clicks close menu
+  setTimeout(()=> {
+    document.addEventListener('click', removeContextMenu, { once:true });
+  }, 10);
+}
+
+function removeContextMenu(){ if(activeCtx){ activeCtx.remove(); activeCtx = null; } }
+
+/* ======= Context menu actions ======= */
+function doCopy(msg){
+  if(msg.text){
+    navigator.clipboard.writeText(msg.text).then(()=> showToast('Copied'));
+  } else if(msg.img){
+    navigator.clipboard.writeText(msg.img).then(()=> showToast('Image data copied'));
+  } else if(msg.file){
+    navigator.clipboard.writeText(msg.file.name).then(()=> showToast('File name copied'));
+  }
+}
+
+function doSave(msg){
+  if(msg.img){
+    const a = document.createElement('a'); a.href = msg.img; a.download = 'image.png'; document.body.appendChild(a); a.click(); a.remove();
+    showToast('Downloading image...');
+  } else if(msg.file){
+    const a = document.createElement('a'); a.href = msg.file.data; a.download = msg.file.name || 'file'; document.body.appendChild(a); a.click(); a.remove();
+    showToast('Downloading file...');
+  }
+}
+
+/* ======= Delete with modern confirmation modal ======= */
+function confirmDelete(id){
+  // small custom confirm (not alert)
+  const c = confirmDialog('Delete message?', 'This will remove the message for you. Are you sure?');
+  c.then(confirmed => {
+    if(confirmed){
+      messages = messages.filter(m=> m.id !== id);
+      saveMessages();
+      renderAll();
+      showToast('Message deleted');
+    }
+  });
+}
+
+/* custom confirm dialog */
+function confirmDialog(title, text){
+  return new Promise(resolve => {
+    // build modal
+    const modal = document.createElement('div'); modal.style.position='fixed'; modal.style.inset='0'; modal.style.display='flex'; modal.style.alignItems='center'; modal.style.justifyContent='center'; modal.style.background='rgba(0,0,0,0.6)'; modal.style.zIndex=15000;
+    const card = document.createElement('div'); card.style.width='90%'; card.style.maxWidth='420px'; card.style.padding='16px'; card.style.borderRadius='12px'; card.style.background='linear-gradient(180deg,#07120f,#04100d)'; card.style.border='1px solid rgba(141,246,196,0.06)';
+    card.innerHTML = `<h3 style="margin:0 0 8px 0;color:${getComputedStyle(document.documentElement).getPropertyValue('--accent')};">${escapeHtml(title)}</h3><div style="color:rgba(232,253,240,0.8);">${escapeHtml(text)}</div>`;
+    const row = document.createElement('div'); row.style.display='flex'; row.style.gap='10px'; row.style.marginTop='12px'; row.style.justifyContent='flex-end';
+    const no = document.createElement('button'); no.innerText='Cancel'; no.style.padding='10px 12px'; no.style.borderRadius='8px'; no.style.background='#111'; no.style.color='#ddd'; no.style.border='1px solid rgba(255,255,255,0.03)';
+    const yes = document.createElement('button'); yes.innerText='Delete'; yes.style.padding='10px 12px'; yes.style.borderRadius='8px'; yes.style.background='linear-gradient(180deg,var(--accent), #6fe9b7)'; yes.style.color='#001f12'; yes.style.border='none';
+    row.appendChild(no); row.appendChild(yes);
+    card.appendChild(row); modal.appendChild(card); document.body.appendChild(modal);
+    no.addEventListener('click', ()=> { modal.remove(); resolve(false); });
+    yes.addEventListener('click', ()=> { modal.remove(); resolve(true); });
+  });
+}
+
+/* ======= Helpers ======= */
+function escapeHtml(s){ return (s||'').toString().replace(/[&<>"']/g, c=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* ======= Block user (owner) placeholder ======= */
+function blockUser(name){
+  if(!isOwner){ showToast('Only owner can block users'); return; }
+  if(!blockedUsers.includes(name)) blockedUsers.push(name);
+  localStorage.setItem('sd_blocked_v2', JSON.stringify(blockedUsers));
+  showToast(`${name} blocked`);
+  renderAll();
+}
+
+/* ======= Init & Render logic ======= */
+function renderAll(){
+  msgsEl.innerHTML = '';
+  // show messages, filtered
+  messages.forEach(m=>{
+    if(blockedUsers.includes(m.user) && !isOwner) return;
+    msgsEl.appendChild(createBubbleContainer(m));
+  });
+  setTimeout(()=> msgsEl.scrollTop = msgsEl.scrollHeight, 40);
+}
+
+function createBubbleContainer(m){
+  const row = document.createElement('div'); row.className = 'row ' + (m.user === username ? 'me' : 'them');
+  const bubble = document.createElement('div'); bubble.className = 'bubble ' + (m.user === username ? 'me' : '');
+  bubble.dataset.id = m.id;
+  bubble.dataset.user = m.user;
+  bubble.innerHTML = `<div class="meta"><div class="user">${escapeHtml(m.user)}</div><div class="time">${formatTime(m.time)}</div></div>`;
+  if(m.text) bubble.insertAdjacentHTML('beforeend', `<div class="text">${escapeHtml(m.text)}</div>`);
+  if(m.img) bubble.insertAdjacentHTML('beforeend', `<img src="${m.img}" alt="attachment">`);
+  if(m.file) bubble.insertAdjacentHTML('beforeend', `<a class="file-pill" href="${m.file.data}" download="${escapeHtml(m.file.name||'file')}">📎 ${escapeHtml(m.file.name||'Attachment')}</a>`);
+  // attach interactions
+  attachContextualMenu(bubble, m);
+  // image click to open viewer
+  const imgs = bubble.querySelectorAll('img');
+  imgs.forEach(img => img.addEventListener('click', ()=> openViewer(img.src)));
+  row.appendChild(bubble);
+  return row;
+}
+
+/* initial sample if empty */
+if(messages.length === 0){
+  messages = [
+    { id:'sys1', user:'Smart Deen', text:'Welcome to Smart Deen Community — please keep discussion respectful and Islamic.', img:null, file:null, time: Date.now()-1000*60*60, from:false },
+    { id:'sys2', user:'Smart Deen', text:'Hold a message (mobile) or right-click (desktop) to Copy / Save / Delete (your messages).', img:null, file:null, time: Date.now()-1000*30, from:false }
+  ];
+  saveMessages();
+}
+
+/* initial render */
+renderAll();
+
+/* ======= Context: clicking outside removes ctx + keyboard accessibility ======= */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') removeContextMenu();
+});
+
+/* remove ctx when resizing */
+window.addEventListener('resize', removeContextMenu);
+
+/* ======= Utility: save and notify ======= */
+function saveMessages(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(messages)); localStorage.setItem(SYNC_KEY, Date.now().toString()); el('syncIndicator').textContent = 'synced'; setTimeout(()=> el('syncIndicator').textContent='synced', 600); }
+
+/* ======= Create message helpers for legacy places (send, attachments) ======= */
+function pushMessage(m){
+  messages.push(m); saveMessages(); renderAll();
+}
+
+/* capture Enter send already attached above */
+
+/* Expose some functions for console/dev use */
+window.sd = {
+  pushMessage,
+  blockUser,
+  getMessages: ()=> messages,
+  setOwner: (name)=> { localStorage.setItem('sd_owner_v2', name); isOwner = (name === username); showToast('owner set'); }
+};
+
+</script>
+</body>
+</html>

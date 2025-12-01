@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saved Notes</title>
+
+<style>
+    :root {
+        --bg: #0a0d10;
+        --card: #121418;
+        --text: #ffffff;
+        --accent: #2df4a6;
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Poppins, sans-serif;
+    }
+
+    .top {
+        background: #111417;
+        padding: 14px;
+        font-size: 22px;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 1px solid #1c1f23;
+    }
+
+    .note {
+        background: var(--card);
+        margin: 12px;
+        padding: 15px;
+        border-left: 4px solid var(--accent);
+        border-radius: 8px;
+        font-size: 16px;
+        line-height: 1.6;
+        position: relative;
+    }
+
+    .time {
+        color: var(--accent);
+        font-size: 13px;
+        margin-top: 6px;
+    }
+
+    /* Delete Button */
+    .delete-btn {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        padding: 4px 8px;
+        font-size: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        background: var(--accent);
+        color: black;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="top">Saved Notes</div>
+
+<div id="notesBox"></div>
+
+<script>
+    let saved = JSON.parse(localStorage.getItem("savedNotes") || "[]");
+    let box = document.getElementById("notesBox");
+
+    function loadNotes(){
+        box.innerHTML = "";
+
+        if(saved.length === 0){
+            box.innerHTML = "<p style='text-align:center;margin-top:30px;color:gray;'>No notes saved yet.</p>";
+            return;
+        }
+
+        saved.forEach((n, index) => {
+            box.innerHTML += `
+                <div class="note">
+                    ${n.text}
+                    <div class="time">${n.time}</div>
+                    <button class="delete-btn" onclick="deleteNote(${index})">Delete</button>
+                </div>
+            `;
+        });
+    }
+
+    function deleteNote(i){
+        if(confirm("Delete this note?")){
+            saved.splice(i, 1);
+            localStorage.setItem("savedNotes", JSON.stringify(saved));
+            loadNotes();
+        }
+    }
+
+    loadNotes();
+</script>
+
+</body>
+</html>

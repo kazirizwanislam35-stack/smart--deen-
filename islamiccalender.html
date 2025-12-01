@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Smart Deen — Islamic Calendar</title>
+<style>
+  :root{
+    --bg:#0a0d10;
+    --card:#121418;
+    --text:#eefaf0;
+    --accent:#2df4a6;
+    --muted:#7f9887;
+  }
+  /* Light mode support (if you use body.light) */
+  body.light {
+    --bg: #f6fff9;
+    --card: #ffffff;
+    --text: #012b1b;
+    --accent: #00a86b;
+    --muted: #6a8a76;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: Poppins, system-ui, -apple-system, "Segoe UI", Arial;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 18px;
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  }
+  .back { background:var(--accent); color:#000; padding:8px 12px; border-radius:10px; font-weight:700; border:none; cursor:pointer; }
+  .title { font-weight:700; font-size:18px; }
+  .subtitle { color:var(--muted); font-size:13px; margin-left:6px; }
+
+  .wrap { width:100%; max-width:980px; margin:20px auto; padding:12px; }
+
+  .calendar {
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius:14px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+
+  .cal-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+  }
+
+  .month-title { font-size:20px; font-weight:700; color:var(--accent); letter-spacing:0.6px; }
+  .nav { display:flex; gap:8px; align-items:center; }
+  .nav button { background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text); padding:8px 10px; border-radius:8px; cursor:pointer; }
+  .today-btn { background:var(--accent); color:#000; padding:8px 12px; border-radius:8px; border:none; font-weight:700; cursor:pointer; }
+
+  .weekdays { display:grid; grid-template-columns:repeat(7,1fr); text-align:center; margin-bottom:6px; color:var(--muted); font-weight:600; font-size:13px; }
+  .grid-days { display:grid; grid-template-columns:repeat(7,1fr); gap:8px; }
+
+  .daycell {
+    background:var(--card);
+    min-height:96px;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.02);
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s;
+  }
+  .daycell:hover { transform: translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.6); border-color: rgba(45,244,166,0.12); }
+  .daynum { font-size:18px; font-weight:800; color:var(--text); }
+  .hijri { position:absolute; left:10px; bottom:8px; font-size:12px; color:var(--accent); font-weight:700; }
+  .muted { color:var(--muted); font-size:13px; margin-top:6px; }
+  .other-month { opacity:0.35; }
+
+  .badge { display:inline-block; background:linear-gradient(90deg, rgba(45,244,166,0.12), transparent); padding:6px 10px; border-radius:999px; border:1px solid rgba(45,244,166,0.12); color:var(--accent); font-weight:700; }
+
+  /* highlight today */
+  .today {
+    box-shadow: 0 8px 30px rgba(45,244,166,0.14);
+    border:1px solid rgba(45,244,166,0.6);
+  }
+
+  /* small popup detail */
+  .detail {
+    position:fixed;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%) scale(0.98);
+    background:var(--card);
+    border:1px solid rgba(255,255,255,0.03);
+    padding:18px;
+    width:92%;
+    max-width:520px;
+    border-radius:12px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.7);
+    z-index:2000;
+    display:none;
+  }
+  .detail.show { display:block; animation:pop .13s ease; transform:translate(-50%,-50%) scale(1); }
+  @keyframes pop { from {opacity:0; transform:translate(-50%,-50%) scale(.98)} to {opacity:1; transform:translate(-50%,-50%) scale(1)} }
+
+  .detail h3 { margin:0 0 8px 0; color:var(--accent) }
+  .detail .close { position:absolute; right:12px; top:10px; background:transparent; color:var(--muted); border:none; cursor:pointer; font-weight:700; font-size:18px; }
+
+  /* footer small */
+  .foot { text-align:center; color:var(--muted); font-size:13px; margin-top:12px; }
+
+  @media (max-width:720px){
+    .daycell{min-height:86px;padding:8px}
+    .daynum{font-size:16px}
+    .hijri{font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <button class="back" onclick="location.href='dashboard.html'">←</button>
+    <div>
+      <div class="title">Smart Deen</div>
+      <div class="subtitle">Islamic Calendar — Gregorian & Hijri</div>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+      <div class="badge" id="currentHijri"></div>
+      <button class="today-btn" onclick="goToday()">Today</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="calendar">
+      <div class="cal-header">
+        <div class="month-title" id="monthTitle"></div>
+        <div class="nav">
+          <button onclick="prevMonth()">‹</button>
+          <button onclick="nextMonth()">›</button>
+        </div>
+      </div>
+
+      <div class="weekdays">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+      </div>
+
+      <div class="grid-days" id="daysGrid"></div>
+
+      <div class="foot">Hijri dates are shown using an accepted arithmetic conversion (approx.). For precise local moon-sighting differences check your local authority.</div>
+    </div>
+  </div>
+
+  <!-- Day detail popup -->
+  <div class="detail" id="detailBox">
+    <button class="close" onclick="closeDetail()">✕</button>
+    <h3 id="detailDate"></h3>
+    <p id="detailHijri"></p>
+    <p id="detailInfo" style="color:var(--muted);margin-top:10px"></p>
+  </div>
+
+<script>
+/*
+  Calendar + approximate Hijri conversion functions.
+  Uses common arithmetic method (suitable for UI; may vary +/-1 day from local moon-sighting calendars).
+*/
+
+// --- Date helper functions ---
+function pad(n){ return n<10? '0'+n: n; }
+
+const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+// --- Gregorian to Julian Day
+function gregorianToJD(y,m,d){
+  // y = full year, m = 1-12, d = day
+  if(m <= 2){ y -= 1; m += 12; }
+  const A = Math.floor(y/100);
+  const B = 2 - A + Math.floor(A/4);
+  const jd = Math.floor(365.25*(y+4716)) + Math.floor(30.6001*(m+1)) + d + B - 1524.5;
+  return jd;
+}
+
+// --- Islamic (Hijri) conversion helpers (arithmetical)
+function islamicToJD(year, month, day){
+  // year, month (1-12), day
+  return day + Math.ceil(29.5*(month-1)) + (year-1)*354 + Math.floor((3 + (11*year)) / 30) + 1948440 - 1;
+}
+
+function jdToIslamic(jd){
+  jd = Math.floor(jd) + 0.5;
+  const days = jd - 1948439.5;
+  const year = Math.floor((30*days + 10646) / 10631);
+  // first day of islamic year (1 Muharram)
+  const yearStart = islamicToJD(year,1,1);
+  let month = Math.ceil((jd - yearStart + 1) / 29.5);
+  if(month > 12) month = 12;
+  const monthStart = islamicToJD(year, month, 1);
+  const day = Math.floor(jd - monthStart + 1);
+  return { y: year, m: month, d: day };
+}
+
+// convert a given gregorian JS Date to hijri
+function dateToHijri(jsDate){
+  const y = jsDate.getFullYear();
+  const m = jsDate.getMonth() + 1;
+  const d = jsDate.getDate();
+  const jd = gregorianToJD(y,m,d);
+  return jdToIslamic(jd);
+}
+
+// --- Calendar rendering ---
+let current = new Date();
+let viewYear = current.getFullYear();
+let viewMonth = current.getMonth(); // 0-indexed
+
+function renderCalendar(year, month){
+  const grid = document.getElementById('daysGrid');
+  grid.innerHTML = '';
+
+  const first = new Date(year, month, 1);
+  const startDay = first.getDay(); // 0=Sun
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+
+  // previous month days for leading cells
+  const prevDays = startDay;
+  const prevMonthLastDate = new Date(year, month, 0).getDate();
+
+  // title
+  document.getElementById('monthTitle').textContent = monthNames[month] + ' ' + year;
+
+  // create 42 cells (6 rows)
+  for(let i=0; i<42; i++){
+    const cell = document.createElement('div');
+    cell.className = 'daycell';
+    let cellDate = null;
+    if(i < prevDays){
+      // previous month
+      const dayNum = prevMonthLastDate - (prevDays - 1) + i;
+      cell.classList.add('other-month');
+      const dt = new Date(year, month-1, dayNum);
+      cellDate = dt;
+      cell.innerHTML = `<div class="daynum">${dayNum}</div>`;
+    } else if(i < prevDays + daysInMonth){
+      // current month
+      const dayNum = i - prevDays + 1;
+      const dt = new Date(year, month, dayNum);
+      cellDate = dt;
+      const isToday = (dt.getFullYear()===current.getFullYear() && dt.getMonth()===current.getMonth() && dt.getDate()===current.getDate());
+      if(isToday) cell.classList.add('today');
+      cell.innerHTML = `<div class="daynum">${dayNum}</div>`;
+    } else {
+      // next month
+      const dayNum = i - (prevDays + daysInMonth) + 1;
+      const dt = new Date(year, month+1, dayNum);
+      cellDate = dt;
+      cell.classList.add('other-month');
+      cell.innerHTML = `<div class="daynum">${dayNum}</div>`;
+    }
+
+    // compute hijri for this cellDate
+    const hij = dateToHijri(cellDate);
+    const hijTxt = hij.d + ' / ' + hij.m + ' / ' + hij.y;
+    const hijShort = hij.d + ' ' + getHijriMonthName(hij.m);
+    const hijriEl = document.createElement('div');
+    hijriEl.className = 'hijri';
+    hijriEl.innerText = hijShort;
+    cell.appendChild(hijriEl);
+
+    // click to open detail
+    cell.addEventListener('click', ()=>{
+      openDetail(cellDate, hij);
+    });
+
+    grid.appendChild(cell);
+  }
+
+  // update small current hijri badge for today
+  const todayHijri = dateToHijri(new Date());
+  document.getElementById('currentHijri').innerText = `${todayHijri.d} ${getHijriMonthName(todayHijri.m)} ${todayHijri.y} AH`;
+}
+
+// hijri month names (common)
+function getHijriMonthName(m){
+  const names = ["Muharram","Safar","Rabiʿ I","Rabiʿ II","Jumada I","Jumada II","Rajab","Shaʿban","Ramadan","Shawwal","Dhu al-Qiʿdah","Dhu al-Hijjah"];
+  return names[m-1] || m;
+}
+
+// navigation
+function prevMonth(){ 
+  viewMonth--;
+  if(viewMonth<0){ viewMonth=11; viewYear--; }
+  renderCalendar(viewYear, viewMonth);
+}
+function nextMonth(){
+  viewMonth++;
+  if(viewMonth>11){ viewMonth=0; viewYear++; }
+  renderCalendar(viewYear, viewMonth);
+}
+function goToday(){
+  viewYear = current.getFullYear();
+  viewMonth = current.getMonth();
+  renderCalendar(viewYear, viewMonth);
+}
+
+// detail popup
+function openDetail(dateObj, hijriObj){
+  const box = document.getElementById('detailBox');
+  const dstr = `${dateObj.getDate()} ${monthNames[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+  document.getElementById('detailDate').innerText = dstr;
+  document.getElementById('detailHijri').innerText = `Hijri: ${hijriObj.d} ${getHijriMonthName(hijriObj.m)} ${hijriObj.y} AH`;
+  // example additional info: isRamadan etc (simple check)
+  if(hijriObj.m === 9) {
+    document.getElementById('detailInfo').innerText = 'Ramadan (fasting month) — spiritual focus, prayers, Quran recitation.';
+  } else {
+    document.getElementById('detailInfo').innerText = 'No special event recorded. Use this day for remembrance and dua.';
+  }
+  box.classList.add('show');
+}
+function closeDetail(){ document.getElementById('detailBox').classList.remove('show'); }
+
+// on load
+window.addEventListener('load', ()=>{
+  renderCalendar(viewYear, viewMonth);
+});
+</script>
+</body>
+</html>

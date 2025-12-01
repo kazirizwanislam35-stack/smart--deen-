@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Deen Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0d0f12;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .logo-float {
+            width: 170px;
+            height: 170px;
+            margin: 20px auto;
+            background: radial-gradient(circle, rgba(39,255,171,0.30), transparent);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        h2 span {
+            color: #2df4a6;
+        }
+
+        form {
+            margin-top: 35px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+            color: #cfcfcf;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            background: #14171c;
+            border: 1px solid #24272d;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 22px;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #2df4a6;
+            box-shadow: 0 0 8px rgba(39,255,171,0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #2df4a6;
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo-float"></div>
+
+        <h2>Smart <span>Deen</span></h2>
+
+        <form>
+
+            <label>Your Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Select Madhab</label>
+            <select required>
+                <option value="">Choose one</option>
+                <option>Hanafi</option>
+                <option>Shafi'i</option>
+                <option>Maliki</option>
+                <option>Hanbali</option>
+            </select>
+
+            <button class="btn" type="button" onclick="location.href='dashboard.html'">
+    Continue
+</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

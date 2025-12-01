@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Deen Notes</title>
+
+<style>
+    :root {
+        --bg: #0a0d10;
+        --card: #121418;
+        --text: #ffffff;
+        --accent: #2df4a6;
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Poppins, sans-serif;
+    }
+
+    /* HEADER */
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #111417;
+        padding: 14px;
+        border-bottom: 1px solid #1c1f23;
+    }
+
+    .back {
+        background: var(--accent);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .save {
+        background: #121418;
+        border: 1px solid var(--accent);
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: var(--accent);
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* TEXT AREA */
+    #noteInput {
+        width: 100%;
+        height: calc(100vh - 110px);
+        background: #0d1013;
+        border: none;
+        outline: none;
+        padding: 20px;
+        color: var(--accent);
+        font-size: 18px;
+        line-height: 1.6;
+        border-top: 1px solid #1c1f23;
+    }
+
+    #savedMsg {
+        text-align: center;
+        padding: 10px;
+        color: var(--accent);
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="top">
+    <button class="back" onclick="location.href='dashboard.html'">← Back</button>
+    <div class="title">Smart Deen Notes</div>
+    <button class="save" onclick="saveNote()">Save</button>
+</div>
+
+<div id="savedMsg">✔ Note Saved Successfully!</div>
+
+<textarea id="noteInput" placeholder="✍️ Start writing Islamic notes with Smart Deen…"></textarea>
+
+<script>
+    // Load previous draft
+    if(localStorage.getItem("currentNote")){
+        document.getElementById("noteInput").value = localStorage.getItem("currentNote");
+    }
+
+    // Save notes
+    function saveNote(){
+        let note = document.getElementById("noteInput").value.trim();
+        if(note.length > 0){
+            let notesArray = JSON.parse(localStorage.getItem("savedNotes") || "[]");
+            notesArray.push({
+                text: note,
+                time: new Date().toLocaleString()
+            });
+            localStorage.setItem("savedNotes", JSON.stringify(notesArray));
+
+            localStorage.setItem("currentNote", ""); // clear draft
+            document.getElementById("noteInput").value = "";
+            showMsg();
+        }
+    }
+
+    function showMsg(){
+        let m = document.getElementById("savedMsg");
+        m.style.display = "block";
+        setTimeout(()=> m.style.display = "none", 2000);
+    }
+</script>
+
+</body>
+</html>

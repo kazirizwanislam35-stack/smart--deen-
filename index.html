@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Deen</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: #0d0f12;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px 20px;
+        }
+
+        /* Floating Glow for Logo */
+        .logo-float {
+            width: 180px;
+            height: 180px;
+            margin: 40px auto 10px;
+            background: radial-gradient(circle, rgba(39,255,171,0.35), transparent);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-top: 30px;
+        }
+
+        h1 span {
+            color: #2df4a6;
+        }
+
+        .subtitle {
+            max-width: 90%;
+            margin: 20px auto;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #bbbbbb;
+        }
+
+        .ayah {
+            margin-top: 25px;
+            font-style: italic;
+            font-size: 15px;
+            color: #9bc7ff;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 40px;
+            background: white;
+            color: black;
+            padding: 15px 40px;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2 style="text-align:left; font-size:28px; font-weight:600;">
+            Smart <span style="color:#2df4a6;">Deen</span>
+        </h2>
+
+        <!-- Floating Glow (logo will go here later) -->
+        <div class="logo-float"></div>
+
+        <h1>Welcome to <span>Smart</span><br>Deen</h1>
+
+        <p class="subtitle">
+            Learn Islam in a modern, structured and beautifully designed digital platform.
+            Get Islamic reminders, notes, dashboard insights, progress tracking, Qur'an
+            study tools, salah guidance and much more.
+        </p>
+
+        <p class="ayah">
+            “Indeed, in the remembrance of Allah do hearts find peace.” — Qur'an 13:28
+        </p>
+
+        <a class="btn" href="login.html">Login</a>
+
+    </div>
+
+</body>
+</html>

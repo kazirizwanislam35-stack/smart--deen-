@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Deen • Tasbih Counter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body{
+        margin:0;
+        background:#0c0f14;
+        font-family:Arial, sans-serif;
+        color:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        text-align:center;
+        position:relative;
+    }
+
+    .container{
+        background:linear-gradient(145deg, #0d1219, #0a0d12);
+        padding:25px;
+        width:90%;
+        max-width:380px;
+        border-radius:18px;
+        border:1px solid #1f2733;
+        box-shadow:0 0 25px rgba(0,255,170,0.15);
+        position:relative;
+    }
+
+    .title{
+        font-size:22px;
+        color:#00ffb3;
+        letter-spacing:1px;
+        margin-bottom:15px;
+        font-weight:bold;
+    }
+
+    .counter-box{
+        background:#0f141b;
+        border:2px solid #00c897;
+        padding:25px;
+        border-radius:14px;
+        margin-bottom:20px;
+        font-size:55px;
+        font-weight:bold;
+        color:#00ffb3;
+        text-shadow:0 0 12px rgba(0,255,170,0.6);
+    }
+
+    .btn{
+        padding:15px 0;
+        margin-top:10px;
+        width:100%;
+        border:none;
+        border-radius:10px;
+        font-size:18px;
+        font-weight:bold;
+        cursor:pointer;
+    }
+
+    .add-btn{
+        background:#00ffb3;
+        color:black;
+    }
+
+    .reset-btn{
+        background:#dc3545;
+        color:white;
+    }
+
+    .back-btn{
+        display:block;
+        background:#00c897;
+        color:black;
+        padding:10px 15px;
+        border-radius:10px;
+        text-decoration:none;
+        position:absolute;
+        top:10px;
+        left:10px;
+        font-weight:bold;
+    }
+
+    /* Watermark */
+    .watermark{
+        position:absolute;
+        bottom:10px;
+        right:10px;
+        color:#0f3;
+        opacity:0.08;
+        font-size:32px;
+        font-weight:bold;
+        pointer-events:none;
+        transform:rotate(-10deg);
+    }
+
+</style>
+
+</head>
+<body>
+
+<a href="dashboard.html" class="back-btn">← Back</a>
+
+<div class="container">
+
+    <div class="title">Smart Deen Tasbih</div>
+
+    <div class="counter-box" id="count">0</div>
+
+    <button class="btn add-btn" onclick="increase()">+1 Tasbih</button>
+    <button class="btn reset-btn" onclick="resetCounter()">Reset</button>
+
+</div>
+
+
+
+<script>
+    let count = 0;
+
+    function increase(){
+        count++;
+        document.getElementById("count").innerHTML = count;
+
+        // Soft animation
+        let box = document.getElementById("count");
+        box.style.transform = "scale(1.15)";
+        setTimeout(()=> box.style.transform = "scale(1)", 150);
+    }
+
+    function resetCounter(){
+        count = 0;
+        document.getElementById("count").innerHTML = count;
+    }
+</script>
+
+</body>
+</html>

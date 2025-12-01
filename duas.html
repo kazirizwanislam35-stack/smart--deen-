@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>40 Powerful Duas — Smart Deen</title>
+<style>
+  :root{
+    --bg:#0a0d10;
+    --card:#121418;
+    --text:#ffffff;
+    --muted:#bfc7cc;
+    --accent:#2df4a6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Poppins, system-ui, -apple-system, "Segoe UI", "Noto Sans", "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  .header{
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid rgba(255,255,255,0.02);
+  }
+
+  .logo{font-weight:700;font-size:18px}
+  .logo span{color:var(--accent)}
+
+  .back{
+    margin-left:auto;
+    background:none;
+    border:1px solid rgba(255,255,255,0.04);
+    color:var(--accent);
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+
+  .container{max-width:980px;margin:18px auto;padding:0 16px;}
+
+  h1{
+    text-align:center;
+    margin:16px 0;
+    font-size:22px;
+  }
+
+  .lead{color:var(--muted);text-align:center;margin-bottom:18px;font-size:15px}
+
+  /* dua list */
+  .duas {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+
+  .dua {
+    background:var(--card);
+    border-radius:14px;
+    padding:16px;
+    border:1px solid rgba(255,255,255,0.03);
+    transition:transform .26s cubic-bezier(.2,.9,.2,1), box-shadow .26s ease, border-color .26s ease;
+    cursor:pointer;
+    -webkit-tap-highlight-color: transparent;
+    position:relative;
+    overflow:visible;
+    min-height:120px;
+  }
+
+  /* slim modern Arabic style */
+  .dua .arabic{
+    direction:rtl;
+    font-size:20px;
+    line-height:1.6;
+    font-weight:600;
+    font-family: "Noto Naskh Arabic", "Amiri", "Scheherazade", serif;
+    color:#f7fff9;
+    margin-bottom:10px;
+    letter-spacing:0.5px;
+  }
+
+  .dua .translation{
+    color:var(--muted);
+    font-size:14.5px;
+    line-height:1.5;
+    text-align:left;
+  }
+
+  /* hover and active */
+  .dua:hover{ transform:translateY(-6px); box-shadow:0 8px 22px rgba(0,0,0,0.5) }
+  .dua.active{
+    transform:scale(1.035);
+    box-shadow:0 10px 40px rgba(45,244,166,0.14), 0 0 30px rgba(45,244,166,0.20) inset;
+    border-color: rgba(45,244,166,0.9);
+  }
+
+  /* green glow ring (animated) */
+  .dua::before{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:18px;
+    pointer-events:none;
+    opacity:0;
+    transform:scale(.95);
+    transition:opacity .26s ease, transform .26s ease;
+    box-shadow:0 0 50px rgba(45,244,166,0.0);
+  }
+  .dua.active::before{
+    opacity:1;
+    transform:scale(1);
+    box-shadow:0 0 40px rgba(45,244,166,0.85), 0 8px 60px rgba(45,244,166,0.18);
+  }
+
+  /* responsive spacing */
+  @media (max-width:420px){
+    .dua .arabic{font-size:18px}
+    .dua .translation{font-size:14px}
+  }
+
+  /* small footer */
+  .footer{margin:26px 0;text-align:center;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">Smart <span>Deen</span></div>
+    <button class="back" onclick="history.back()">← Back</button>
+  </div>
+
+  <div class="container">
+    <h1>٤٠ دُعَاءً قَوِيًّا — 40 Powerful Duas</h1>
+    <div class="lead">Arabic (with tashkeel) — English translation. Tap any dua to highlight it with a vibrant glow.</div>
+
+    <div id="duas" class="duas"></div>
+
+    <div class="footer">Made with ♥ — Smart Deen</div>
+  </div>
+
+<script>
+// 40 long/powerful duas (Arabic with tashkeel, modern slim style), and English translations.
+// Note: Text includes tashkeel where common; some Arabic diacritics simplified for readability.
+const data = [
+  ["لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ", "“There is no deity except You; exalted are You. Indeed I have been of the wrongdoers.” — (Dua of Yunus, A.S.)"],
+  ["اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ", "O Allah, I seek the good through Your knowledge and I seek ability through Your power (Istikhārah)."],
+  ["سَيِّدُ الْإِسْتِغْفَارِ: اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي", "The best form of seeking forgiveness (Sayyid al-Istighfar). A comprehensive supplication asking Allah’s forgiveness."],
+  ["رَبِّ زِدْنِي عِلْمًا", "My Lord, increase me in knowledge."],
+  ["رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", "Our Lord, grant us good in this world and good in the Hereafter, and protect us from the punishment of the Fire."],
+  ["اللَّهُمَّ اغْفِرْ لِي وَلِوَالِدَيَّ وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا", "O Allah, forgive me and my parents, and have mercy on them as they raised me when I was small."],
+  ["اللَّهُمَّ اشْفِ مَرْضَانَا، وَارْحَمْ مَوْتَانَا، وَعَافِنَا يَا رَحِيمُ", "O Allah, cure our sick, have mercy on our deceased, and grant us wellbeing, O Most Merciful."],
+  ["رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً", "My Lord, grant me from Yourself righteous offspring."],
+  ["اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ", "O Allah, save me from the Fire."],
+  ["رَبِّ إِنِّي لِمَا أَنْزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ", "My Lord, I am in need of whatever good You bestow upon me."],
+  ["اللَّهُمَّ اهْدِنَا وَسَدِّدْنَا", "O Allah, guide us and make us steadfast."],
+  ["اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ", "O Allah, help me remember You, be grateful to You, and worship You in the best manner."],
+  ["اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ", "O Allah, I seek refuge in You from distress and grief."],
+  ["اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ", "O Allah, I seek refuge in You from incapacity and laziness."],
+  ["اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ", "O Allah, I seek refuge in You from cowardice and stinginess."],
+  ["اللَّهُمَّ إِنِّي أَسْأَلُكَ رِزْقًا طَيِّبًا وَعِلْمًا نَافِعًا وَعَمَلاً مُتَقَبَّلاً", "O Allah, I ask You for good, lawful sustenance, beneficial knowledge, and accepted deeds."],
+  ["اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى", "O Allah, I ask You for guidance, piety, chastity and self-sufficiency."],
+  ["رَبِّ أَعُوذُ بِكَ مِنْ ضِيقِ الْقَلْبِ وَمِنْ بُطْءِ النَّفْعِ", "My Lord, I seek refuge in You from a tight heart and from delayed benefit."],
+  ["اللَّهُمَّ اجْعَلْنِي مِنَ الَّذِينَ يَسْتَمِعُونَ الْقَوْلَ فَيَتَّبِعُونَ أَحْسَنَهُ", "O Allah, make me among those who hear the best of speech and follow it."],
+  ["اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الشَّيْطَانِ الرَّجِيمِ", "O Allah, I seek refuge in You from the accursed Satan."],
+  ["اللَّهُمَّ ثَبِّتْ قَلْبِي عَلَى دِينِكَ", "O Allah, make my heart firm upon Your religion."],
+  ["اللَّهُمَّ اجْعَلْنِي مِنَ الْمُحْسِنِينَ", "O Allah, make me among those who do good."],
+  ["اللَّهُمَّ اغْفِرْ لِي ذَنْبِي يَوْمَ الدِّينِ", "O Allah, forgive my sin on the Day of Judgment."],
+  ["رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ", "Our Lord, accept from us; indeed You are the All-Hearing, All-Knowing."],
+  ["اللَّهُمَّ ارْزُقْنِي صَبْرًا وَيُسْرًا فِي الْأَمْرِ", "O Allah, grant me patience and ease in my affairs."],
+  ["اللَّهُمَّ اجْعَلْنَا مِنَ الَّذِينَ يَسْتَغْفِرُونَ فَيُتُوبُونَ", "O Allah, make us those who seek forgiveness and turn (to You) in repentance."],
+  ["اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي", "O Allah, You are my Lord; there is no deity but You; You created me — a comprehensive supplication of repentance."],
+  ["رَبِّ أَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ", "My Lord, admit me by Your mercy among Your righteous servants."],
+  ["اللَّهُمَّ اصْرِفْ عَنِّي سُوءَ الْخَاتِمَةِ وَأَعِدْنِي بِخَيْرٍ", "O Allah, turn away from me an evil ending and restore me with good."],
+  ["اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ", "O Allah, help me to remember You, be grateful to You and worship You perfectly."],
+  ["اللَّهُمَّ إِنِّي أَسْأَلُكَ أَمْنًا فِي الدِّينِ وَأَمْنًا فِي الدُّنْيَا", "O Allah, I ask You for safety in religion and safety in this world."],
+  ["اللَّهُمَّ اجْعَلْ قَبْرِي رَوْضَةً مِنْ رِيَاضِ الْجَنَّةِ", "O Allah, make my grave a garden from the gardens of Paradise."],
+  ["اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ فِتْنَةِ الْقَبْرِ وَمِنْ عَذَابِ الْقَبْرِ", "O Allah, I seek refuge in You from the trial of the grave and from the punishment of the grave."],
+  ["اللَّهُمَّ نَوِّرْ قَلْبِي بِقُرْآنِكَ وَاجْعَلْهُ نُورًا لِي", "O Allah, illuminate my heart with Your Qur’an and make it light for me."],
+  ["اللَّهُمَّ اهْدِ قُلُوبَنَا لِدِينِكَ وَثَبِّتْنَا عَلَى طَاعَتِكَ", "O Allah, guide our hearts to Your religion and keep us steadfast in obedience to You."],
+  ["اللَّهُمَّ اجْعَلْنِي وَأَهْلِي مِنْ أَهْلِ الْجَنَّةِ", "O Allah, make me and my family among the people of Paradise."],
+  ["اللَّهُمَّ اجْعَلْنَا مِنَ الَّذِينَ يُقِيمُونَ الصَّلَاةَ وَيُؤْتُونَ الزَّكَاةَ", "O Allah, make us of those who establish prayer and give zakah."],
+  ["اللَّهُمَّ إِنِّي أَسْأَلُكَ إِيَابًا لَكَ وَإِخْلَاصًا فِيكَ وَرِضًا بِنَاصِبِ قَلْبِي", "O Allah, I ask You for returning to You, sincerity for You and contentment with my heart’s effort."],
+  ["رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ", "My Lord, enable me to be grateful for Your favor which You have bestowed upon me."]
+];
+
+// render the duas
+const container = document.getElementById('duas');
+
+data.forEach((d,i)=>{
+  const node = document.createElement('div');
+  node.className = 'dua';
+  node.setAttribute('tabindex','0');
+  node.innerHTML = `
+    <div class="arabic">${d[0]}</div>
+    <div class="translation">${d[1]}</div>
+  `;
+  // click / keyboard activation
+  node.addEventListener('click', ()=> activate(node) );
+  node.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); activate(node); }});
+  container.appendChild(node);
+});
+
+// active behavior — glow + scale, auto-fade
+let activeTimeout = null;
+function activate(el){
+  // clear existing
+  document.querySelectorAll('.dua.active').forEach(x=> x.classList.remove('active'));
+  if(activeTimeout) { clearTimeout(activeTimeout); activeTimeout = null; }
+  // add
+  el.classList.add('active');
+  // scroll into view a bit smoother on mobile
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+  // remove active after 1400ms
+  activeTimeout = setTimeout(()=> {
+    el.classList.remove('active');
+    activeTimeout = null;
+  }, 1400);
+}
+</script>
+
+</body>
+</html>
