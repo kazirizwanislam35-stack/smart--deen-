@@ -2,9 +2,32 @@
 <html lang="en">
   
 <head>
+  <!-- Primary Meta Tags -->
+<title>Smart Deen - Islamic Learning Dashboard</title>
+<meta name="description" content="Smart Deen is a modern Islamic learning platform with daily reminders, personalized dashboard, madhab settings, and more. Free and easy to use.">
+
+<!-- Keywords -->
+<meta name="keywords" content="Smart Deen, Islamic app, Quran website, Islamic dashboard, deen learning, madhab settings, Muslim app online">
+
+<!-- Author -->
+<meta name="author" content="Smart Deen by Rizwan">
+
+<!-- Mobile Responsive -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph (For Google & Social Media) -->
+<meta property="og:title" content="Smart Deen - Islamic Learning Dashboard">
+<meta property="og:description" content="Smart Deen is a modern Islamic learning platform with a personalized dashboard and Islamic tools.">
+<meta property="og:type" content="website">
+
+<!-- Primary Color -->
+<meta name="theme-color" content="#0a3d62">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Deen Dashboard</title>
+
+
 
 <style>
     :root {
@@ -196,7 +219,7 @@ body {
 <div class="sidebar" id="sidebar">
     <div class="close-btn" onclick="closeSidebar()">✕</div>
 
-    <div class="side-link" onclick="location.href='accountsetting.html'">Account Settings</div>
+   
     
     <div class="side-link" onclick="location.href='savednotes.html'">Saved Notes</div>
     
@@ -204,9 +227,8 @@ body {
     
     <div class="side-link" onclick="location.href='islamiccalender.html'">Islamic Calendar</div>
     
-    <div class="side-link" onclick="location.href='community.html'">Community</div>
     
-    <div class="side-link" onclick="location.href='smartdeen.html">About Smart Deen</div>
+    
 </div>
 
 <!-- OVERLAY -->
@@ -234,7 +256,7 @@ body {
 <!-- MAIN TABS -->
 <div class="grid">
 
- <div class="card" onclick="location.href='quran.html'"> Quran</div>
+ <div class="card" onclick="location.href='../surah/quran.html'"> Quran</div>
 
  <div class="card" onclick="window.location.href='hadith.html'"> Hadith</div>
  
@@ -244,7 +266,13 @@ body {
  
  <div class="card" onclick="location.href='notes.html'"> Islamic Notes</div>
 
- <div class="card" onclick="location.href='../Prophets/prophets.html'"> Prophet Stories</div>
+ <div class="card" onclick="location.href='prophets.html'"> Prophet Stories</div>
+ 
+ <div class="card" onclick="location.href='education.html'"> Education </div>
+ 
+ <div class="card" onclick="location.href='../nasheed/nasheedpro.html'"> Nasheed Pro </div>
+ 
+ 
 
 </div>
 <!-- SMART DEEN – Centered + Swipeable Quote Slider -->
@@ -402,6 +430,98 @@ function closeSidebar() {
     document.getElementById("overlay").classList.remove("show");
 }
 </script>
+<!-- Smart Deen Prayer Tracker Card -->
+<div style="
+    background: #0f1a20;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid #00e89a55;
+    margin: 25px 15px;
+    box-shadow: 0 0 14px #00e89a33;
+">
 
+    <h2 style="
+        color:#00e89a;
+        text-align:center;
+        margin-bottom:18px;
+        font-size:20px;
+    ">
+        Prayer Tracker
+    </h2>
+
+    <div id="sdPrayers" style="display:flex; flex-direction:column; gap:14px;">
+
+        <div class="sdRow">
+            <span>Fajr</span>
+            <button class="sdToggle" onclick="sdSwitch(this)">OFF</button>
+        </div>
+
+        <div class="sdRow">
+            <span>Dhuhr</span>
+            <button class="sdToggle" onclick="sdSwitch(this)">OFF</button>
+        </div>
+
+        <div class="sdRow">
+            <span>Asr</span>
+            <button class="sdToggle" onclick="sdSwitch(this)">OFF</button>
+        </div>
+
+        <div class="sdRow">
+            <span>Maghrib</span>
+            <button class="sdToggle" onclick="sdSwitch(this)">OFF</button>
+        </div>
+
+        <div class="sdRow">
+            <span>Isha</span>
+            <button class="sdToggle" onclick="sdSwitch(this)">OFF</button>
+        </div>
+
+    </div>
+</div>
+
+<style>
+/* Remove blue square highlight on click */
+button, * {
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+}
+
+.sdRow {
+    background: #16242d;
+    padding: 14px 16px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #20343d;
+    color: white;
+    font-size: 15px;
+}
+
+.sdToggle {
+    background: #1e2b31;
+    border: 1px solid #32444b;
+    color: #bfc9cc;
+    padding: 6px 18px;
+    border-radius: 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* DONE mode */
+.sdToggle.done {
+    background: #00e89a;
+    border-color: #00e89a;
+    color: #0a0f10;
+}
+</style>
+
+<script>
+function sdSwitch(btn){
+    btn.classList.toggle("done");
+    btn.innerText = btn.classList.contains("done") ? "DONE" : "OFF";
+}
+</script>
 </body>
 </html>

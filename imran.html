@@ -1,0 +1,3434 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Surah Al-Baqarah — Smart Deen</title>
+<style>
+  :root{
+    --bg:#0b0e10;
+    --card:#0f1416;
+    --text:#e6f7f1;
+    --muted:#9fbfb0;
+    --accent-deep:#0b6b4a;
+    --accent-soft:#24b689;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+  }
+  .top {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+  }
+  .back {
+    width:44px;height:44px;border-radius:10px;display:grid;place-items:center;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18));
+    border:1px solid rgba(255,255,255,0.02);
+    cursor:pointer;color:var(--accent-deep);font-weight:700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  }
+  .title { font-size:18px;font-weight:700; }
+  .meta { padding:12px 18px; color:var(--muted); font-size:13px; }
+  .wrap { padding-bottom: 60px; }
+
+  .ayah {
+    margin:14px 16px;
+    padding:18px;
+    border-radius:14px;
+    background: linear-gradient(180deg, var(--card), rgba(14,17,18,0.9));
+    border: 1px solid rgba(10,13,13,0.2);
+    box-shadow: 0 10px 30px rgba(2,6,4,0.6);
+    position:relative;
+    transition: transform 240ms cubic-bezier(.2,.9,.25,1), box-shadow 240ms;
+    overflow: hidden;
+  }
+  .ayah::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:14px;
+    pointer-events:none;
+    box-shadow: inset 0 0 0 2px rgba(11,107,74,0.04), 0 6px 18px rgba(11,107,74,0.02);
+    transform:translateZ(0);
+  }
+  .ayah:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba(2,6,4,0.8);
+  }
+  .ayah-row { display:flex; gap:12px; align-items:flex-start; }
+  .ayah-num {
+    width:46px;height:46px;border-radius:10px;
+    display:grid;place-items:center;
+    background: linear-gradient(180deg, rgba(11,107,74,0.06), rgba(0,0,0,0.08));
+    color:var(--muted);
+    font-weight:700;
+    border:1px solid rgba(11,107,74,0.06);
+    flex-shrink:0;
+  }
+  .ayah-text { flex:1; min-width:0; }
+  .arabic {
+    direction:rtl;
+    text-align:right;
+    font-family: "Amiri", serif;
+    font-size:22px;
+    color: #ffffff;
+    line-height:1.8;
+    margin-bottom:8px;
+  }
+  .translit { color:var(--muted); font-size:13px; margin-bottom:6px; text-align:left; direction:ltr; }
+  .translation {
+    color: var(--accent-soft);
+    font-size:15px;
+    margin-bottom:8px;
+    text-align:left;
+    direction:ltr;
+  }
+  .bookmark {
+    border-radius:999px;
+    padding:8px 12px;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.03);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    color:var(--muted);
+    transition: transform 140ms, background 160ms, color 160ms;
+  }
+  .bookmark.active {
+    background: linear-gradient(180deg, var(--accent-deep), var(--accent-soft));
+    color: #00110a;
+    box-shadow: 0 6px 18px rgba(11,107,74,0.14), inset 0 -6px 16px rgba(0,0,0,0.12);
+  }
+  .ayah-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:8px; }
+
+  .sd-toast {
+    position:fixed; left:50%; transform:translateX(-50%); bottom:26px;
+    background: rgba(6,10,8,0.92); color:var(--text); padding:10px 14px;
+    border-radius:12px; border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6); opacity:0; pointer-events:none;
+    transition:all .28s;
+  }
+  .sd-toast.show { opacity:1; pointer-events:auto; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width:480px){
+    .arabic{ font-size:20px; }
+    .ayah-num{ width:40px;height:40px;font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="back" title="Back to Quran" onclick="location.href='quran.html'">←</div>
+  <div class="title">Al-Imran</div>
+</div>
+
+<div class="meta">Revealed: Madinah • Verses: 200 • Meaning: The Family of Imran</div>
+
+<div class="wrap">
+  
+  
+  <!-- AYAH 1 -->
+  <article id="ayah-1" class="ayah" data-ayah="1">
+    <div class="ayah-row">
+      <div class="ayah-num">1</div>
+      <div class="ayah-text">
+        <div class="arabic">الم</div>
+        <div class="translit">Alif-Lām-Mīm</div>
+        <div class="translation">Letter combination — a Divine sign.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="1" onclick="toggleBookmark(event,1,'الم','Letter combination — a Divine sign.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 2 -->
+  <article id="ayah-2" class="ayah" data-ayah="2">
+    <div class="ayah-row">
+      <div class="ayah-num">2</div>
+      <div class="ayah-text">
+        <div class="arabic">اللَّهُ لَا إِلَـٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ</div>
+        <div class="translit">Allāhu lā ilāha illā huwa al-Ḥayyul-Qayyūm</div>
+        <div class="translation">Allah — none has the right to be worshiped but He, Ever-Living.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="2" onclick="toggleBookmark(event,2,'اللَّهُ لَا إِلَـٰهَ إِلَّا هُوَ...','Allah — none has the right to be worshiped but He, Ever-Living.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 3 -->
+  <article id="ayah-3" class="ayah" data-ayah="3">
+    <div class="ayah-row">
+      <div class="ayah-num">3</div>
+      <div class="ayah-text">
+        <div class="arabic">نَزَّلَ عَلَيْكَ الْكِتَابَ بِالْحَقِّ مُصَدِّقاً لِمَا بَيْنَ يَدَيْهِ وَأَنْزَلَ التَّوْرَاةَ... </div>
+        <div class="translit">Nazzala 'alayka al-kitāba bil-ḥaqqi muṣaddiqan... </div>
+        <div class="translation">He sent the Book to confirm what came before and brought guidance.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="3" onclick="toggleBookmark(event,3,'نَزَّلَ عَلَيْكَ الْكِتَابَ...','He sent the Book to confirm what came before and brought guidance.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 4 -->
+  <article id="ayah-4" class="ayah" data-ayah="4">
+    <div class="ayah-row">
+      <div class="ayah-num">4</div>
+      <div class="ayah-text">
+        <div class="arabic">مِنَ الْمُؤْمِنِينَ وَالْمُهَاجِرِينَ وَالْأَنصَارِ... </div>
+        <div class="translit">Min al-mu'minīna wa al-muhājirīna wa al-anṣār...</div>
+        <div class="translation">Those who believe, migrate and strive for Allah — a high status.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="4" onclick="toggleBookmark(event,4,'مِنَ الْمُؤْمِنِينَ...','Those who believe, migrate and strive for Allah — a high status.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 5 -->
+  <article id="ayah-5" class="ayah" data-ayah="5">
+    <div class="ayah-row">
+      <div class="ayah-num">5</div>
+      <div class="ayah-text">
+        <div class="arabic">وَأُولَـٰئِكَ هُمُ الصَّادِقُونَ</div>
+        <div class="translit">Wa ulā'ika humu aṣ-ṣādiqūn</div>
+        <div class="translation">They are the truthful ones.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="5" onclick="toggleBookmark(event,5,'وَأُولَـٰئِكَ هُمُ الصَّادِقُونَ','They are the truthful ones.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 6 -->
+  <article id="ayah-6" class="ayah" data-ayah="6">
+    <div class="ayah-row">
+      <div class="ayah-num">6</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّمَا الْمُنَافِقُونَ يُخَادِعُونَ اللَّهَ وَهُوَ خَادِعُهُمْ</div>
+        <div class="translit">Innamal-munāfiqūna yukādhirūna Allāha wa huwa khādi'uhum</div>
+        <div class="translation">The hypocrites attempt to deceive Allah — but He knows them.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="6" onclick="toggleBookmark(event,6,'إِنَّمَا الْمُنَافِقُونَ...','The hypocrites attempt to deceive Allah — but He knows them.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 7 -->
+  <article id="ayah-7" class="ayah" data-ayah="7">
+    <div class="ayah-row">
+      <div class="ayah-num">7</div>
+      <div class="ayah-text">
+        <div class="arabic">هُوَ الَّذِي أَنْزَلَ عَلَيْكَ الْكِتَابَ مِنْهُ آيَاتٌ مُحْكَمَاتٌ...</div>
+        <div class="translit">Huwa alladhī anzala 'alayka al-kitāba minhu āyātun muḥkamāt...</div>
+        <div class="translation">He revealed certain verses clear in meaning — the core of the Book.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="7" onclick="toggleBookmark(event,7,'هُوَ الَّذِي أَنْزَلَ...','He revealed certain verses clear in meaning — the core of the Book.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 8 -->
+  <article id="ayah-8" class="ayah" data-ayah="8">
+    <div class="ayah-row">
+      <div class="ayah-num">8</div>
+      <div class="ayah-text">
+        <div class="arabic">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا...</div>
+        <div class="translit">Rabbana lā tuzigh qulūbanā ba'da idh hadaytanā...</div>
+        <div class="translation">Our Lord — do not let our hearts deviate after You guided us.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="8" onclick="toggleBookmark(event,8,'رَبَّنَا لَا تُزِغْ...','Our Lord — do not let our hearts deviate after You guided us.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 9 -->
+  <article id="ayah-9" class="ayah" data-ayah="9">
+    <div class="ayah-row">
+      <div class="ayah-num">9</div>
+      <div class="ayah-text">
+        <div class="arabic">رَبَّنَا إِنَّكَ جَامِعُ النَّاسِ لِيَوْمٍ لَا رَيْبَ فِيهِ...</div>
+        <div class="translit">Rabbana innaka jāmi'u an-nās li-yawmin lā rayba fīh...</div>
+        <div class="translation">Our Lord — You will gather people for a Day about which there is no doubt.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="9" onclick="toggleBookmark(event,9,'رَبَّنَا إِنَّكَ جَامِعُ...','Our Lord — You will gather people for a Day about which there is no doubt.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 10 -->
+  <article id="ayah-10" class="ayah" data-ayah="10">
+    <div class="ayah-row">
+      <div class="ayah-num">10</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّ اللَّهَ لَا يَخْفَىٰ عَلَيْهِ شَيْءٌ فِي السَّمَاوَاتِ وَالْأَرْضِ</div>
+        <div class="translit">Inna Allāha lā yakhfā 'alayhi shay'un fid-samāwāti wal-arḍ</div>
+        <div class="translation">Nothing in the heavens or earth is hidden from Allah.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="10" onclick="toggleBookmark(event,10,'إِنَّ اللَّهَ لَا يَخْفَىٰ...','Nothing in the heavens or earth is hidden from Allah.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 11 -->
+  <article id="ayah-11" class="ayah" data-ayah="11">
+    <div class="ayah-row">
+      <div class="ayah-num">11</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّ اللَّهَ سَيُدْخِلُ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ...</div>
+        <div class="translit">Inna Allāha sayudkhilu alladhīna āmanū wa 'amilū aṣ-ṣāliḥāti...</div>
+        <div class="translation">Allah will admit those who believed and did good into Gardens.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="11" onclick="toggleBookmark(event,11,'إِنَّ اللَّهَ سَيُدْخِلُ...','Allah will admit those who believed and did good into Gardens.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 12 -->
+  <article id="ayah-12" class="ayah" data-ayah="12">
+    <div class="ayah-row">
+      <div class="ayah-num">12</div>
+      <div class="ayah-text">
+        <div class="arabic">وَمَا كَانَ لِنَبِيٍّ أَنْ يَأْتِيَهُ اَللَّهُ بِآيَةٍ إِلَّا بِإِذْنِهِ...</div>
+        <div class="translit">Wa mā kāna li nabiyyin an ya'tiyahu Allāhu bi-āyatin illā bi-idhnih...</div>
+        <div class="translation">No prophet received a sign except by Allah’s permission.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="12" onclick="toggleBookmark(event,12,'وَمَا كَانَ...','No prophet received a sign except by Allah’s permission.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 13 -->
+  <article id="ayah-13" class="ayah" data-ayah="13">
+    <div class="ayah-row">
+      <div class="ayah-num">13</div>
+      <div class="ayah-text">
+        <div class="arabic">قَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ ثَالِثٌ مِثْلُهُمْ...</div>
+        <div class="translit">Qad kafara alladhīna qālū inna Allāha thālithun mithluhum...</div>
+        <div class="translation">Those who say God has a son — their claim is false.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="13" onclick="toggleBookmark(event,13,'قَدْ كَفَرَ...','Those who say God has a son — their claim is false.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 14 -->
+  <article id="ayah-14" class="ayah" data-ayah="14">
+    <div class="ayah-row">
+      <div class="ayah-num">14</div>
+      <div class="ayah-text">
+        <div class="arabic">قُلْ إِنَّمَا أَدْعُو رَبِّي وَلَا أُشْرِكُ بِهِ شَيْئًا</div>
+        <div class="translit">Qul innamā ad'ū rabbī wa lā ushrik bihi shay'an</div>
+        <div class="translation">Say: I call upon my Lord and do not associate partners with Him.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="14" onclick="toggleBookmark(event,14,'قُلْ إِنَّمَا أَدْعُو...','Say: I call upon my Lord and do not associate partners with Him.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 15 -->
+  <article id="ayah-15" class="ayah" data-ayah="15">
+    <div class="ayah-row">
+      <div class="ayah-num">15</div>
+      <div class="ayah-text">
+        <div class="arabic">قُلْ يَـٰأَهْلَ الْكِتَابِ تَعَالَوْا إِلَىٰ كَلِمَةٍ سَوَاءٍ...</div>
+        <div class="translit">Qul yā ahl al-kitābi ta'ālū ilā kalimatin sawā'in...</div>
+        <div class="translation">O People of the Book — come to a common word: worship none but Allah.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="15" onclick="toggleBookmark(event,15,'قُلْ يَـٰأَهْلَ...','O People of the Book — come to a common word: worship none but Allah.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 16 -->
+  <article id="ayah-16" class="ayah" data-ayah="16">
+    <div class="ayah-row">
+      <div class="ayah-num">16</div>
+      <div class="ayah-text">
+        <div class="arabic">قَدْ جَاءَكُمْ بِهِ نَبَأٌ مِّنْ أَمْرِ اللَّهِ...</div>
+        <div class="translit">Qad jā'akum bihi nabā'un min amri Allāh...</div>
+        <div class="translation">A clear message has come to you from your Lord.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="16" onclick="toggleBookmark(event,16,'قَدْ جَاءَكُمْ...','A clear message has come to you from your Lord.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 17 -->
+  <article id="ayah-17" class="ayah" data-ayah="17">
+    <div class="ayah-row">
+      <div class="ayah-num">17</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّمَا الْمُؤْمِنُونَ وَالْمُؤْمِنَاتُ وَالْقَانِتُونَ...</div>
+        <div class="translit">Innamal-mu'minūna wal-mu'minātu wal-qānitūn...</div>
+        <div class="translation">The believers — men and women — who humble themselves and do good will be rewarded.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="17" onclick="toggleBookmark(event,17,'إِنَّمَا الْمُؤْمِنُونَ...','The believers — men and women — who humble themselves and do good will be rewarded.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 18 -->
+  <article id="ayah-18" class="ayah" data-ayah="18">
+    <div class="ayah-row">
+      <div class="ayah-num">18</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّ اللَّهَ مَعَنَا وَهُوَ أَكْثَرُ شَهِيدًا</div>
+        <div class="translit">Inna Allāha ma'ana wa huwa aktharu shahīdān</div>
+        <div class="translation">Allah is with us and is the best Witness.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="18" onclick="toggleBookmark(event,18,'إِنَّ اللَّهَ مَعَنَا...','Allah is with us and is the best Witness.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 19 -->
+  <article id="ayah-19" class="ayah" data-ayah="19">
+    <div class="ayah-row">
+      <div class="ayah-num">19</div>
+      <div class="ayah-text">
+        <div class="arabic">وَيَوْمَ نَحْشُرُهُمْ كَأَنْ لَمْ يَلِدُوا شَيْئًا...</div>
+        <div class="translit">Wa yawma naḥshuruhum ka'an lam yalidū shay'an...</div>
+        <div class="translation">On the Day We will resurrect them as if they had not existed before.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="19" onclick="toggleBookmark(event,19,'وَيَوْمَ نَحْشُرُهُمْ...','On the Day We will resurrect them as if they had not existed before.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 20 -->
+  <article id="ayah-20" class="ayah" data-ayah="20">
+    <div class="ayah-row">
+      <div class="ayah-num">20</div>
+      <div class="ayah-text">
+        <div class="arabic">قُلْ أَرَأَيْتُمْ إِنْ أَهْلَكَنِيَ اللَّـهُ وَالَّذِينَ مَعِي...</div>
+        <div class="translit">Qul ara'aytum in ahlakani Allāhu wa alladhīna ma'ī...</div>
+        <div class="translation">Say: What if Allah destroys me and those with me — will you be patient?</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="20" onclick="toggleBookmark(event,20,'قُلْ أَرَأَيْتُمْ...','Say: What if Allah destroys me and those with me — will you be patient?')">Bookmark</button>
+    </div>
+  </article>
+  
+  <!-- AYAH 21 -->
+<article id="ayah-21" class="ayah" data-ayah="21">
+  <div class="ayah-row">
+    <div class="ayah-num">21</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ ٱلَّذِينَ يَكْفُرُونَ بِـَٔايَٰتِ ٱللَّهِ وَيَقْتُلُونَ ٱلنَّبِيِّۦنَ بِغَيْرِ حَقٍّ وَيَقْتُلُونَ ٱلَّذِينَ يَأْمُرُونَ بِٱلْقِسْطِ مِنَ ٱلنَّاسِ فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ</div>
+      <div class="translit">Inna alladhīna yakfurūna bi-āyāti Allāhi wa yaqtulūna an-nabiyyīna bighayri ḥaqqin wa yaqtulūna alladhīna yaʾmurūna bil-qisṭi mina an-nāsi fabashshirhum biʿadhābin alīm.</div>
+      <div class="translation">Indeed, those who deny Allah’s revelations and kill the prophets unjustly and kill those who call for justice — give them news of a painful punishment.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,21,'إِنَّ ٱلَّذِينَ يَكْفُرُونَ...','Indeed, those who deny Allah’s revelations...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 22 -->
+<article id="ayah-22" class="ayah" data-ayah="22">
+  <div class="ayah-row">
+    <div class="ayah-num">22</div>
+    <div class="ayah-text">
+      <div class="arabic">أُو۟لَٰٓئِكَ ٱلَّذِينَ حَبِطَتْ أَعْمَٰلُهُمْ فِى ٱلدُّنْيَا وَٱلْـَٔاخِرَةِ ۖ وَمَا لَهُم مِّن نَّٰصِرِينَ</div>
+      <div class="translit">Ulāʾika alladhīna ḥabiṭat aʿmāluhum fī ad-dunyā wal-ākhirah wa mā lahum min nāṣirīn.</div>
+      <div class="translation">They are the ones whose deeds are ruined in this world and the Hereafter, and they will have no helpers.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,22,'أُو۟لَٰٓئِكَ ٱلَّذِينَ...','They are the ones whose deeds are ruined...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 23 -->
+<article id="ayah-23" class="ayah" data-ayah="23">
+  <div class="ayah-row">
+    <div class="ayah-num">23</div>
+    <div class="ayah-text">
+      <div class="arabic">أَلَمْ تَرَ إِلَى ٱلَّذِينَ أُوتُوا۟ نَصِيبًا مِّنَ ٱلْكِتَٰبِ يُدْعَوْنَ إِلَىٰ كِتَٰبِ ٱللَّهِ...</div>
+      <div class="translit">Alam tara ila alladhīna ūtū naṣīban mina al-kitābi yudʿawna ilā kitābi Allāhi...</div>
+      <div class="translation">Have you not seen those who were given a portion of the Book being invited to the Book of Allah to judge between them?</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,23,'أَلَمْ تَرَ إِلَى...','Have you not seen those given the Book...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 24 -->
+<article id="ayah-24" class="ayah" data-ayah="24">
+  <div class="ayah-row">
+    <div class="ayah-num">24</div>
+    <div class="ayah-text">
+      <div class="arabic">ذَٰلِكَ بِأَنَّهُمْ قَالُوا۟ لَن تَمَسَّنَا ٱلنَّارُ إِلَّآ أَيَّامًۭا مَّعْدُودَٰتٍۢ...</div>
+      <div class="translit">Dhālika bi-annahum qālū lan tamassanā an-nāru illā ayyāman maʿdūdāt...</div>
+      <div class="translation">This is because they say, “The Fire will not touch us except for a few days.”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,24,'ذَٰلِكَ بِأَنَّهُمْ...','This is because they say the Fire will not touch us...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 25 -->
+<article id="ayah-25" class="ayah" data-ayah="25">
+  <div class="ayah-row">
+    <div class="ayah-num">25</div>
+    <div class="ayah-text">
+      <div class="arabic">فَكَيْفَ إِذَا جَمَعْنَٰهُمْ لِيَوْمٍۢ لَّا رَيْبَ فِيهِ...</div>
+      <div class="translit">Fakayfa idhā jamaʿnāhum li-yawmin lā rayba fīh...</div>
+      <div class="translation">How will it be when We gather them for a Day about which there is no doubt?</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,25,'فَكَيْفَ إِذَا...','How will it be when We gather them...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 26 -->
+<article id="ayah-26" class="ayah" data-ayah="26">
+  <div class="ayah-row">
+    <div class="ayah-num">26</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلِ ٱللَّهُمَّ مَٰلِكَ ٱلْمُلْكِ...</div>
+      <div class="translit">Qul Allāhumma mālika al-mulki...</div>
+      <div class="translation">Say, “O Allah, Owner of all sovereignty, You give kingship to whom You will…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,26,'قُلِ ٱللَّهُمَّ...','Say O Allah, Owner of all sovereignty...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 27 -->
+<article id="ayah-27" class="ayah" data-ayah="27">
+  <div class="ayah-row">
+    <div class="ayah-num">27</div>
+    <div class="ayah-text">
+      <div class="arabic">تُولِجُ ٱلَّيْلَ فِى ٱلنَّهَارِ وَتُولِجُ ٱلنَّهَارَ فِى ٱلَّيْلِ...</div>
+      <div class="translit">Tūlij al-layla fī an-nahāri wa tūlij an-nahāra fī al-layl...</div>
+      <div class="translation">You merge the night into the day and the day into the night…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,27,'تُولِجُ ٱلَّيْلَ...','You merge night into day...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 28 -->
+<article id="ayah-28" class="ayah" data-ayah="28">
+  <div class="ayah-row">
+    <div class="ayah-num">28</div>
+    <div class="ayah-text">
+      <div class="arabic">لَّا يَتَّخِذِ ٱلْمُؤْمِنُونَ ٱلْكَٰفِرِينَ أَوْلِيَآءَ...</div>
+      <div class="translit">Lā yattakhidh al-muʾminūna al-kāfirīna awliyāʾ...</div>
+      <div class="translation">Believers should not take disbelievers as allies instead of believers…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,28,'لَّا يَتَّخِذِ...','Believers should not take disbelievers as allies...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 29 -->
+<article id="ayah-29" class="ayah" data-ayah="29">
+  <div class="ayah-row">
+    <div class="ayah-num">29</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ إِن تُخْفُوا۟ مَا فِى صُدُورِكُمْ أَوْ تُبْدُوهُ يَعْلَمْهُ ٱللَّهُ...</div>
+      <div class="translit">Qul in tukhfū mā fī ṣudūrikum aw tubdūhu yaʿlamhu Allāh...</div>
+      <div class="translation">Say, “Whether you hide what is in your hearts or reveal it, Allah knows it.”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,29,'قُلْ إِن تُخْفُوا۟...','Whether you hide or reveal, Allah knows...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 30 -->
+<article id="ayah-30" class="ayah" data-ayah="30">
+  <div class="ayah-row">
+    <div class="ayah-num">30</div>
+    <div class="ayah-text">
+      <div class="arabic">يَوْمَ تَجِدُ كُلُّ نَفْسٍۢ مَّا عَمِلَتْ مِنْ خَيْرٍۢ مُّحْضَرًۭا...</div>
+      <div class="translit">Yawma tajidu kullu nafsin mā ʿamilat min khayrin muḥḍarā...</div>
+      <div class="translation">The Day every soul will find the good it has done present before it…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,30,'يَوْمَ تَجِدُ...','The Day every soul will find its deeds...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 31 -->
+<article id="ayah-31" class="ayah" data-ayah="31">
+  <div class="ayah-row">
+    <div class="ayah-num">31</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ إِن كُنتُمْ تُحِبُّونَ ٱللَّهَ فَٱتَّبِعُونِى يُحْبِبْكُمُ ٱللَّهُ...</div>
+      <div class="translit">Qul in kuntum tuḥibbūna Allāha fattabiʿūnī yuḥbibkumu Allāh...</div>
+      <div class="translation">Say, “If you love Allah, follow me; Allah will love you…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,31,'قُلْ إِن كُنتُمْ...','If you love Allah, follow me...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 32 -->
+<article id="ayah-32" class="ayah" data-ayah="32">
+  <div class="ayah-row">
+    <div class="ayah-num">32</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ أَطِيعُوا۟ ٱللَّهَ وَٱلرَّسُولَ...</div>
+      <div class="translit">Qul aṭīʿū Allāha war-rasūl...</div>
+      <div class="translation">Say, “Obey Allah and the Messenger.”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,32,'قُلْ أَطِيعُوا۟...','Obey Allah and the Messenger...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 33 -->
+<article id="ayah-33" class="ayah" data-ayah="33">
+  <div class="ayah-row">
+    <div class="ayah-num">33</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ ٱللَّهَ ٱصْطَفَىٰٓ ءَادَمَ وَنُوحًۭا وَءَالَ إِبْرَٰهِيمَ وَءَالَ عِمْرَٰنَ عَلَى ٱلْعَٰلَمِينَ</div>
+      <div class="translit">Inna Allāha iṣṭafā Ādama wa Nūḥan wa āla Ibrāhīma wa āla ʿImrān ʿalā al-ʿālamīn.</div>
+      <div class="translation">Indeed, Allah chose Adam, Noah, the family of Abraham, and the family of Imran over all people.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,33,'إِنَّ ٱللَّهَ ٱصْطَفَىٰٓ...','Allah chose Adam, Noah, Abraham, and Imran...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 34 -->
+<article id="ayah-34" class="ayah" data-ayah="34">
+  <div class="ayah-row">
+    <div class="ayah-num">34</div>
+    <div class="ayah-text">
+      <div class="arabic">ذُرِّيَّةًۢ بَعْضُهَا مِنۢ بَعْضٍۢ ۗ وَٱللَّهُ سَمِيعٌ عَلِيمٌۭ</div>
+      <div class="translit">Dhurrīyatan baʿḍuhā min baʿḍ; wa Allāhu samīʿun ʿalīm.</div>
+      <div class="translation">A descendant of one another. And Allah is All-Hearing, All-Knowing.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,34,'ذُرِّيَّةًۢ...','A descendant of one another...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 35 -->
+<article id="ayah-35" class="ayah" data-ayah="35">
+  <div class="ayah-row">
+    <div class="ayah-num">35</div>
+    <div class="ayah-text">
+      <div class="arabic">إِذْ قَالَتِ ٱمْرَأَتُ عِمْرَٰنَ رَبِّ إِنِّى نَذَرْتُ لَكَ مَا فِى بَطْنِى...</div>
+      <div class="translit">Idh qālati imraʾatu ʿImrān rabbi innī nadhartu laka mā fī baṭnī...</div>
+      <div class="translation">When the wife of Imran said, “My Lord, I dedicate what is in my womb entirely to You…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,35,'إِذْ قَالَتِ...','When the wife of Imran said...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 36 -->
+<article id="ayah-36" class="ayah" data-ayah="36">
+  <div class="ayah-row">
+    <div class="ayah-num">36</div>
+    <div class="ayah-text">
+      <div class="arabic">فَلَمَّا وَضَعَتْهَا قَالَتْ رَبِّ إِنِّى وَضَعْتُهَآ أُنثَىٰ...</div>
+      <div class="translit">Falammā waḍaʿathā qālat rabbi innī waḍaʿtuhā unthā...</div>
+      <div class="translation">When she delivered her, she said, “My Lord, I have delivered a female…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,36,'فَلَمَّا وَضَعَتْهَا...','When she delivered her...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 37 -->
+<article id="ayah-37" class="ayah" data-ayah="37">
+  <div class="ayah-row">
+    <div class="ayah-num">37</div>
+    <div class="ayah-text">
+      <div class="arabic">فَتَقَبَّلَهَا رَبُّهَا بِقَبُولٍۢ حَسَنٍۢ...</div>
+      <div class="translit">Fataqabbalahā rabbuhā biqabūlin ḥasan...</div>
+      <div class="translation">So her Lord accepted her with gracious acceptance…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,37,'فَتَقَبَّلَهَا...','Her Lord accepted her...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 38 -->
+<article id="ayah-38" class="ayah" data-ayah="38">
+  <div class="ayah-row">
+    <div class="ayah-num">38</div>
+    <div class="ayah-text">
+      <div class="arabic">هُنَالِكَ دَعَا زَكَرِيَّا رَبَّهُۥ...</div>
+      <div class="translit">Hunālika daʿā Zakariyyā rabbah...</div>
+      <div class="translation">There Zakariya prayed to his Lord…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,38,'هُنَالِكَ دَعَا...','There Zakariya prayed...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 39 -->
+<article id="ayah-39" class="ayah" data-ayah="39">
+  <div class="ayah-row">
+    <div class="ayah-num">39</div>
+    <div class="ayah-text">
+      <div class="arabic">فَنَادَتْهُ ٱلْمَلَـٰٓئِكَةُ وَهُوَ قَآئِمٌۭ يُصَلِّى...</div>
+      <div class="translit">Fanādathu al-malāʾikatu wa huwa qāʾim yuṣallī...</div>
+      <div class="translation">Then the angels called to him while he stood praying…”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,39,'فَنَادَتْهُ...','Then the angels called him...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 40 -->
+<article id="ayah-40" class="ayah" data-ayah="40">
+  <div class="ayah-row">
+    <div class="ayah-num">40</div>
+    <div class="ayah-text">
+      <div class="arabic">قَالَ رَبِّ أَنَّىٰ يَكُونُ لِى غُلَـٰمٌۭ وَقَدْ بَلَغَنِىَ ٱلْكِبَرُ...</div>
+      <div class="translit">Qāla rabbi annā yakūnu lī ghulāmun wa qad balagha-niya al-kibar...</div>
+      <div class="translation">He said, “My Lord, how will I have a boy when old age has overtaken me?”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" onclick="toggleBookmark(event,40,'قَالَ رَبِّ أَنَّىٰ...','How will I have a boy in old age?')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 41 -->
+<article id="ayah-41" class="ayah" data-ayah="41">
+    <div class="ayah-row">
+        <div class="ayah-num">41</div>
+        <div class="ayah-text">
+            <div class="arabic">قَالَ رَبِّ اجْعَل لِّيٓ ءَايَةًۭ ۚ قَالَ ءَايَتُكَ أَلَّا تُكَلِّمَ ٱلنَّاسَ ثَلَـٰثَةَ أَيَّامٍ إِلَّا رَمْزًۭا ۗ وَٱذْكُر رَّبَّكَ كَثِيرًۭا وَسَبِّحْ بِٱلْعَشِىِّ وَٱلْإِبْكَـٰرِ</div>
+            <div class="translit">Qāla rabbi ij‘al lī āyatan; qāla āyatuka allā tukalliman-nāsa thalāthata ayyāmin illā ramzā...</div>
+            <div class="translation">He said, “My Lord, make for me a sign.” He said, “Your sign is that you will not speak to people for three days except by gesture...”</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="41" onclick="toggleBookmark(event,41,'قَالَ رَبِّ...', 'He said, My Lord...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 42 -->
+<article id="ayah-42" class="ayah" data-ayah="42">
+    <div class="ayah-row">
+        <div class="ayah-num">42</div>
+        <div class="ayah-text">
+            <div class="arabic">وَإِذْ قَالَتِ ٱلْمَلَـٰٓئِكَةُ يَـٰمَرْيَمُ إِنَّ ٱللَّهَ ٱصْطَفَىٰكِ وَطَهَّرَكِ وَٱصْطَفَىٰكِ عَلَىٰ نِسَآءِ ٱلْعَـٰلَمِينَ</div>
+            <div class="translit">Wa idh qālati al-malā’ikatu yā Maryam... </div>
+            <div class="translation">And when the angels said: O Mary, indeed Allah has chosen you and purified you and chosen you above the women of the worlds.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="42" onclick="toggleBookmark(event,42,'وَإِذْ قَالَتِ...', 'And when the angels said...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 43 -->
+<article id="ayah-43" class="ayah" data-ayah="43">
+    <div class="ayah-row">
+        <div class="ayah-num">43</div>
+        <div class="ayah-text">
+            <div class="arabic">يَـٰمَرْيَمُ ٱقْنُتِى لِرَبِّكِ وَٱسْجُدِى وَٱرْكَعِى مَعَ ٱلرَّ‌ٰكِعِينَ</div>
+            <div class="translit">Yā Maryamu oqnutī li-rabbiki wasjudī warka‘ī ma‘ar-rāki‘īn.</div>
+            <div class="translation">O Mary, be devoutly obedient to your Lord, and prostrate and bow with those who bow.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="43" onclick="toggleBookmark(event,43,'يَـٰمَرْيَمُ...', 'O Mary, be devoutly obedient...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 44 -->
+<article id="ayah-44" class="ayah" data-ayah="44">
+    <div class="ayah-row">
+        <div class="ayah-num">44</div>
+        <div class="ayah-text">
+            <div class="arabic">ذَ‌ٰلِكَ مِنْ أَنۢبَآءِ ٱلْغَيْبِ نُوحِيهِ إِلَيْكَ...</div>
+            <div class="translit">Dhālika min anba’il-ghaybi nūḥīhi ilayk...</div>
+            <div class="translation">That is from the news of the unseen which We reveal to you...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="44" onclick="toggleBookmark(event,44,'ذَ‌ٰلِكَ...', 'That is from the news...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 45 -->
+<article id="ayah-45" class="ayah" data-ayah="45">
+    <div class="ayah-row">
+        <div class="ayah-num">45</div>
+        <div class="ayah-text">
+            <div class="arabic">إِذْ قَالَتِ ٱلْمَلَـٰٓئِكَةُ يَـٰمَرْيَمُ إِنَّ ٱللَّهَ يُبَشِّرُكِ...</div>
+            <div class="translit">Idh qālati al-malā’ikatu yā Maryam inna Allāha yubashshiruki...</div>
+            <div class="translation">When the angels said: O Mary, indeed Allah gives you glad tidings of a word from Him, his name will be the Messiah, Jesus son of Mary...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="45" onclick="toggleBookmark(event,45,'إِذْ قَالَتِ...', 'When the angels said...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 46 -->
+<article id="ayah-46" class="ayah" data-ayah="46">
+    <div class="ayah-row">
+        <div class="ayah-num">46</div>
+        <div class="ayah-text">
+            <div class="arabic">وَيُكَلِّمُ ٱلنَّاسَ فِى ٱلْمَهْدِ وَكَهْلًۭا وَمِنَ ٱلصَّـٰلِحِينَ</div>
+            <div class="translit">Wa yukallimun-nāsa fil-mahdi wa kahlan wa minaṣ-ṣāliḥīn.</div>
+            <div class="translation">And he will speak to the people in the cradle and in maturity and he will be of the righteous.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="46" onclick="toggleBookmark(event,46,'وَيُكَلِّمُ...', 'And he will speak...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 47 -->
+<article id="ayah-47" class="ayah" data-ayah="47">
+    <div class="ayah-row">
+        <div class="ayah-num">47</div>
+        <div class="ayah-text">
+            <div class="arabic">قَالَتْ رَبِّ أَنَّىٰ يَكُونُ لِى وَلَدٌ وَلَمْ يَمْسَسْنِى بَشَرٌ...</div>
+            <div class="translit">Qālat rabbi annā yakūnu lī waladun wa lam yamsasnī bashar...</div>
+            <div class="translation">She said: “My Lord, how can I have a child when no man has touched me?”...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="47" onclick="toggleBookmark(event,47,'قَالَتْ...', 'She said: My Lord...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 48 -->
+<article id="ayah-48" class="ayah" data-ayah="48">
+    <div class="ayah-row">
+        <div class="ayah-num">48</div>
+        <div class="ayah-text">
+            <div class="arabic">وَيُعَلِّمُهُ ٱلْكِتَـٰبَ وَٱلْحِكْمَةَ وَٱلتَّوْرَىٰةَ وَٱلْإِنجِيلَ</div>
+            <div class="translit">Wa yu‘allimuhul-kitāba wal-ḥikmata wat-tawrāta wal-injīl.</div>
+            <div class="translation">And He will teach him the Book and wisdom and the Torah and the Gospel.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="48" onclick="toggleBookmark(event,48,'وَيُعَلِّمُهُ...', 'And He will teach him...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 49 -->
+<article id="ayah-49" class="ayah" data-ayah="49">
+    <div class="ayah-row">
+        <div class="ayah-num">49</div>
+        <div class="ayah-text">
+            <div class="arabic">وَرَسُولًا إِلَىٰ بَنِىٓ إِسْرَ‌ٰٓءِيلَ...</div>
+            <div class="translit">Wa rasūlan ilā banī Isrā’īl...</div>
+            <div class="translation">And as a messenger to the Children of Israel...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="49" onclick="toggleBookmark(event,49,'وَرَسُولًا...', 'And as a messenger...')">Bookmark</button>
+    </div>
+</article>
+<!-- AYAH 50 -->
+<article id="ayah-50" class="ayah" data-ayah="50">
+  <div class="ayah-row">
+    <div class="ayah-num">50</div>
+    <div class="ayah-text">
+      <div class="arabic">وَمُصَدِّقًا لِّمَا بَيْنَ يَدَيَّ مِنَ ٱلتَّوْرَىٰةِ وَلِأُحِلَّ لَكُم بَعْضَ ٱلَّذِى حُرِّمَ عَلَيْكُمْ ۚ وَجِئْتُكُم بِـَٔايَةٍ مِّن رَّبِّكُمْ فَٱتَّقُوا ٱللَّهَ وَأَطِيعُونِ</div>
+      <div class="translit">Wa muṣaddiqan limā bayna yadayya mina at-tawrāti wa li’uḥilla lakum ba‘ḍa alladhī ḥurrima ‘alaykum wa ji’tukum bi’āyatin min rabbikum fattaqū Allāha wa aṭī‘ūn.</div>
+      <div class="translation">And confirming the Torah that came before me, and to make lawful for you some of what was forbidden. I have come to you with a sign from your Lord, so fear Allah and obey me.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="50" onclick="toggleBookmark(event,50,'وَمُصَدِّقًا لِّمَا بَيْنَ يَدَيَّ...','And confirming the Torah...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 51 -->
+<article id="ayah-51" class="ayah" data-ayah="51">
+  <div class="ayah-row">
+    <div class="ayah-num">51</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ ٱللَّهَ رَبِّى وَرَبُّكُمْ فَٱعْبُدُوهُ ۗ هَـٰذَا صِرَٰطٌ مُّسْتَقِيمٌ</div>
+      <div class="translit">Inna Allāha rabbī wa rabbukum fa‘budūhu hādhā ṣirāṭun mustaqīm.</div>
+      <div class="translation">Indeed, Allah is my Lord and your Lord, so worship Him. This is the straight path.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="51" onclick="toggleBookmark(event,51,'إِنَّ ٱللَّهَ رَبِّى...','Indeed Allah is my Lord...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 52 -->
+<article id="ayah-52" class="ayah" data-ayah="52">
+  <div class="ayah-row">
+    <div class="ayah-num">52</div>
+    <div class="ayah-text">
+      <div class="arabic">فَلَمَّآ أَحَسَّ عِيسَىٰ مِنْهُمُ ٱلْكُفْرَ قَالَ مَنْ أَنصَارِىٓ إِلَى ٱللَّهِ ۖ قَالَ ٱلْحَوَارِيُّونَ نَحْنُ أَنصَارُ ٱللَّهِ...</div>
+      <div class="translit">Falammā aḥassa ‘Īsā min’humu al-kufra qāla man anṣārī ilā Allāh; qāla al-ḥawāriyyūna naḥnu anṣāru Allāh...</div>
+      <div class="translation">When Jesus sensed disbelief from them, he said, “Who are my supporters for Allah?” The disciples said, “We are the supporters of Allah.”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="52" onclick="toggleBookmark(event,52,'فَلَمَّآ أَحَسَّ عِيسَىٰ...','When Jesus sensed disbelief...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 53 -->
+<article id="ayah-53" class="ayah" data-ayah="53">
+  <div class="ayah-row">
+    <div class="ayah-num">53</div>
+    <div class="ayah-text">
+      <div class="arabic">رَبَّنَآ ءَامَنَّا بِمَآ أَنزَلْتَ وَٱتَّبَعْنَا ٱلرَّسُولَ فَٱكْتُبْنَا مَعَ ٱلشَّـٰهِدِينَ</div>
+      <div class="translit">Rabbana āmannā bimā anzalta wa ittaba‘nā ar-rasūla fa’ktubnā ma‘a ash-shāhidīn.</div>
+      <div class="translation">Our Lord, we believe in what You revealed and follow the Messenger, so record us among the witnesses.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="53" onclick="toggleBookmark(event,53,'رَبَّنَآ ءَامَنَّا...','Our Lord, we believe...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 54 -->
+<article id="ayah-54" class="ayah" data-ayah="54">
+  <div class="ayah-row">
+    <div class="ayah-num">54</div>
+    <div class="ayah-text">
+      <div class="arabic">وَمَكَرُوا۟ وَمَكَرَ ٱللَّهُ ۖ وَٱللَّهُ خَيْرُ ٱلْمَـٰكِرِينَ</div>
+      <div class="translit">Wa makarū wa makar Allāh; wa Allāhu khayru al-mākirīn.</div>
+      <div class="translation">And they planned, but Allah planned. And Allah is the best of planners.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="54" onclick="toggleBookmark(event,54,'وَمَكَرُوا۟ وَمَكَرَ ٱللَّهُ...','They planned but Allah planned...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 55 -->
+<article id="ayah-55" class="ayah" data-ayah="55">
+  <div class="ayah-row">
+    <div class="ayah-num">55</div>
+    <div class="ayah-text">
+      <div class="arabic">إِذْ قَالَ ٱللَّهُ يَـٰعِيسَىٰٓ إِنِّى مُتَوَفِّيكَ وَرَافِعُكَ إِلَىَّ...</div>
+      <div class="translit">Idh qāla Allāhu yā ‘Īsā innī mutawaffīka wa rāfi‘uka ilayya...</div>
+      <div class="translation">When Allah said, “O Jesus, I will take you and raise you to Myself...”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="55" onclick="toggleBookmark(event,55,'إِذْ قَالَ ٱللَّهُ...','When Allah said O Jesus...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 56 -->
+<article id="ayah-56" class="ayah" data-ayah="56">
+  <div class="ayah-row">
+    <div class="ayah-num">56</div>
+    <div class="ayah-text">
+      <div class="arabic">فَأَمَّا ٱلَّذِينَ كَفَرُوا۟ فَأُعَذِّبُهُمْ...</div>
+      <div class="translit">Fa’ammā alladhīna kafarū fa u‘adhibuhum...</div>
+      <div class="translation">As for those who disbelieve, I will punish them severely in this world and the Hereafter...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="56" onclick="toggleBookmark(event,56,'فَأَمَّا ٱلَّذِينَ كَفَرُوا۟...','As for those who disbelieve...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 57 -->
+<article id="ayah-57" class="ayah" data-ayah="57">
+  <div class="ayah-row">
+    <div class="ayah-num">57</div>
+    <div class="ayah-text">
+      <div class="arabic">وَأَمَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ فَيُوَفِّيهِمْ أُجُورَهُمْ...</div>
+      <div class="translit">Wa ammā alladhīna āmanū wa ‘amilū aṣ-ṣāliḥāti fayuwaffīhim ujūrahum...</div>
+      <div class="translation">And as for those who believe and do good, He will give them their rewards in full...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="57" onclick="toggleBookmark(event,57,'وَأَمَّا ٱلَّذِينَ ءَامَنُوا۟...','As for those who believe and do good...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 58 -->
+<article id="ayah-58" class="ayah" data-ayah="58">
+  <div class="ayah-row">
+    <div class="ayah-num">58</div>
+    <div class="ayah-text">
+      <div class="arabic">ذَٰلِكَ نَتْلُوهُ عَلَيْكَ مِنَ ٱلْـَٔايَـٰتِ وَٱلذِّكْرِ ٱلْحَكِيمِ</div>
+      <div class="translit">Dhālika natlūhu ‘alayka mina al-āyāti wa adh-dhikri al-ḥakīm.</div>
+      <div class="translation">These are the verses and the wise reminder We recite to you.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="58" onclick="toggleBookmark(event,58,'ذَٰلِكَ نَتْلُوهُ...','These are the verses...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 59 -->
+<article id="ayah-59" class="ayah" data-ayah="59">
+  <div class="ayah-row">
+    <div class="ayah-num">59</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ مَثَلَ عِيسَىٰ عِندَ ٱللَّهِ كَمَثَلِ ءَادَمَ...</div>
+      <div class="translit">Inna mathala ‘Īsā ‘inda Allāhi kamathali Ādam...</div>
+      <div class="translation">Indeed, the example of Jesus in the sight of Allah is like that of Adam...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="59" onclick="toggleBookmark(event,59,'إِنَّ مَثَلَ عِيسَىٰ...','The example of Jesus...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 60 -->
+<article id="ayah-60" class="ayah" data-ayah="60">
+  <div class="ayah-row">
+    <div class="ayah-num">60</div>
+    <div class="ayah-text">
+      <div class="arabic">ٱلْحَقُّ مِن رَّبِّكَ فَلَا تَكُن مِّنَ ٱلْمُمْتَرِينَ</div>
+      <div class="translit">Al-ḥaqqu min rabbika falā takun mina al-mumtarīn.</div>
+      <div class="translation">The truth is from your Lord, so do not be among the doubters.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="60" onclick="toggleBookmark(event,60,'ٱلْحَقُّ مِن رَّبِّكَ...','The truth is from your Lord...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 61 -->
+<article id="ayah-61" class="ayah" data-ayah="61">
+  <div class="ayah-row">
+    <div class="ayah-num">61</div>
+    <div class="ayah-text">
+      <div class="arabic">فَمَنْ حَاجَّكَ فِيهِ مِنۢ بَعْدِ مَا جَآءَكَ مِنَ ٱلْعِلْمِ...</div>
+      <div class="translit">Faman ḥājjaka fīhi min ba‘di mā jā’aka mina al-‘ilm...</div>
+      <div class="translation">If anyone disputes with you about him after this knowledge has come to you...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="61" onclick="toggleBookmark(event,61,'فَمَنْ حَاجَّكَ...','If anyone disputes with you...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 62 -->
+<article id="ayah-62" class="ayah" data-ayah="62">
+  <div class="ayah-row">
+    <div class="ayah-num">62</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ هَـٰذَا لَهُوَ ٱلْقَصَصُ ٱلْحَقُّ...</div>
+      <div class="translit">Inna hādhā lahuwa al-qaṣaṣu al-ḥaqq...</div>
+      <div class="translation">Indeed, this is the true narrative...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="62" onclick="toggleBookmark(event,62,'إِنَّ هَـٰذَا...','Indeed this is the true narrative...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 63 -->
+<article id="ayah-63" class="ayah" data-ayah="63">
+  <div class="ayah-row">
+    <div class="ayah-num">63</div>
+    <div class="ayah-text">
+      <div class="arabic">فَإِن تَوَلَّوْا۟ فَإِنَّ ٱللَّهَ عَلِيمٌۢ بِٱلْمُفْسِدِينَ</div>
+      <div class="translit">Fa in tawallaw fa inna Allāha ‘alīmun bil-mufsidīn.</div>
+      <div class="translation">But if they turn away, then surely Allah knows well the corrupters.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="63" onclick="toggleBookmark(event,63,'فَإِن تَوَلَّوْا۟...','If they turn away...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 64 -->
+<article id="ayah-64" class="ayah" data-ayah="64">
+  <div class="ayah-row">
+    <div class="ayah-num">64</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ يَـٰٓأَهْلَ ٱلْكِتَـٰبِ تَعَالَوْا۟ إِلَىٰ كَلِمَةٍ سَوَآءٍ...</div>
+      <div class="translit">Qul yā ahla al-kitābi ta‘ālaw ilā kalimatin sawā’in...</div>
+      <div class="translation">Say, “O People of the Scripture, come to a common word between us and you...”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="64" onclick="toggleBookmark(event,64,'قُلْ يَـٰٓأَهْلَ ٱلْكِتَـٰبِ...','Say O People of the Scripture...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 65 -->
+<article id="ayah-65" class="ayah" data-ayah="65">
+  <div class="ayah-row">
+    <div class="ayah-num">65</div>
+    <div class="ayah-text">
+      <div class="arabic">يَـٰٓأَهْلَ ٱلْكِتَـٰبِ لِمَ تُحَآجُّونَ فِىٓ إِبْرَٰهِـۧمَ...</div>
+      <div class="translit">Yā ahla al-kitābi lima tuḥājjūna fī Ibrāhīm...</div>
+      <div class="translation">O People of the Scripture, why do you argue about Abraham...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="65" onclick="toggleBookmark(event,65,'يَـٰٓأَهْلَ ٱلْكِتَـٰبِ...','O People of the Scripture...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 66 -->
+<article id="ayah-66" class="ayah" data-ayah="66">
+  <div class="ayah-row">
+    <div class="ayah-num">66</div>
+    <div class="ayah-text">
+      <div class="arabic">هَـٰٓأَنتُمْ هَـٰٓؤُلَآءِ حَـٰجَجْتُمْ فِيمَا لَكُم بِهِۦ عِلْمٌ...</div>
+      <div class="translit">Hā antum hāulā’i ḥājajtum fīmā lakum bihi ‘ilm...</div>
+      <div class="translation">Here you are — you argue about what you have knowledge of...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="66" onclick="toggleBookmark(event,66,'هَـٰٓأَنتُمْ هَـٰٓؤُلَآءِ...','Here you are arguing...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 67 -->
+<article id="ayah-67" class="ayah" data-ayah="67">
+  <div class="ayah-row">
+    <div class="ayah-num">67</div>
+    <div class="ayah-text">
+      <div class="arabic">مَا كَانَ إِبْرَٰهِـۧمُ يَهُودِيًّا وَلَا نَصْرَانِيًّا...</div>
+      <div class="translit">Mā kāna Ibrāhīmu yahūdiyyan wa lā naṣrāniyyan...</div>
+      <div class="translation">Abraham was not a Jew nor a Christian, but he was a true Muslim submitting to Allah...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="67" onclick="toggleBookmark(event,67,'مَا كَانَ إِبْرَٰهِـۧمُ...','Abraham was not a Jew nor a Christian...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 68 -->
+<article id="ayah-68" class="ayah" data-ayah="68">
+  <div class="ayah-row">
+    <div class="ayah-num">68</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ أَوْلَى ٱلنَّاسِ بِإِبْرَٰهِـۧمَ لَلَّذِينَ ٱتَّبَعُوهُ...</div>
+      <div class="translit">Inna awlā an-nāsi bi’Ibrāhīma lalladhīna ittaba‘ūhu...</div>
+      <div class="translation">Indeed, the people most worthy of Abraham are those who followed him...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="68" onclick="toggleBookmark(event,68,'إِنَّ أَوْلَى ٱلنَّاسِ...','The people most worthy of Abraham...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 69 -->
+<article id="ayah-69" class="ayah" data-ayah="69">
+  <div class="ayah-row">
+    <div class="ayah-num">69</div>
+    <div class="ayah-text">
+      <div class="arabic">وَدَّت طَّآئِفَةٌ مِّنْ أَهْلِ ٱلْكِتَـٰبِ لَوْ يُضِلُّونَكُمْ...</div>
+      <div class="translit">Waddat ṭā’ifatun min ahli al-kitābi law yuḍillūnakum...</div>
+      <div class="translation">A group from the People of the Scripture wished to mislead you...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="69" onclick="toggleBookmark(event,69,'وَدَّت طَّآئِفَةٌ...','A group wished to mislead you...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 70 -->
+<article id="ayah-70" class="ayah" data-ayah="70">
+  <div class="ayah-row">
+    <div class="ayah-num">70</div>
+    <div class="ayah-text">
+      <div class="arabic">يَـٰٓأَهْلَ ٱلْكِتَـٰبِ لِمَ تَكْفُرُونَ بِـَٔايَـٰتِ ٱللَّهِ...</div>
+      <div class="translit">Yā ahla al-kitābi lima takfurūna bi’āyāti Allāh...</div>
+      <div class="translation">O People of the Scripture! Why do you deny the signs of Allah while you witness them?</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="70" onclick="toggleBookmark(event,70,'يَـٰٓأَهْلَ ٱلْكِتَـٰبِ...','O People of the Scripture why do you deny...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 71 -->
+<article id="ayah-71" class="ayah" data-ayah="71">
+  <div class="ayah-row">
+    <div class="ayah-num">71</div>
+    <div class="ayah-text">
+      <div class="arabic">يَا أَهْلَ الْكِتَابِ لِمَ تَلْبِسُونَ الْحَقَّ بِالْبَاطِلِ وَتَكْتُمُونَ الْحَقَّ وَأَنْتُمْ تَعْلَمُونَ</div>
+      <div class="translit">Yā ahla al-kitābi lima talbisūna al-ḥaqqa bil-bāṭili wa taktumūna al-ḥaqqa wa antum ta‘lamūn</div>
+      <div class="translation">O People of the Scripture, why do you mix truth with falsehood and conceal the truth knowingly?</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="71" onclick="toggleBookmark(event,71,'يَا أَهْلَ الْكِتَابِ...','O People of the Scripture...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 72 -->
+<article id="ayah-72" class="ayah" data-ayah="72">
+  <div class="ayah-row">
+    <div class="ayah-num">72</div>
+    <div class="ayah-text">
+      <div class="arabic">وَقَالَتْ طَائِفَةٌ مِنْ أَهْلِ الْكِتَابِ آمِنُوا بِالَّذِي أُنْزِلَ...</div>
+      <div class="translit">Wa qālat ṭā’ifatun min ahlil-kitābi āminū billadhī unzila...</div>
+      <div class="translation">A group among the People of the Scripture said, “Believe in what was revealed to the believers...”</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="72" onclick="toggleBookmark(event,72,'وَقَالَتْ طَائِفَةٌ...','A group among the People of the Scripture said...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 73 -->
+<article id="ayah-73" class="ayah" data-ayah="73">
+  <div class="ayah-row">
+    <div class="ayah-num">73</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلَا تُؤْمِنُوا إِلَّا لِمَنْ تَبِعَ دِينَكُمْ...</div>
+      <div class="translit">Wa lā tu’minū illā liman tabi‘a dīnakum...</div>
+      <div class="translation">“Do not believe except in those who follow your religion,” they say...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="73" onclick="toggleBookmark(event,73,'وَلَا تُؤْمِنُوا...','Do not believe except in those who follow your religion...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 74 -->
+<article id="ayah-74" class="ayah" data-ayah="74">
+  <div class="ayah-row">
+    <div class="ayah-num">74</div>
+    <div class="ayah-text">
+      <div class="arabic">يَخْتَصُّ بِرَحْمَتِهِ مَنْ يَشَاءُ ۗ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ</div>
+      <div class="translit">Yakhtaṣṣu biraḥmatihi man yashā’ wallāhu dhūl-faḍlil-‘aẓīm</div>
+      <div class="translation">He chooses for His mercy whom He wills, and Allah is the possessor of great bounty.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="74" onclick="toggleBookmark(event,74,'يَخْتَصُّ بِرَحْمَتِهِ...','He chooses for His mercy whom He wills...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 75 -->
+<article id="ayah-75" class="ayah" data-ayah="75">
+  <div class="ayah-row">
+    <div class="ayah-num">75</div>
+    <div class="ayah-text">
+      <div class="arabic">وَمِنْ أَهْلِ الْكِتَابِ مَنْ إِنْ تَأْمَنْهُ بِقِنْطَارٍ...</div>
+      <div class="translit">Wa min ahlil-kitābi man in ta’manhu biqinṭārin...</div>
+      <div class="translation">Among the People of the Scripture are those whom if you entrust with a great treasure, they return it...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="75" onclick="toggleBookmark(event,75,'وَمِنْ أَهْلِ الْكِتَابِ...','Among the People of the Scripture...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 76 -->
+<article id="ayah-76" class="ayah" data-ayah="76">
+  <div class="ayah-row">
+    <div class="ayah-num">76</div>
+    <div class="ayah-text">
+      <div class="arabic">بَلَىٰ مَنْ أَوْفَىٰ بِعَهْدِهِ...</div>
+      <div class="translit">Balā man awfā bi‘ahdihi...</div>
+      <div class="translation">Yes, whoever fulfills his covenant and fears Allah — then He loves the righteous.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="76" onclick="toggleBookmark(event,76,'بَلَىٰ مَنْ أَوْفَىٰ...','Whoever fulfills his covenant...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 77 -->
+<article id="ayah-77" class="ayah" data-ayah="77">
+  <div class="ayah-row">
+    <div class="ayah-num">77</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ الَّذِينَ يَشْتَرُونَ بِعَهْدِ اللَّهِ...</div>
+      <div class="translit">Inna alladhīna yashtarūna bi‘ahdillāhi...</div>
+      <div class="translation">Indeed, those who exchange Allah’s covenant and oaths for a small price...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="77" onclick="toggleBookmark(event,77,'إِنَّ الَّذِينَ...','Those who exchange Allah’s covenant...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 78 -->
+<article id="ayah-78" class="ayah" data-ayah="78">
+  <div class="ayah-row">
+    <div class="ayah-num">78</div>
+    <div class="ayah-text">
+      <div class="arabic">وَإِنَّ مِنْهُمْ لَفَرِيقًا يَلْوُونَ أَلْسِنَتَهُمْ...</div>
+      <div class="translit">Wa inna minhum la-farīqan yalwūna alsinatahum...</div>
+      <div class="translation">And indeed, among them is a group who distort words with their tongues...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="78" onclick="toggleBookmark(event,78,'وَإِنَّ مِنْهُمْ...','Among them is a group who distort words...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 79 -->
+<article id="ayah-79" class="ayah" data-ayah="79">
+  <div class="ayah-row">
+    <div class="ayah-num">79</div>
+    <div class="ayah-text">
+      <div class="arabic">مَا كَانَ لِبَشَرٍ أَنْ يُؤْتِيَهُ اللَّهُ الْكِتَابَ...</div>
+      <div class="translit">Mā kāna libasharin an yu’tiyahullāhu al-kitāba...</div>
+      <div class="translation">It is not for a human that Allah gives the Book and authority...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="79" onclick="toggleBookmark(event,79,'مَا كَانَ لِبَشَرٍ...','It is not for a human whom Allah gives the Book...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 80 -->
+<article id="ayah-80" class="ayah" data-ayah="80">
+  <div class="ayah-row">
+    <div class="ayah-num">80</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلَا يَأْمُرَكُمْ أَنْ تَتَّخِذُوا الْمَلَائِكَةَ...</div>
+      <div class="translit">Wa lā ya’murakum an tattakhidhū al-malā’ikata...</div>
+      <div class="translation">Nor would he order you to take angels and prophets as lords...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="80" onclick="toggleBookmark(event,80,'وَلَا يَأْمُرَكُمْ...','Nor would he order you to take angels...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 81 -->
+<article id="ayah-81" class="ayah" data-ayah="81">
+  <div class="ayah-row">
+    <div class="ayah-num">81</div>
+    <div class="ayah-text">
+      <div class="arabic">وَإِذْ أَخَذَ ٱللَّهُ مِيثَٰقَ ٱلنَّبِيِّۦنَ لَمَآ ءَاتَيْتُكُم مِّن كِتَٰبٍۢ وَحِكْمَةٍۢ ثُمَّ جَآءَكُمْ رَسُولٌ مُّصَدِّقٌۢ لِّمَا مَعَكُمْ لَتُؤْمِنُنَّ بِهِۦ وَلَتَنصُرُنَّهُۥ ۚ قَالَ ءَأَقْرَرْتُمْ وَأَخَذْتُمْ عَلَىٰ ذَٰلِكُمْ إِصْرِى ۖ قَالُوٓا۟ أَقْرَرْنَا ۚ قَالَ فَٱشْهَدُوا۟ وَأَنَا۠ مَعَكُم مِّنَ ٱلشَّٰهِدِينَ</div>
+      <div class="translit">Wa idh akhadhallāhu mīthāqan-nabiyyīna lamā ātaytukum min kitābin wa ḥikmah...</div>
+      <div class="translation">And when Allah took the covenant of the prophets, saying: If a messenger comes confirming what is with you, you must believe in him and support him...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="81" onclick="toggleBookmark(event,81,'وَإِذْ أَخَذَ ٱللَّهُ...','And when Allah took the covenant...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 82 -->
+<article id="ayah-82" class="ayah" data-ayah="82">
+  <div class="ayah-row">
+    <div class="ayah-num">82</div>
+    <div class="ayah-text">
+      <div class="arabic">فَمَن تَوَلَّىٰ بَعْدَ ذَٰلِكَ فَأُو۟لَٰٓئِكَ هُمُ ٱلْفَٰسِقُونَ</div>
+      <div class="translit">Faman tawallā ba'da dhālika fa-ulā’ika humul-fāsiqūn</div>
+      <div class="translation">Then whoever turns away after this — they are the defiantly disobedient.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="82" onclick="toggleBookmark(event,82,'فَمَن تَوَلَّىٰ...','Then whoever turns away...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 83 -->
+<article id="ayah-83" class="ayah" data-ayah="83">
+  <div class="ayah-row">
+    <div class="ayah-num">83</div>
+    <div class="ayah-text">
+      <div class="arabic">أَفَغَيْرَ دِينِ ٱللَّهِ يَبْغُونَ وَلَهُۥٓ أَسْلَمَ مَن فِى ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ طَوْعًۭا وَكَرْهًۭا وَإِلَيْهِ يُرْجَعُونَ</div>
+      <div class="translit">Afa ghayra dīnillāhi yabghūna wa lahu aslama man fis-samāwāti wal-arḍ...</div>
+      <div class="translation">Do they seek a religion other than Allah’s, while to Him submits all in the heavens and the earth...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="83" onclick="toggleBookmark(event,83,'أَفَغَيْرَ دِينِ ٱللَّهِ...','Do they seek a religion other than Allah’s...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 84 -->
+<article id="ayah-84" class="ayah" data-ayah="84">
+  <div class="ayah-row">
+    <div class="ayah-num">84</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ ءَامَنَّا بِٱللَّهِ وَمَآ أُنزِلَ عَلَيْنَا... </div>
+      <div class="translit">Qul āmannā billāhi wa mā unzila 'alaynā...</div>
+      <div class="translation">Say: We believe in Allah and what has been revealed to us and what was revealed to Abraham...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="84" onclick="toggleBookmark(event,84,'قُلْ ءَامَنَّا...','Say: We believe in Allah...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 85 -->
+<article id="ayah-85" class="ayah" data-ayah="85">
+  <div class="ayah-row">
+    <div class="ayah-num">85</div>
+    <div class="ayah-text">
+      <div class="arabic">وَمَن يَبْتَغِ غَيْرَ ٱلْإِسْلَٰمِ دِينًۭا فَلَن يُقْبَلَ مِنْهُ ۖ وَهُوَ فِى ٱلْـَٔاخِرَةِ مِنَ ٱلْخَٰسِرِينَ</div>
+      <div class="translit">Wa many-yabtaghi ghayral-islāmi dīnan falan yuqbala minhu...</div>
+      <div class="translation">Whoever seeks a religion other than Islam, it will never be accepted from him...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="85" onclick="toggleBookmark(event,85,'وَمَن يَبْتَغِ...','Whoever seeks a religion other than Islam...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 86 -->
+<article id="ayah-86" class="ayah" data-ayah="86">
+  <div class="ayah-row">
+    <div class="ayah-num">86</div>
+    <div class="ayah-text">
+      <div class="arabic">كَيْفَ يَهْدِى ٱللَّهُ قَوْمًۭا كَفَرُوا۟ بَعْدَ إِيمَٰنِهِمْ...</div>
+      <div class="translit">Kayfa yahdillāhu qawman kafarū ba‘da īmānihim...</div>
+      <div class="translation">How will Allah guide a people who disbelieved after they had believed...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="86" onclick="toggleBookmark(event,86,'كَيْفَ يَهْدِى...','How will Allah guide a people...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 87 -->
+<article id="ayah-87" class="ayah" data-ayah="87">
+  <div class="ayah-row">
+    <div class="ayah-num">87</div>
+    <div class="ayah-text">
+      <div class="arabic">أُو۟لَٰٓئِكَ جَزَآؤُهُمْ أَنَّ عَلَيْهِمْ لَعْنَةَ ٱللَّهِ...</div>
+      <div class="translit">Ulā’ika jazā’uhum anna 'alayhim la'natallāh...</div>
+      <div class="translation">Those — their reward is that upon them is the curse of Allah...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="87" onclick="toggleBookmark(event,87,'أُو۟لَٰٓئِكَ...','Those — their reward is the curse of Allah...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 88 -->
+<article id="ayah-88" class="ayah" data-ayah="88">
+  <div class="ayah-row">
+    <div class="ayah-num">88</div>
+    <div class="ayah-text">
+      <div class="arabic">خَٰلِدِينَ فِيهَا لَا يُخَفَّفُ عَنْهُمُ ٱلْعَذَابُ...</div>
+      <div class="translit">Khālidīna fīhā lā yukhaffafu 'anhumul-'adhāb...</div>
+      <div class="translation">Abiding in it forever; the punishment will not be lightened for them...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="88" onclick="toggleBookmark(event,88,'خَٰلِدِينَ فِيهَا...','Abiding in it forever...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 89 -->
+<article id="ayah-89" class="ayah" data-ayah="89">
+  <div class="ayah-row">
+    <div class="ayah-num">89</div>
+    <div class="ayah-text">
+      <div class="arabic">إِلَّا ٱلَّذِينَ تَابُوا۟ مِنۢ بَعْدِ ذَٰلِكَ...</div>
+      <div class="translit">Illā alladhīna tābū min ba‘di dhālika...</div>
+      <div class="translation">Except for those who repent after that and reform — for indeed Allah is Forgiving, Merciful.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="89" onclick="toggleBookmark(event,89,'إِلَّا ٱلَّذِينَ تَابُوا۟...','Except for those who repent...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 90 -->
+<article id="ayah-90" class="ayah" data-ayah="90">
+  <div class="ayah-row">
+    <div class="ayah-num">90</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ ٱلَّذِينَ كَفَرُوا۟ بَعْدَ إِيمَٰنِهِمْ ثُمَّ ٱزْدَادُوا۟ كُفْرًۭا لَّن تُقْبَلَ تَوْبَتُهُمْ...</div>
+      <div class="translit">Inna alladhīna kafarū ba'da īmānihim thumma izdādū kufrā...</div>
+      <div class="translation">Indeed, those who disbelieve after believing, then increase in disbelief — their repentance will never be accepted...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="90" onclick="toggleBookmark(event,90,'إِنَّ ٱلَّذِينَ كَفَرُوا۟...','Indeed those who disbelieve after believing...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 91 -->
+<article id="ayah-91" class="ayah" data-ayah="91">
+  <div class="ayah-row">
+    <div class="ayah-num">91</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ ٱلَّذِينَ كَفَرُوا۟ وَمَاتُوا۟ وَهُمْ كُفَّارٌۭ فَلَن يُقْبَلَ مِنْ أَحَدِهِم مِّلْءُ ٱلْأَرْضِ ذَهَبًۭا...</div>
+      <div class="translit">Inna alladhīna kafarū wa mātū wa hum kuffār...</div>
+      <div class="translation">Indeed those who disbelieve and die while disbelievers — never will any amount of gold be accepted from them...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="91" onclick="toggleBookmark(event,91,'إِنَّ ٱلَّذِينَ كَفَرُوا۟...','Indeed those who disbelieve and die...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 92 -->
+<article id="ayah-92" class="ayah" data-ayah="92">
+  <div class="ayah-row">
+    <div class="ayah-num">92</div>
+    <div class="ayah-text">
+      <div class="arabic">لَن تَنَالُوا۟ ٱلْبِرَّ حَتَّىٰ تُنفِقُوا۟ مِمَّا تُحِبُّونَ...</div>
+      <div class="translit">Lan tanālul-birra ḥattā tunfiqū mimmā tuḥibbūn...</div>
+      <div class="translation">You will never attain righteousness until you spend from what you love...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="92" onclick="toggleBookmark(event,92,'لَن تَنَالُوا۟...','You will never attain righteousness...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 93 -->
+<article id="ayah-93" class="ayah" data-ayah="93">
+  <div class="ayah-row">
+    <div class="ayah-num">93</div>
+    <div class="ayah-text">
+      <div class="arabic">كُلُّ ٱلطَّعَامِ كَانَ حِلًّۭا لِّبَنِىٓ إِسْرَٰٓءِيلَ...</div>
+      <div class="translit">Kulluṭ-ṭa‘āmi kāna hillan li-banī isrā’īl...</div>
+      <div class="translation">All food was lawful for the Children of Israel except what Israel forbade for himself...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="93" onclick="toggleBookmark(event,93,'كُلُّ ٱلطَّعَامِ...','All food was lawful for the Children of Israel...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 94 -->
+<article id="ayah-94" class="ayah" data-ayah="94">
+  <div class="ayah-row">
+    <div class="ayah-num">94</div>
+    <div class="ayah-text">
+      <div class="arabic">فَمَنِ ٱفْتَرَىٰ عَلَى ٱللَّهِ ٱلْكَذِبَ مِنۢ بَعْدِ ذَٰلِكَ...</div>
+      <div class="translit">Famani ftarā 'alallāhi l-kadhiba min ba‘di dhālika...</div>
+      <div class="translation">Whoever fabricates lies about Allah after this — they are the wrongdoers.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="94" onclick="toggleBookmark(event,94,'فَمَنِ ٱفْتَرَىٰ...','Whoever fabricates lies...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 95 -->
+<article id="ayah-95" class="ayah" data-ayah="95">
+  <div class="ayah-row">
+    <div class="ayah-num">95</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ صَدَقَ ٱللَّهُ ۗ فَٱتَّبِعُوا۟ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا...</div>
+      <div class="translit">Qul sadaqallāh fattabi‘ū millata ibrāhīma ḥanīfā...</div>
+      <div class="translation">Say: Allah has spoken the truth. So follow the way of Abraham, the upright...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="95" onclick="toggleBookmark(event,95,'قُلْ صَدَقَ ٱللَّهُ...','Say: Allah has spoken the truth...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 96 -->
+<article id="ayah-96" class="ayah" data-ayah="96">
+  <div class="ayah-row">
+    <div class="ayah-num">96</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ أَوَّلَ بَيْتٍۢ وُضِعَ لِلنَّاسِ لَلَّذِى بِبَكَّةَ مُبَارَكًۭا...</div>
+      <div class="translit">Inna awwala baytin wuḍi‘a lin-nāsi lalladhī bibakkata mubārakā...</div>
+      <div class="translation">Indeed, the first House established for mankind was at Bakkah — blessed and a guidance for the worlds.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="96" onclick="toggleBookmark(event,96,'إِنَّ أَوَّلَ بَيْتٍۢ...','Indeed, the first House established...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 97 -->
+<article id="ayah-97" class="ayah" data-ayah="97">
+  <div class="ayah-row">
+    <div class="ayah-num">97</div>
+    <div class="ayah-text">
+      <div class="arabic">فِيهِ ءَايَٰتٌۭ بَيِّنَٰتٌۭ مَّقَامُ إِبْرَٰهِيمَ...</div>
+      <div class="translit">Fīhi āyātun bayyinātun maqāmu ibrāhīm...</div>
+      <div class="translation">In it are clear signs — the standing place of Abraham — and whoever enters it is safe...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="97" onclick="toggleBookmark(event,97,'فِيهِ ءَايَٰتٌۭ...','In it are clear signs...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 98 -->
+<article id="ayah-98" class="ayah" data-ayah="98">
+  <div class="ayah-row">
+    <div class="ayah-num">98</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ يَٰٓأَهْلَ ٱلْكِتَٰبِ لِمَ تَكْفُرُونَ بِـَٔايَٰتِ ٱللَّهِ...</div>
+      <div class="translit">Qul yā ahlal-kitābi lima takfurūna bi-āyātillāh...</div>
+      <div class="translation">Say: O People of the Book, why do you deny the signs of Allah while Allah witnesses what you do?</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="98" onclick="toggleBookmark(event,98,'قُلْ يَٰٓأَهْلَ...','O People of the Book, why do you deny...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 99 -->
+<article id="ayah-99" class="ayah" data-ayah="99">
+  <div class="ayah-row">
+    <div class="ayah-num">99</div>
+    <div class="ayah-text">
+      <div class="arabic">قُلْ يَٰٓأَهْلَ ٱلْكِتَٰبِ لِمَ تَصُدُّونَ عَن سَبِيلِ ٱللَّهِ...</div>
+      <div class="translit">Qul yā ahlal-kitābi lima taṣuddūna 'an sabīlillāh...</div>
+      <div class="translation">Say: O People of the Book, why do you turn people away from the path of Allah...</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="99" onclick="toggleBookmark(event,99,'قُلْ يَٰٓأَهْلَ...','Why do you turn people away...')">Bookmark</button>
+  </div>
+</article>
+
+<!-- AYAH 100 -->
+<article id="ayah-100" class="ayah" data-ayah="100">
+  <div class="ayah-row">
+    <div class="ayah-num">100</div>
+    <div class="ayah-text">
+      <div class="arabic">يَٰأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن تُطِيعُوا۟ فَرِيقًۭا مِّنَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَٰبَ...</div>
+      <div class="translit">Yā ayyuhalladhīna āmanū in tuṭī'ū farīqan mina alladhīna ūtul-kitāb...</div>
+      <div class="translation">O believers, if you obey a group of those who were given the Book, they will turn you back to disbelief after your faith.</div>
+    </div>
+  </div>
+  <div class="ayah-footer">
+    <button class="bookmark" data-ayah="100" onclick="toggleBookmark(event,100,'يَٰأَيُّهَا ٱلَّذِينَ...','O believers, if you obey a group...')">Bookmark</button>
+  </div>
+</article>
+<!-- AYAH 101 -->
+<article id="ayah-101" class="ayah" data-ayah="101">
+  <div class="ayah-row">
+    <div class="ayah-num">101</div>
+    <div class="ayah-text">
+      <div class="arabic">وَكَيْفَ تَكْفُرُونَ وَأَنتُمْ تُتْلَىٰ عَلَيْكُمْ آيَاتُ اللَّهِ وَفِيكُمْ رَسُولُهُ ۗ وَمَنْ يَعْتَصِمْ بِاللَّهِ فَقَدْ هُدِيَ إِلَىٰ صِرَاطٍ مُسْتَقِيمٍ</div>
+      <div class="translation">And how could you disbelieve while Allah’s revelations are recited to you and His Messenger is among you? Whoever holds firmly to Allah is surely guided to the straight path.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 102 -->
+<article id="ayah-102" class="ayah" data-ayah="102">
+  <div class="ayah-row">
+    <div class="ayah-num">102</div>
+    <div class="ayah-text">
+      <div class="arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَاتِهِ وَلَا تَمُوتُنَّ إِلَّا وَأَنْتُمْ مُسْلِمُونَ</div>
+      <div class="translation">O believers! Be mindful of Allah as is His due, and do not die except in a state of submission.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 103 -->
+<article id="ayah-103" class="ayah" data-ayah="103">
+  <div class="ayah-row">
+    <div class="ayah-num">103</div>
+    <div class="ayah-text">
+      <div class="arabic">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا...</div>
+      <div class="translation">And hold firmly to the rope of Allah all together and do not become divided...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 104 -->
+<article id="ayah-104" class="ayah" data-ayah="104">
+  <div class="ayah-row">
+    <div class="ayah-num">104</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلْتَكُنْ مِنْكُمْ أُمَّةٌ يَدْعُونَ إِلَى الْخَيْرِ...</div>
+      <div class="translation">Let there be a group among you who call to goodness, enjoin what is right, and forbid what is wrong...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 105 -->
+<article id="ayah-105" class="ayah" data-ayah="105">
+  <div class="ayah-row">
+    <div class="ayah-num">105</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلَا تَكُونُوا كَالَّذِينَ تَفَرَّقُوا وَاخْتَلَفُوا...</div>
+      <div class="translation">And do not be like those who became divided and differed after clear proofs came to them...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 106 -->
+<article id="ayah-106" class="ayah" data-ayah="106">
+  <div class="ayah-row">
+    <div class="ayah-num">106</div>
+    <div class="ayah-text">
+      <div class="arabic">يَوْمَ تَبْيَضُّ وُجُوهٌ وَتَسْوَدُّ وُجُوهٌ...</div>
+      <div class="translation">On that Day some faces will be bright and some faces will be dark...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 107 -->
+<article id="ayah-107" class="ayah" data-ayah="107">
+  <div class="ayah-row">
+    <div class="ayah-num">107</div>
+    <div class="ayah-text">
+      <div class="arabic">وَأَمَّا الَّذِينَ ابْيَضَّتْ وُجُوهُهُمْ...</div>
+      <div class="translation">And as for those whose faces are bright, they will be in Allah’s mercy, remaining there forever.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 108 -->
+<article id="ayah-108" class="ayah" data-ayah="108">
+  <div class="ayah-row">
+    <div class="ayah-num">108</div>
+    <div class="ayah-text">
+      <div class="arabic">تِلْكَ آيَاتُ اللَّهِ نَتْلُوهَا عَلَيْكَ بِالْحَقِّ...</div>
+      <div class="translation">These are Allah’s revelations. We recite them to you in truth. Allah does not wrong anyone.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 109 -->
+<article id="ayah-109" class="ayah" data-ayah="109">
+  <div class="ayah-row">
+    <div class="ayah-num">109</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ...</div>
+      <div class="translation">To Allah belongs whatever is in the heavens and whatever is on the earth. To Him all matters return.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 110 -->
+<article id="ayah-110" class="ayah" data-ayah="110">
+  <div class="ayah-row">
+    <div class="ayah-num">110</div>
+    <div class="ayah-text">
+      <div class="arabic">كُنْتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ...</div>
+      <div class="translation">You are the best community raised for humanity: you encourage good, forbid evil, and believe in Allah...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 111 -->
+<article id="ayah-111" class="ayah" data-ayah="111">
+  <div class="ayah-row">
+    <div class="ayah-num">111</div>
+    <div class="ayah-text">
+      <div class="arabic">لَنْ يَضُرُّوكُمْ إِلَّا أَذًى...</div>
+      <div class="translation">They will not harm you except for a little annoyance...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 112 -->
+<article id="ayah-112" class="ayah" data-ayah="112">
+  <div class="ayah-row">
+    <div class="ayah-num">112</div>
+    <div class="ayah-text">
+      <div class="arabic">ضُرِبَتْ عَلَيْهِمُ الذِّلَّةُ أَيْنَ مَا ثُقِفُوا...</div>
+      <div class="translation">They are covered with humiliation wherever they are found except when they hold on to a covenant with Allah or with people...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 113 -->
+<article id="ayah-113" class="ayah" data-ayah="113">
+  <div class="ayah-row">
+    <div class="ayah-num">113</div>
+    <div class="ayah-text">
+      <div class="arabic">لَيْسُوا سَوَاءً ۗ مِنْ أَهْلِ الْكِتَابِ...</div>
+      <div class="translation">They are not all alike. Among the People of the Book is an upright community...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 114 -->
+<article id="ayah-114" class="ayah" data-ayah="114">
+  <div class="ayah-row">
+    <div class="ayah-num">114</div>
+    <div class="ayah-text">
+      <div class="arabic">يُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ...</div>
+      <div class="translation">They believe in Allah and the Last Day, enjoin what is right, forbid what is wrong, and hasten in good deeds...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 115 -->
+<article id="ayah-115" class="ayah" data-ayah="115">
+  <div class="ayah-row">
+    <div class="ayah-num">115</div>
+    <div class="ayah-text">
+      <div class="arabic">وَمَا يَفْعَلُوا مِنْ خَيْرٍ فَلَنْ يُكْفَرُوهُ...</div>
+      <div class="translation">Whatever good they do will never be denied them. Allah knows the righteous.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 116 -->
+<article id="ayah-116" class="ayah" data-ayah="116">
+  <div class="ayah-row">
+    <div class="ayah-num">116</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنَّ الَّذِينَ كَفَرُوا لَنْ تُغْنِيَ عَنْهُمْ أَمْوَالُهُمْ...</div>
+      <div class="translation">Surely the wealth and children of the disbelievers will not help them against Allah at all...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 117 -->
+<article id="ayah-117" class="ayah" data-ayah="117">
+  <div class="ayah-row">
+    <div class="ayah-num">117</div>
+    <div class="ayah-text">
+      <div class="arabic">مَثَلُ مَا يُنْفِقُونَ فِي هَٰذِهِ الْحَيَاةِ الدُّنْيَا...</div>
+      <div class="translation">The example of what they spend in this worldly life is like a cold wind that destroys a harvest...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 118 -->
+<article id="ayah-118" class="ayah" data-ayah="118">
+  <div class="ayah-row">
+    <div class="ayah-num">118</div>
+    <div class="ayah-text">
+      <div class="arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَتَّخِذُوا بِطَانَةً...</div>
+      <div class="translation">O believers! Do not take outsiders into your inner circle, for they will spare no effort to corrupt you...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 119 -->
+<article id="ayah-119" class="ayah" data-ayah="119">
+  <div class="ayah-row">
+    <div class="ayah-num">119</div>
+    <div class="ayah-text">
+      <div class="arabic">هَاأَنْتُمْ أُولَاءِ تُحِبُّونَهُمْ وَلَا يُحِبُّونَكُمْ...</div>
+      <div class="translation">Here you are! You love them, but they do not love you...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 120 -->
+<article id="ayah-120" class="ayah" data-ayah="120">
+  <div class="ayah-row">
+    <div class="ayah-num">120</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنْ تَمْسَسْكُمْ حَسَنَةٌ تَسُؤْهُمْ...</div>
+      <div class="translation">If something good happens to you, it upsets them; but if you are afflicted with harm, they rejoice...</div>
+    </div>
+  </div>
+</article>
+<!-- AYAH 121 -->
+<article id="ayah-121" class="ayah" data-ayah="121">
+  <div class="ayah-row">
+    <div class="ayah-num">121</div>
+    <div class="ayah-text">
+      <div class="arabic">وَإِذْ غَدَوْتَ مِنْ أَهْلِكَ تُبَوِّئُ الْمُؤْمِنِينَ مَقَاعِدَ لِلْقِتَالِ ۗ وَاللَّهُ سَمِيعٌ عَلِيمٌ</div>
+      <div class="translation">And ˹remember˺ when you left your family early in the morning to post the believers at their stations for battle. And Allah is All-Hearing, All-Knowing.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 122 -->
+<article id="ayah-122" class="ayah" data-ayah="122">
+  <div class="ayah-row">
+    <div class="ayah-num">122</div>
+    <div class="ayah-text">
+      <div class="arabic">إِذْ هَمَّتْ طَائِفَتَانِ مِنْكُمْ أَنْ تَفْشَلَا وَاللَّهُ وَلِيُّهُمَا ۗ وَعَلَى اللَّهِ فَلْيَتَوَكَّلِ الْمُؤْمِنُونَ</div>
+      <div class="translation">When two groups among you were about to lose courage, but Allah was their Protector. So in Allah let the believers put their trust.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 123 -->
+<article id="ayah-123" class="ayah" data-ayah="123">
+  <div class="ayah-row">
+    <div class="ayah-num">123</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلَقَدْ نَصَرَكُمُ اللَّهُ بِبَدْرٍ وَأَنْتُمْ أَذِلَّةٌ ۖ فَاتَّقُوا اللَّهَ لَعَلَّكُمْ تَشْكُرُونَ</div>
+      <div class="translation">And Allah had certainly given you victory at Badr when you were weak. So be mindful of Allah so you may be grateful.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 124 -->
+<article id="ayah-124" class="ayah" data-ayah="124">
+  <div class="ayah-row">
+    <div class="ayah-num">124</div>
+    <div class="ayah-text">
+      <div class="arabic">إِذْ تَقُولُ لِلْمُؤْمِنِينَ أَلَنْ يَكْفِيَكُمْ أَنْ يُمِدَّكُمْ رَبُّكُمْ بِثَلَاثَةِ آلَافٍ مِنَ الْمَلَائِكَةِ مُنْزَلِينَ</div>
+      <div class="translation">˹Remember˺ when you said to the believers, “Is it not enough that your Lord will reinforce you with three thousand angels sent down?”</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 125 -->
+<article id="ayah-125" class="ayah" data-ayah="125">
+  <div class="ayah-row">
+    <div class="ayah-num">125</div>
+    <div class="ayah-text">
+      <div class="arabic">بَلَىٰ ۚ إِنْ تَصْبِرُوا وَتَتَّقُوا...</div>
+      <div class="translation">Yes! If you remain patient and mindful of Allah, and the enemy comes upon you suddenly, your Lord will reinforce you with five thousand angels...</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 126 -->
+<article id="ayah-126" class="ayah" data-ayah="126">
+  <div class="ayah-row">
+    <div class="ayah-num">126</div>
+    <div class="ayah-text">
+      <div class="arabic">وَمَا جَعَلَهُ اللَّهُ إِلَّا بُشْرَىٰ لَكُمْ...</div>
+      <div class="translation">Allah made it only a sign of good news for you, to reassure your hearts. Victory comes only from Allah—the Almighty, the All-Wise.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 127 -->
+<article id="ayah-127" class="ayah" data-ayah="127">
+  <div class="ayah-row">
+    <div class="ayah-num">127</div>
+    <div class="ayah-text">
+      <div class="arabic">لِيَقْطَعَ طَرَفًا مِنَ الَّذِينَ كَفَرُوا...</div>
+      <div class="translation">So that He may cut off a group of the disbelievers or suppress them, so they would retreat disappointed.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 128 -->
+<article id="ayah-128" class="ayah" data-ayah="128">
+  <div class="ayah-row">
+    <div class="ayah-num">128</div>
+    <div class="ayah-text">
+      <div class="arabic">لَيْسَ لَكَ مِنَ الْأَمْرِ شَيْءٌ...</div>
+      <div class="translation">You ˹O Prophet˺ have no say in the matter—whether He turns to them in mercy or punishes them—for they are truly wrongdoers.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 129 -->
+<article id="ayah-129" class="ayah" data-ayah="129">
+  <div class="ayah-row">
+    <div class="ayah-num">129</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ...</div>
+      <div class="translation">To Allah belongs whatever is in the heavens and whatever is on the earth. He forgives whoever He wills and punishes whoever He wills. Allah is All-Forgiving, Most Merciful.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 130 -->
+<article id="ayah-130" class="ayah" data-ayah="130">
+  <div class="ayah-row">
+    <div class="ayah-num">130</div>
+    <div class="ayah-text">
+      <div class="arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَأْكُلُوا الرِّبَا أَضْعَافًا مُضَاعَفَةً...</div>
+      <div class="translation">O believers! Do not consume interest, multiplied and compounded. And be mindful of Allah so you may prosper.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 131 -->
+<article id="ayah-131" class="ayah" data-ayah="131">
+  <div class="ayah-row">
+    <div class="ayah-num">131</div>
+    <div class="ayah-text">
+      <div class="arabic">وَاتَّقُوا النَّارَ الَّتِي أُعِدَّتْ لِلْكَافِرِينَ</div>
+      <div class="translation">Guard yourselves against the Fire prepared for the disbelievers.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 132 -->
+<article id="ayah-132" class="ayah" data-ayah="132">
+  <div class="ayah-row">
+    <div class="ayah-num">132</div>
+    <div class="ayah-text">
+      <div class="arabic">وَأَطِيعُوا اللَّهَ وَالرَّسُولَ لَعَلَّكُمْ تُرْحَمُونَ</div>
+      <div class="translation">And obey Allah and the Messenger so you may be shown mercy.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 133 -->
+<article id="ayah-133" class="ayah" data-ayah="133">
+  <div class="ayah-row">
+    <div class="ayah-num">133</div>
+    <div class="ayah-text">
+      <div class="arabic">وَسَارِعُوا إِلَىٰ مَغْفِرَةٍ مِنْ رَبِّكُمْ...</div>
+      <div class="translation">Race towards the forgiveness of your Lord and a Paradise as vast as the heavens and earth, prepared for the righteous.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 134 -->
+<article id="ayah-134" class="ayah" data-ayah="134">
+  <div class="ayah-row">
+    <div class="ayah-num">134</div>
+    <div class="ayah-text">
+      <div class="arabic">الَّذِينَ يُنْفِقُونَ فِي السَّرَّاءِ وَالضَّرَّاءِ...</div>
+      <div class="translation">Those who spend in prosperity and adversity, restrain anger, and pardon people—Allah loves the doers of good.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 135 -->
+<article id="ayah-135" class="ayah" data-ayah="135">
+  <div class="ayah-row">
+    <div class="ayah-num">135</div>
+    <div class="ayah-text">
+      <div class="arabic">وَالَّذِينَ إِذَا فَعَلُوا فَاحِشَةً أَوْ ظَلَمُوا أَنْفُسَهُمْ...</div>
+      <div class="translation">And those who, when they commit an indecency or wrong themselves, remember Allah and seek forgiveness—for who forgives sins except Allah?</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 136 -->
+<article id="ayah-136" class="ayah" data-ayah="136">
+  <div class="ayah-row">
+    <div class="ayah-num">136</div>
+    <div class="ayah-text">
+      <div class="arabic">أُولَٰئِكَ جَزَاؤُهُمْ مَغْفِرَةٌ مِنْ رَبِّهِمْ...</div>
+      <div class="translation">Their reward is forgiveness from their Lord and Gardens under which rivers flow, where they will stay forever. How excellent is the reward of those who act!</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 137 -->
+<article id="ayah-137" class="ayah" data-ayah="137">
+  <div class="ayah-row">
+    <div class="ayah-num">137</div>
+    <div class="ayah-text">
+      <div class="arabic">قَدْ خَلَتْ مِنْ قَبْلِكُمْ سُنَنٌ...</div>
+      <div class="translation">Many ways of life have passed before you, so travel through the land and see what was the end of the deniers.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 138 -->
+<article id="ayah-138" class="ayah" data-ayah="138">
+  <div class="ayah-row">
+    <div class="ayah-num">138</div>
+    <div class="ayah-text">
+      <div class="arabic">هَٰذَا بَيَانٌ لِلنَّاسِ وَهُدًى وَمَوْعِظَةٌ لِلْمُتَّقِينَ</div>
+      <div class="translation">This Quran is a clear explanation to humanity, and a guidance and lesson for the mindful.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 139 -->
+<article id="ayah-139" class="ayah" data-ayah="139">
+  <div class="ayah-row">
+    <div class="ayah-num">139</div>
+    <div class="ayah-text">
+      <div class="arabic">وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنْتُمُ الْأَعْلَوْنَ إِنْ كُنْتُمْ مُؤْمِنِينَ</div>
+      <div class="translation">Do not lose heart or fall into despair—you will be superior if you are true believers.</div>
+    </div>
+  </div>
+</article>
+
+<!-- AYAH 140 -->
+<article id="ayah-140" class="ayah" data-ayah="140">
+  <div class="ayah-row">
+    <div class="ayah-num">140</div>
+    <div class="ayah-text">
+      <div class="arabic">إِنْ يَمْسَسْكُمْ قَرْحٌ فَقَدْ مَسَّ الْقَوْمَ قَرْحٌ مِثْلُهُ...</div>
+      <div class="translation">If a wound touches you, similar wounds have touched the disbelievers. Such days We alternate among people...</div>
+    </div>
+  </div>
+</article>
+<!-- Surah Al-Imran — Ayahs 141-160 -->
+<!-- Repeat structure for each ayah: id="ayah-<n>" class="ayah" data-ayah="<n>" -->
+<section id="surah-imran-141-160">
+  <!-- Ayah 141 -->
+  <article id="ayah-141" class="ayah" data-ayah="141">
+    <div class="ayah-row">
+      <div class="ayah-num">141</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 141 here]</div>
+        <div class="translit">Wa-kadhalika ja'alna lakum al-anfa-san tukhshoonahum...</div>
+        <div class="translation">And thus We placed in you (O believers) feelings to fear them — so that Allah may make clear who truly holds faith; and He may test what is within your hearts. Allah is Knowing and All-Aware.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="141"
+        onclick="toggleBookmark(event,141,'[Arabic ayah 141]','And thus We placed in you...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 142 -->
+  <article id="ayah-142" class="ayah" data-ayah="142">
+    <div class="ayah-row">
+      <div class="ayah-num">142</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 142 here]</div>
+        <div class="translit">Am tara annahum sawā'un aʿdaltum am kuntum ʿalayhim ghāfilīn...</div>
+        <div class="translation">Do you suppose that you were equal? — For if you had spent all that is in the earth, you would not have equalled Allah; Allah has favored some of you over others in provision. But the reward is with Allah; and Allah is All-Encompassing, All-Knowing.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="142"
+        onclick="toggleBookmark(event,142,'[Arabic ayah 142]','Do you suppose that you were equal?...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 143 -->
+  <article id="ayah-143" class="ayah" data-ayah="143">
+    <div class="ayah-row">
+      <div class="ayah-num">143</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 143 here]</div>
+        <div class="translit">Wa-kuntu 'alayhim nazīran wa-rasūlan...</div>
+        <div class="translation">And when We made you a middle nation (community standing firm to witness between people), that you might be witnesses over mankind and the Messenger a witness over you. And We did not make the qiblah which you were facing except that We might make evident who follows the Messenger from those who turn on their heels — and indeed it was difficult except for those whom Allah guided.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="143"
+        onclick="toggleBookmark(event,143,'[Arabic ayah 143]','And when We made you a middle nation...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 144 -->
+  <article id="ayah-144" class="ayah" data-ayah="144">
+    <div class="ayah-row">
+      <div class="ayah-num">144</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 144 here]</div>
+        <div class="translit">Mā kāna mūsa li-anna yu'mina laka illā an yaqūlla qawmun...</div>
+        <div class="translation">Muhammad is no more than a messenger; indeed many messengers have passed before him. If he were to die or be killed, would you then turn back on your heels? Whoever turns back will not harm Allah in the least; but Allah will reward the grateful.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="144"
+        onclick="toggleBookmark(event,144,'[Arabic ayah 144]','Muhammad is no more than a messenger...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 145 -->
+  <article id="ayah-145" class="ayah" data-ayah="145">
+    <div class="ayah-row">
+      <div class="ayah-num">145</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 145 here]</div>
+        <div class="translit">Wala-in mataa aʿlina 'alayhim ajmaʿīn...</div>
+        <div class="translation">And whoever dies while he is a believer — for them are the bounty of Allah and His mercy; and those are the rightly guided.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="145"
+        onclick="toggleBookmark(event,145,'[Arabic ayah 145]','And whoever dies while he is a believer...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 146 -->
+  <article id="ayah-146" class="ayah" data-ayah="146">
+    <div class="ayah-row">
+      <div class="ayah-num">146</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 146 here]</div>
+        <div class="translit">Wa-ammā man yaʿṣī llāha wa-rasūlahu...</div>
+        <div class="translation">But those who disobey Allah and His Messenger and transgress His limits — they will have the Fire, wherein they will abide; and for them is a disgraceful punishment.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="146"
+        onclick="toggleBookmark(event,146,'[Arabic ayah 146]','But those who disobey Allah...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 147 -->
+  <article id="ayah-147" class="ayah" data-ayah="147">
+    <div class="ayah-row">
+      <div class="ayah-num">147</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 147 here]</div>
+        <div class="translit">Mā alāhu illā an yuẓāfiqa ʿanhum ʿadhāba Allāh...</div>
+        <div class="translation">What would Allah have to do with their punishment if they believed and did right? — and Allah is ever Knowing of the wrongdoers.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="147"
+        onclick="toggleBookmark(event,147,'[Arabic ayah 147]','What would Allah have to do with their punishment...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 148 -->
+  <article id="ayah-148" class="ayah" data-ayah="148">
+    <div class="ayah-row">
+      <div class="ayah-num">148</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 148 here]</div>
+        <div class="translit">Laysa lil-Insāni illā mā saʿā...</div>
+        <div class="translation">No soul will bear the burden of another. And whatever good the soul does, it will be rewarded for it; and whatever evil it does, it will bear its consequence. And your Lord is not unaware of what you do.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="148"
+        onclick="toggleBookmark(event,148,'[Arabic ayah 148]','No soul will bear the burden of another...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 149 -->
+  <article id="ayah-149" class="ayah" data-ayah="149">
+    <div class="ayah-row">
+      <div class="ayah-num">149</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 149 here]</div>
+        <div class="translit">In tuʿjib'kum tuq'bilu min qawlikum falyuʾti'l-lahu wa-rasūlu wa-ttabaʿū ahsana mā kuntum taʿmalūn...</div>
+        <div class="translation">If you show mercy or conceal it or pardon an offense — indeed, Allah is Forgiving and Powerful. So do what is right; your deeds are known to your Lord.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="149"
+        onclick="toggleBookmark(event,149,'[Arabic ayah 149]','If you show mercy or conceal it...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 150 -->
+  <article id="ayah-150" class="ayah" data-ayah="150">
+    <div class="ayah-row">
+      <div class="ayah-num">150</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 150 here]</div>
+        <div class="translit">Alā inna saʿḥa yawma al-qiyāmati mīqātukum...</div>
+        <div class="translation">On the Day of Resurrection there will be no benefit from those who used to disbelieve, nor will they be reprieved; their fate will be clear.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="150"
+        onclick="toggleBookmark(event,150,'[Arabic ayah 150]','On the Day of Resurrection...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 151 -->
+  <article id="ayah-151" class="ayah" data-ayah="151">
+    <div class="ayah-row">
+      <div class="ayah-num">151</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 151 here]</div>
+        <div class="translit">Wa-abrizū 'alayhim qawlan shadīdan...</div>
+        <div class="translation">We will cast terror into the hearts of those who disbelieve, because they associated partners with Allah — their abode will be the Fire; and how evil is the destination.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="151"
+        onclick="toggleBookmark(event,151,'[Arabic ayah 151]','We will cast terror into the hearts...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 152 -->
+  <article id="ayah-152" class="ayah" data-ayah="152">
+    <div class="ayah-row">
+      <div class="ayah-num">152</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 152 here]</div>
+        <div class="translit">Wa-idh tasaddaqtum wa-ataytum qawlan raqīqan...</div>
+        <div class="translation">And when you were striving and had a setback, and the two parties saw each other with the eyes of fear, and the believers said: "Is this the promise of Allah?" — Yes; and Allah's promise is true. So do not be among the doubters.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="152"
+        onclick="toggleBookmark(event,152,'[Arabic ayah 152]','And when you were striving...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 153 -->
+  <article id="ayah-153" class="ayah" data-ayah="153">
+    <div class="ayah-row">
+      <div class="ayah-num">153</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 153 here]</div>
+        <div class="translit">Ya ayyuhā alladhīna āmanū istajībū lillāhi wal-rasūli idhā daʿākum lima yuhyīkum...</div>
+        <div class="translation">O you who believe, respond to Allah and the Messenger when he calls you to that which gives you life. Know that Allah interposes between a man and his heart; and to Him you will be gathered.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="153"
+        onclick="toggleBookmark(event,153,'[Arabic ayah 153]','O you who believe, respond to Allah...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 154 -->
+  <article id="ayah-154" class="ayah" data-ayah="154">
+    <div class="ayah-row">
+      <div class="ayah-num">154</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 154 here]</div>
+        <div class="translit">Wa-ith 'aṣabbakumu al-jarḥu fi l-anfusikum...</div>
+        <div class="translation">And when a wound struck you, and you were struck with fear and grief, and you thought that the affair belonged entirely to you, but then Allah brought about peace by His mercy; indeed, He is Ever Knowing, Wise.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="154"
+        onclick="toggleBookmark(event,154,'[Arabic ayah 154]','And when a wound struck you...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 155 -->
+  <article id="ayah-155" class="ayah" data-ayah="155">
+    <div class="ayah-row">
+      <div class="ayah-num">155</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 155 here]</div>
+        <div class="translit">Wa-laysa al-baṭalatu an talqā bidāʿi min ajli l-ibtigha-i rizqin wa-ydrabū fi sabīli llāhi...</div>
+        <div class="translation">And do not consider those who were killed in the way of Allah as dead. Rather, they are alive with their Lord, receiving provision — joyful over what Allah has granted them, and rejoicing for the sake of those left behind who have not yet joined them.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="155"
+        onclick="toggleBookmark(event,155,'[Arabic ayah 155]','And do not consider those who were killed...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 156 -->
+  <article id="ayah-156" class="ayah" data-ayah="156">
+    <div class="ayah-row">
+      <div class="ayah-num">156</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 156 here]</div>
+        <div class="translit">Bal al-ḥayātu ʿinda rabbihim rizaq...</div>
+        <div class="translation">They are alive, receiving sustenance from their Lord. And those left behind will suffer no fear nor grief for them, and they will be rejoicing with glad tidings of mercy from Allah.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="156"
+        onclick="toggleBookmark(event,156,'[Arabic ayah 156]','They are alive, receiving sustenance...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 157 -->
+  <article id="ayah-157" class="ayah" data-ayah="157">
+    <div class="ayah-row">
+      <div class="ayah-num">157</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 157 here]</div>
+        <div class="translit">Wa-man yatawalla yawm-idhin qawman bayna aydīhim wa-dullahum fali-l-nār...</div>
+        <div class="translation">As for those who turn away from the path on that Day, and whose faces are darkened — they will be in the Fire, abiding therein forever. And what a terrible destination.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="157"
+        onclick="toggleBookmark(event,157,'[Arabic ayah 157]','As for those who turn away...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 158 -->
+  <article id="ayah-158" class="ayah" data-ayah="158">
+    <div class="ayah-row">
+      <div class="ayah-num">158</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 158 here]</div>
+        <div class="translit">Inna al-mu'taqīna anna ḥumarum baʿda mawtihim wa-lākinna alladhīna āmānū...</div>
+        <div class="translation">Whoever turns back from his religion and dies in disbelief — their deeds are in vain in this world and the next. For them is the Fire; they will have no helpers.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="158"
+        onclick="toggleBookmark(event,158,'[Arabic ayah 158]','Whoever turns back from his religion...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 159 -->
+  <article id="ayah-159" class="ayah" data-ayah="159">
+    <div class="ayah-row">
+      <div class="ayah-num">159</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 159 here]</div>
+        <div class="translit">Faman yaghfiru wa-yuslih fa-anshauruhu bi-al-amr...</div>
+        <div class="translation">And by the Mercy of Allah, you were gentle with them. If you had been harsh and stern, they would have dispersed. So forgive them and ask forgiveness for them, and consult them in the matter. Then when you have decided, put your trust in Allah — indeed, Allah loves those who trust (in Him).</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="159"
+        onclick="toggleBookmark(event,159,'[Arabic ayah 159]','And by the Mercy of Allah, you were gentle with them...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- Ayah 160 -->
+  <article id="ayah-160" class="ayah" data-ayah="160">
+    <div class="ayah-row">
+      <div class="ayah-num">160</div>
+      <div class="ayah-text">
+        <div class="arabic">[Place Arabic ayah 160 here]</div>
+        <div class="translit">Inna ja'a kum rasūlun min anfusikum ʿazīzun ʿalayhi ma ʿanittum al-mu'minūna...</div>
+        <div class="translation">If Allah brings you a messenger who recites to you His verses and purifies you and teaches you the Book and wisdom, you would indeed find him strict in attitude toward the disbelievers and merciful amongst themselves; that is how Allah describes those who believe.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="160"
+        onclick="toggleBookmark(event,160,'[Arabic ayah 160]','If Allah brings you a messenger...')">Bookmark</button>
+    </div>
+  </article>
+<<!-- Surah Al-'Imran — Ayahs 141–160 (structure matches your screenshot) -->
+<section id="surah-imran-141-160">
+  <!-- AYAH 141 -->
+  <article id="ayah-141" class="ayah" data-ayah="141">
+    <div class="ayah-row">
+      <div class="ayah-num">141</div>
+      <div class="ayah-text">
+        <div class="arabic">وَلِيُمَحِّصَ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ وَيَمْحَقَ ٱلْكَـٰفِرِينَ ١٤١</div>
+        <div class="translit">Wa liyumahhiṣa Allāhu alladhīna āmanū wa yamḥaqa al-kāfirīn.</div>
+        <div class="translation">And (this was) so that Allah may make the believers prove themselves and destroy the disbelievers.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="141" onclick="toggleBookmark(event,141,'وَلِيُمَحِّصَ ٱللَّهُ ...','And (this was) so that Allah may make the believers...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 142 -->
+  <article id="ayah-142" class="ayah" data-ayah="142">
+    <div class="ayah-row">
+      <div class="ayah-num">142</div>
+      <div class="ayah-text">
+        <div class="arabic">أَمْ حَسِبْتُمْ أَن تَدْخُلُوا الْجَنَّةَ وَلَمَّا يَعْلَمِ ٱللَّهُ ٱلَّذِينَ جَٰهَدُوا مِنكُمْ وَيَعْلَمَ الصَّابِرِينَ ١٤٢</div>
+        <div class="translit">Am ḥasibttum an tadkhulū al-jannata walammā yaʿlamillāhu alladhīna jāhadū minkum wa yaʿlama aṣ-ṣābirīn.</div>
+        <div class="translation">Do you think that you will enter Paradise while Allah has not yet made evident those of you who strive and those who are patient?</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="142" onclick="toggleBookmark(event,142,'أَمْ حَسِبْتُمْ ...','Do you think that you will enter Paradise...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 143 -->
+  <article id="ayah-143" class="ayah" data-ayah="143">
+    <div class="ayah-row">
+      <div class="ayah-num">143</div>
+      <div class="ayah-text">
+        <div class="arabic">وَمَا كَانَ مُحَمَّدٌ أَبَا أَحَدٍ مِن رِّجَالِكُمْ وَلَـٰكِن رَّسُولَ ٱللَّهِ وَخَاتَمَ ٱلنَّبِيِّينَ ۗ وَكَانَ ٱللَّهُ بِكُلِّ شَيْءٍ عَلِيمًا ١٤٣</div>
+        <div class="translit">Wamā kāna Muḥammadun abā aḥadin min rijālikum walākin rasūla Allāhi wa khātama an-nabiyyīn; wa kāna Allāhu bikulli shayin ʿalīm.</div>
+        <div class="translation">Muhammad is not the father of any of your men; he is the Messenger of Allah and the seal of the prophets. And Allah is Ever-Knowing of all things.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="143" onclick="toggleBookmark(event,143,'وَمَا كَانَ مُحَمَّدٌ ...','Muhammad is not the father of any of your men...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 144 -->
+  <article id="ayah-144" class="ayah" data-ayah="144">
+    <div class="ayah-row">
+      <div class="ayah-num">144</div>
+      <div class="ayah-text">
+        <div class="arabic">مَّا كَانَ مُحَمَّدٌ أَنْ يُؤْمِنَ لَكُمْ إِلَّا أَنْ يَقُولَ قَوْمٌ أَنْتُمْ أَعْلَمُوْنَ ۗ إِنَّ مُحَمَّدًا رَسُولُ ٱللَّهِ ۚ وَقَدْ جَاءَكُم مِّنْ أَنفُسِكُمْ ۖ مَثَلٌ ۗ ۖ ۗ ١٤٤</div>
+        <div class="translit">[transliteration placeholder for 144]</div>
+        <div class="translation">Muhammad is only a Messenger; many were the messengers who passed away before him. If he were to die or be killed, would you then turn back on your heels? Whoever turns back will not harm Allah in the least; and Allah will reward the grateful.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="144" onclick="toggleBookmark(event,144,'[Arabic ayah 144]','Muhammad is only a Messenger...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 145 -->
+  <article id="ayah-145" class="ayah" data-ayah="145">
+    <div class="ayah-row">
+      <div class="ayah-num">145</div>
+      <div class="ayah-text">
+        <div class="arabic">وَمَنْ يُرِدْ ثَوَابَ الدُّنْيَا فَنَحْنُ لَهُ فِيهَا وَمَنْ يُرِدْ ثَوَابَ الْآخِرَةِ فَنَحْنُ لَهُ فِيهَا ۗ وَسَنَجْزِيهِمْ أَجْمَعِينَ ١٤٥</div>
+        <div class="translit">Wa man yurid thawāba ad-dunyā fa naḥnu lahu fīhā wa man yurid thawāba al-ākhira fa naḥnu lahu fīhā wa sanajzīhim ajmaʿīn.</div>
+        <div class="translation">Whoever desires the reward of this world, We will give him thereof; and whoever desires the reward of the Hereafter, We will give him thereof. And We will reward the grateful.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="145" onclick="toggleBookmark(event,145,'[Arabic ayah 145]','Whoever desires the reward of this world...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 146 -->
+  <article id="ayah-146" class="ayah" data-ayah="146">
+    <div class="ayah-row">
+      <div class="ayah-num">146</div>
+      <div class="ayah-text">
+        <div class="arabic">وَإِنْ تُطِعْهُمْ فَإِنَّكَ لَمُهْتَدٍ ۖ وَإِنْ تَتَوَلَّ فَإِنَّكَ عَلَى سَبِيلٍ مُسْتَقِيمٍ ١٤٦</div>
+        <div class="translit">Wa in tuṭiʿhum fa innaka lamuhtadin wa in tatawallā fa innaka ʿalā sabīlin mustaqīm.</div>
+        <div class="translation">If you obey them you will indeed be led to misguidance; but if you turn away, then you will be on a straight path.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="146" onclick="toggleBookmark(event,146,'[Arabic ayah 146]','If you obey them you will indeed be led...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 147 -->
+  <article id="ayah-147" class="ayah" data-ayah="147">
+    <div class="ayah-row">
+      <div class="ayah-num">147</div>
+      <div class="ayah-text">
+        <div class="arabic">فَمَنْ عَمِلَ سَيِّئَةً فَلَا يُجْزَىٰٓ إِلَّا مِثْلَهَا ۖ وَمَنْ عَمِلَ صَـٰلِحًا فَلَهُۥٓ أَجْرٌۭ حَسَنٌۭ ١٤٧</div>
+        <div class="translit">Faman ʿamila sayyi'atan fala yujzā illā mithlaha wa man ʿamila ṣāliḥan falahu ajrun ḥasan.</div>
+        <div class="translation">Whoever does an evil will be recompensed only with its like; and whoever does good — then for him is a good reward.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="147" onclick="toggleBookmark(event,147,'[Arabic ayah 147]','Whoever does an evil will be recompensed...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 148 -->
+  <article id="ayah-148" class="ayah" data-ayah="148">
+    <div class="ayah-row">
+      <div class="ayah-num">148</div>
+      <div class="ayah-text">
+        <div class="arabic">لِلَّهِ مَا فِي السَّمَـٰوَاتِ وَمَا فِي الْأَرْضِ ۗ وَكَانَ ٱللَّهُ هُوَ الْغَنِيُّ الْحَمِيدُ ١٤٨</div>
+        <div class="translit">Lillāhi mā fī as-samāwāti wa mā fī al-arḍ; wa kāna Allāhu huwa al-ghanīyu al-ḥamīd.</div>
+        <div class="translation">To Allah belongs whatever is in the heavens and whatever is on earth; and Allah is the Self-Sufficient, Most Praiseworthy.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="148" onclick="toggleBookmark(event,148,'[Arabic ayah 148]','To Allah belongs whatever is in the heavens...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 149 -->
+  <article id="ayah-149" class="ayah" data-ayah="149">
+    <div class="ayah-row">
+      <div class="ayah-num">149</div>
+      <div class="ayah-text">
+        <div class="arabic">فَإِنْ تَوَلَّوْا فَقُلْ حَسْبِيَ ٱللَّهُ ۖ لَآ إِلَـٰهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ ۖ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ ١٤٩</div>
+        <div class="translit">Fa in tawallaw fa qul ḥasbīya Allāh; lā ilāha illā huwa ʿalayhi tawakkaltu wa huwa rabbu al-ʿarshi al-ʿaẓīm.</div>
+        <div class="translation">But if they turn away, say: "Allah is sufficient for me; there is no god but He. On Him I rely, and He is the Lord of the Great Throne."</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="149" onclick="toggleBookmark(event,149,'[Arabic ayah 149]','But if they turn away, say: \"Allah is sufficient for me...\"')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 150 -->
+  <article id="ayah-150" class="ayah" data-ayah="150">
+    <div class="ayah-row">
+      <div class="ayah-num">150</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّمَا يُرِيدُ ٱللَّهُ لِيُذْهِبَ عَنكُمُ الرِّجْزَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيرًا ١٥٠</div>
+        <div class="translit">Innamā yurīdu Allāhu liyudhhiba ʿankumu ar-rijza ahla al-bayti wa yuṭahhirakum taṭhīran.</div>
+        <div class="translation">Indeed, Allah desires to remove impurity from you, O people of the household, and to purify you a great purification.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="150" onclick="toggleBookmark(event,150,'[Arabic ayah 150]','Indeed, Allah desires to remove impurity...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 151 -->
+  <article id="ayah-151" class="ayah" data-ayah="151">
+    <div class="ayah-row">
+      <div class="ayah-num">151</div>
+      <div class="ayah-text">
+        <div class="arabic">قُلْ لَن يُصِيبَنَآ إِلَّا مَا كَتَبَ ٱللَّهُ لَنَا ۚ هُوَ مَوْلَىٰنَا ۖ وَعَلَى ٱللَّهِ فَلْيَتَوَكَّلِ الْمُؤْمِنُونَ ١٥١</div>
+        <div class="translit">Qul lan yuṣībanā illā mā kataba Allāhu lanā; huwa mawlānā wa ʿalā Allāhi fal yattawakkal al-muʾminūn.</div>
+        <div class="translation">Say: Nothing will ever befall us except what Allah has decreed for us. He is our Protector, and on Allah let the believers put their trust.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="151" onclick="toggleBookmark(event,151,'[Arabic ayah 151]','Say: Nothing will ever befall us except...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 152 -->
+  <article id="ayah-152" class="ayah" data-ayah="152">
+    <div class="ayah-row">
+      <div class="ayah-num">152</div>
+      <div class="ayah-text">
+        <div class="arabic">قَالُوا۟ رَبَّنَآ إِنَّنَآ أَطَعْنَآ أَنفُسَنَا وَإِنْ أَخْطَأْنَا فَٱغْفِرْ لَنَا ۖ وَمَا تِلْكَ الْأَمْوَٰتُ الَّتِي نَحْنُ فِيهَا ۚ أَفَنُحْيِىۤا بَعْدَ مَا قَتَلْتُمُوهُمْ ۚ ١٥٢</div>
+        <div class="translit">Qālū rabbana innanā aṭaʿnā anfusanā wa in akhṭaʾnā fa-ighfir lanā; wa mā tilka al-amwātu allātī naḥnu fīhā afanuḥyī baʿda mā qatalttumūhum?</div>
+        <div class="translation">They said: "Our Lord, we have indeed obeyed ourselves; if we have erred, forgive us." (Then Allah restored them by His mercy.)</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="152" onclick="toggleBookmark(event,152,'[Arabic ayah 152]','They said: \"Our Lord, we have indeed obeyed ourselves...\"')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 153 -->
+  <article id="ayah-153" class="ayah" data-ayah="153">
+    <div class="ayah-row">
+      <div class="ayah-num">153</div>
+      <div class="ayah-text">
+        <div class="arabic">وَٱذْكُرُوا۟ نِعْمَةَ ٱللَّهِ عَلَيْكُمْ إِذْ كُنتُمْ أَعْدَآءَ فَأَلَّفَ بَيْنَ قُلُوبِكُمْ فَٱلْآنَ أَلْفَتُمۡ بَيْنَهُمْ بِذَنْبِهِمْ ۚ وَكَانَ بِكُمْ رَحِيمًا ١٥٣</div>
+        <div class="translit">Wa uḏkuru niʿmata Allāhi ʿalaykum idh kuntum aʿdā'an fa allafa bayna qulūbikum fa al-ān alfatum baynahum bidhambihim; wa kāna bikum raḥīman.</div>
+        <div class="translation">And remember Allah's favor upon you when you were enemies and He brought your hearts together, and by His mercy you became brothers.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="153" onclick="toggleBookmark(event,153,'[Arabic ayah 153]','And remember Allah\\'s favor upon you...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 154 -->
+  <article id="ayah-154" class="ayah" data-ayah="154">
+    <div class="ayah-row">
+      <div class="ayah-num">154</div>
+      <div class="ayah-text">
+        <div class="arabic">وَإِذْ قَتَلْتُمْ نَفْسًا فَٱدَّعَوْا۟ وَٱللَّهُ أَن يَكُونَ ذَلِكَ لَوْلَآ أَن يَشَآءَ ٱللَّهُ لَمَا قَتَلُوهُمْ ۚ فَٱعْلَمُوا۟ أَنَّمَا هُوَ فِتْنَةٌۭ ۖ وَأَنَّ ٱللَّهَ مَبْتَلِيكُمْ بِهِۦ ۚ وَإِلَيْهِ تُحْشَرُونَ ١٥٤</div>
+        <div class="translit">Wa idh qataltum nafsan fa addaʿaw wa Allāhu an yakūna dhālika lawlā an yashāa Allāhu lamā qatalūhum fa-iʿlamū annamā huwa fitnatun wa anna Allāha mabtali-kum bihi wa ilayhi tuḥsharūn.</div>
+        <div class="translation">And when you were struck with a calamity and you assumed it was because of others' wrongdoing — know that it is but a trial, and that Allah is testing you by it; to Him you shall be gathered.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="154" onclick="toggleBookmark(event,154,'[Arabic ayah 154]','And when you were struck with a calamity...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 155 -->
+  <article id="ayah-155" class="ayah" data-ayah="155">
+    <div class="ayah-row">
+      <div class="ayah-num">155</div>
+      <div class="ayah-text">
+        <div class="arabic">إِنَّ ٱللَّهَ مَعَ الصَّـٰبِرِينَ ١٥٥</div>
+        <div class="translit">Inna Allāha maʿa aṣ-ṣābirīn.</div>
+        <div class="translation">Indeed, Allah is with the patient.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="155" onclick="toggleBookmark(event,155,'إِنَّ ٱللَّهَ مَعَ الصَّـٰبِرِينَ','Indeed, Allah is with the patient.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 156 -->
+  <article id="ayah-156" class="ayah" data-ayah="156">
+    <div class="ayah-row">
+      <div class="ayah-num">156</div>
+      <div class="ayah-text">
+        <div class="arabic">مَا أَصَابَكُمْ يَوْمَ ٱلْقَرْبِ فَمَا هُوَ إِلَّآ أَجَلٌۭ مَّسْمُومٌ ۚ وَاللَّهُ خَبِيرٌۭ بِمَا تَعْمَلُونَ ١٥٦</div>
+        <div class="translit">Mā aṣābakum yawma al-qurbi famā huwa illā ajalun masmūm; wa Allāhu khabīrun bimā taʿmalūn.</div>
+        <div class="translation">What befell you on the day of encounter was nothing but a predetermined time; and Allah is Fully Aware of what you do.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="156" onclick="toggleBookmark(event,156,'[Arabic ayah 156]','What befell you on the day of encounter...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 157 -->
+  <article id="ayah-157" class="ayah" data-ayah="157">
+    <div class="ayah-row">
+      <div class="ayah-num">157</div>
+      <div class="ayah-text">
+        <div class="arabic">وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا۟ فِى سَبِيلِ اللَّهِ أَمْوَاتًا ۚ بَلْ أَحْيَآءٌ عِندَ رَبِّهِمْ يُرْزَقُونَ ١٥٧</div>
+        <div class="translit">Wa lā taḥsabanna alladhīna qutilū fī sabīli Allāhi amwātan bal aḥyā'un ʿinda rabbihim yurzaqūn.</div>
+        <div class="translation">Do not think of those who were killed in Allah's cause as dead — they are alive with their Lord, receiving sustenance.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="157" onclick="toggleBookmark(event,157,'وَلَا تَحْسَبَنَّ ...','Do not think of those who were killed...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 158 -->
+  <article id="ayah-158" class="ayah" data-ayah="158">
+    <div class="ayah-row">
+      <div class="ayah-num">158</div>
+      <div class="ayah-text">
+        <div class="arabic">وَيُسْتَخْرِجُونَ مِنْ أَسْقَامِهِمْ أَسْقَامٌ ۚ وَكَانَ اللَّهُ بِكُلِّ شَيْءٍ عَلِيمًا ١٥٨</div>
+        <div class="translit">Wa yustakhrijūna min asqāmi-him asqāmun; wa kāna Allāhu bikulli shayin ʿalīma.</div>
+        <div class="translation">(They are) taken out of their sicknesses and rewarded — and Allah is Knowing of all things.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="158" onclick="toggleBookmark(event,158,'[Arabic ayah 158]','(They are) taken out of their sicknesses...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 159 -->
+  <article id="ayah-159" class="ayah" data-ayah="159">
+    <div class="ayah-row">
+      <div class="ayah-num">159</div>
+      <div class="ayah-text">
+        <div class="arabic">فَمَن يَفْعَلْ مِثْلَ ذَٰلِكَ فَقَدْ ظَلَمَ نَفْسَهُۥ ۚ وَمَا أَنَا بِوَكِيلٍۢ عَلَيْكُمْ ١٥٩</div>
+        <div class="translit">Fa man yafʿal mithla dhālika faqad ẓalama nafsahu wa mā anā biwakīlin ʿalaykum.</div>
+        <div class="translation">Whoever does such a thing has wronged himself — and I am not a trustee over you.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="159" onclick="toggleBookmark(event,159,'فَمَن يَفْعَلْ مِثْلَ ...','Whoever does such a thing has wronged himself...')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 160 -->
+  <article id="ayah-160" class="ayah" data-ayah="160">
+    <div class="ayah-row">
+      <div class="ayah-num">160</div>
+      <div class="ayah-text">
+        <div class="arabic">إِن يَنصُرْكُمُ ٱللَّهُ فَلَا غَالِبَ لَكُمْ ۖ وَإِن يَخْذُلْكُمْ فَمَن ذَا ٱلَّذِي يَنصُرُكُم مِنۢ بَعْدِهِۦ ۗ وَعَلَى ٱللَّهِ فَلْيَتَوَكَّلِ ٱلْمُؤْمِنُونَ ١٦٠</div>
+        <div class="translit">In yanṣurkumullāhu falā ghāliba lakum wa in yakhdhulkum faman dhā alladhī yanṣurukum min baʿdihi wa ʿalā Allāhi falyatawakkalil mu'minūn.</div>
+        <div class="translation">If Allah helps you, none can overcome you; but if He forsakes you, who then can help you? So in Allah let the believers put their trust.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="160" onclick="toggleBookmark(event,160,'إِن يَنصُرْكُمُ ٱللَّهُ ...','If Allah helps you, none can overcome you...')">Bookmark</button>
+    </div>
+  </article>
+  <!-- AYAH 161 -->
+<article id="ayah-161" class="ayah" data-ayah="161">
+    <div class="ayah-row">
+        <div class="ayah-num">161</div>
+        <div class="ayah-text">
+            <div class="arabic">وَمَا كَانَ لِنَبِيٍّ أَنْ يَغُلَّ ۚ وَمَنْ يَغْلُلْ يَأْتِ بِمَا غَلَّ يَوْمَ الْقِيَامَةِ ۚ ثُمَّ تُوَفَّىٰ كُلُّ نَفْسٍ مَا كَسَبَتْ وَهُمْ لَا يُظْلَمُونَ</div>
+            <div class="translit">Wa mā kāna linabiyyin an yaghulla; wa man yaghlul ya'ti bimā ghalla yawmal-qiyāmah, thumma tuwaffā kullu nafsin mā kasabat wa hum lā yuz'lamūn.</div>
+            <div class="translation">It is not for any prophet to act dishonestly. Whoever acts dishonestly will bring what he dishonestly took on the Day of Resurrection. Then every soul will be paid in full what it has earned, and they will not be wronged.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="161"
+            onclick="toggleBookmark(event,161,'وَمَا كَانَ لِنَبِيٍّ...','It is not for any prophet to act dishonestly...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 162 -->
+<article id="ayah-162" class="ayah" data-ayah="162">
+    <div class="ayah-row">
+        <div class="ayah-num">162</div>
+        <div class="ayah-text">
+            <div class="arabic">أَفَمَنِ اتَّبَعَ رِضْوَانَ اللَّهِ كَمَنْ بَاءَ بِسَخَطٍ مِنَ اللَّهِ وَمَأْوَاهُ جَهَنَّمُ ۚ وَبِئْسَ الْمَصِيرُ</div>
+            <div class="translit">Afa mani ittaba‘a ridwānallāhi kaman bā'a bisakhaṭim minallāh wa ma'wāhu jahannam; wa bi’sal-maṣīr.</div>
+            <div class="translation">Is one who follows the pleasure of Allah like one who earns the anger of Allah? His refuge is Hell, an evil destination.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="162"
+            onclick="toggleBookmark(event,162,'أَفَمَنِ اتَّبَعَ...','Is one who follows the pleasure of Allah...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 163 -->
+<article id="ayah-163" class="ayah" data-ayah="163">
+    <div class="ayah-row">
+        <div class="ayah-num">163</div>
+        <div class="ayah-text">
+            <div class="arabic">هُمْ دَرَجَاتٌ عِنْدَ اللَّهِ ۗ وَاللَّهُ بَصِيرٌ بِمَا يَعْمَلُونَ</div>
+            <div class="translit">Hum darajātun ‘indallāh; wallāhu baṣīrun bimā ya‘malūn.</div>
+            <div class="translation">They are in varying degrees before Allah, and Allah sees what they do.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="163"
+            onclick="toggleBookmark(event,163,'هُمْ دَرَجَاتٌ...','They are in varying degrees before Allah...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 164 -->
+<article id="ayah-164" class="ayah" data-ayah="164">
+    <div class="ayah-row">
+        <div class="ayah-num">164</div>
+        <div class="ayah-text">
+            <div class="arabic">لَقَدْ مَنَّ اللَّهُ عَلَى الْمُؤْمِنِينَ إِذْ بَعَثَ فِيهِمْ رَسُولًا مِنْ أَنْفُسِهِمْ ...</div>
+            <div class="translit">Laqad manna’llāhu ‘alal-mu’minīna idh ba‘atha fīhim rasūlan min anfusihim...</div>
+            <div class="translation">Allah has surely blessed the believers when He sent among them a messenger of their own...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="164"
+            onclick="toggleBookmark(event,164,'لَقَدْ مَنَّ اللَّهُ...','Allah has surely blessed the believers...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 165 -->
+<article id="ayah-165" class="ayah" data-ayah="165">
+    <div class="ayah-row">
+        <div class="ayah-num">165</div>
+        <div class="ayah-text">
+            <div class="arabic">أَوَلَمَّا أَصَابَتْكُمْ مُصِيبَةٌ قَدْ أَصَبْتُمْ مِثْلَيْهَا ...</div>
+            <div class="translit">Awalammā aṣābatkum muṣībatun qad aṣabtum mith’laihā...</div>
+            <div class="translation">And was it so, when a disaster befell you though you had struck the twice of it...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="165"
+            onclick="toggleBookmark(event,165,'أَوَلَمَّا أَصَابَتْكُمْ...','And was it so, when a disaster befell you...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 166 -->
+<article id="ayah-166" class="ayah" data-ayah="166">
+    <div class="ayah-row">
+        <div class="ayah-num">166</div>
+        <div class="ayah-text">
+            <div class="arabic">وَمَا أَصَابَكُمْ يَوْمَ الْتَقَى الْجَمْعَانِ فَبِإِذْنِ اللَّهِ ...</div>
+            <div class="translit">Wa mā aṣābakum yawmal-taqal-jam‘āni fabi’idhnillāh...</div>
+            <div class="translation">What befell you the day the two hosts met was by Allah’s permission...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="166"
+            onclick="toggleBookmark(event,166,'وَمَا أَصَابَكُمْ...','What befell you the day the two hosts met...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 167 -->
+<article id="ayah-167" class="ayah" data-ayah="167">
+    <div class="ayah-row">
+        <div class="ayah-num">167</div>
+        <div class="ayah-text">
+            <div class="arabic">وَلِيَعْلَمَ الَّذِينَ نَافَقُوا ...</div>
+            <div class="translit">Wa liya‘lama alladhīna nāfaqū...</div>
+            <div class="translation">And that He might know the hypocrites...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="167"
+            onclick="toggleBookmark(event,167,'وَلِيَعْلَمَ الَّذِينَ...','And that He might know the hypocrites...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 168 -->
+<article id="ayah-168" class="ayah" data-ayah="168">
+    <div class="ayah-row">
+        <div class="ayah-num">168</div>
+        <div class="ayah-text">
+            <div class="arabic">الَّذِينَ قَالُوا لِإِخْوَانِهِمْ وَقَعَدُوا ...</div>
+            <div class="translit">Alladhīna qālū li’ikhwānihim wa qa‘adū...</div>
+            <div class="translation">Those who said of their brethren while they themselves sat at home...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="168"
+            onclick="toggleBookmark(event,168,'الَّذِينَ قَالُوا...','Those who said of their brethren...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 169 -->
+<article id="ayah-169" class="ayah" data-ayah="169">
+    <div class="ayah-row">
+        <div class="ayah-num">169</div>
+        <div class="ayah-text">
+            <div class="arabic">وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا ...</div>
+            <div class="translit">Wa lā taḥsabanna alladhīna qutilū fī sabīlillāhi amwātā...</div>
+            <div class="translation">Think not of those who are slain in the way of Allah as dead...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="169"
+            onclick="toggleBookmark(event,169,'وَلَا تَحْسَبَنَّ...','Think not of those slain in the way of Allah...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 170 -->
+<article id="ayah-170" class="ayah" data-ayah="170">
+    <div class="ayah-row">
+        <div class="ayah-num">170</div>
+        <div class="ayah-text">
+            <div class="arabic">فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِنْ فَضْلِهِ ...</div>
+            <div class="translit">Fariḥīna bimā ātāhumullāhu min faḍlihī...</div>
+            <div class="translation">Rejoicing in what Allah has bestowed upon them of His bounty...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="170"
+            onclick="toggleBookmark(event,170,'فَرِحِينَ بِمَا...','Rejoicing in what Allah has bestowed...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 171 -->
+<article id="ayah-171" class="ayah" data-ayah="171">
+    <div class="ayah-row">
+        <div class="ayah-num">171</div>
+        <div class="ayah-text">
+            <div class="arabic">يَسْتَبْشِرُونَ بِنِعْمَةٍ مِنَ اللَّهِ وَفَضْلٍ ...</div>
+            <div class="translit">Yastabshirūna bini‘matin minallāhi wa faḍlin...</div>
+            <div class="translation">They rejoice in grace from Allah and bounty, and that Allah wastes not the reward of believers.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="171"
+            onclick="toggleBookmark(event,171,'يَسْتَبْشِرُونَ...','They rejoice in grace from Allah and bounty...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 172 -->
+<article id="ayah-172" class="ayah" data-ayah="172">
+    <div class="ayah-row">
+        <div class="ayah-num">172</div>
+        <div class="ayah-text">
+            <div class="arabic">الَّذِينَ اسْتَجَابُوا لِلَّهِ وَالرَّسُولِ ...</div>
+            <div class="translit">Alladhīna istajābū lillāhi wal-rasūli...</div>
+            <div class="translation">Those who responded to Allah and the Messenger after the hurt had befallen them...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="172"
+            onclick="toggleBookmark(event,172,'الَّذِينَ اسْتَجَابُوا...','Those who responded to Allah and the Messenger...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 173 -->
+<article id="ayah-173" class="ayah" data-ayah="173">
+    <div class="ayah-row">
+        <div class="ayah-num">173</div>
+        <div class="ayah-text">
+            <div class="arabic">الَّذِينَ قَالَ لَهُمُ النَّاسُ إِنَّ النَّاسَ قَدْ جَمَعُوا لَكُمْ ...</div>
+            <div class="translit">Alladhīna qāla lahumun-nāsu innan-nāsa qad jama‘ū lakum...</div>
+            <div class="translation">Those unto whom men said: The people have gathered against you, therefore fear them...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="173"
+            onclick="toggleBookmark(event,173,'الَّذِينَ قَالَ...','Those unto whom men said...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 174 -->
+<article id="ayah-174" class="ayah" data-ayah="174">
+    <div class="ayah-row">
+        <div class="ayah-num">174</div>
+        <div class="ayah-text">
+            <div class="arabic">فَانْقَلَبُوا بِنِعْمَةٍ مِنَ اللَّهِ وَفَضْلٍ ...</div>
+            <div class="translit">Fanqalabū bini‘matin minallāhi wa faḍlin...</div>
+            <div class="translation">So they returned with grace and bounty from Allah. No harm touched them...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="174"
+            onclick="toggleBookmark(event,174,'فَانْقَلَبُوا...','So they returned with grace and bounty...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 175 -->
+<article id="ayah-175" class="ayah" data-ayah="175">
+    <div class="ayah-row">
+        <div class="ayah-num">175</div>
+        <div class="ayah-text">
+            <div class="arabic">إِنَّمَا ذَلِكُمُ الشَّيْطَانُ يُخَوِّفُ أَوْلِيَاءَهُ ...</div>
+            <div class="translit">Innamā dhālikumush-shayṭānu yukhawwifu awliyā'ahū...</div>
+            <div class="translation">It is only Satan who frightens his allies, so fear them not, but fear Me, if you are believers.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="175"
+            onclick="toggleBookmark(event,175,'إِنَّمَا ذَلِكُمُ...','It is only Satan who frightens his allies...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 176 -->
+<article id="ayah-176" class="ayah" data-ayah="176">
+    <div class="ayah-row">
+        <div class="ayah-num">176</div>
+        <div class="ayah-text">
+            <div class="arabic">وَلَا يَحْزُنْكَ الَّذِينَ يُسَارِعُونَ فِي الْكُفْرِ ...</div>
+            <div class="translit">Wa lā yaḥzunka alladhīna yusāri‘ūna fil-kufr...</div>
+            <div class="translation">Let not those grieve you who rush into disbelief...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="176"
+            onclick="toggleBookmark(event,176,'وَلَا يَحْزُنْكَ...','Let not those grieve you who rush into disbelief...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 177 -->
+<article id="ayah-177" class="ayah" data-ayah="177">
+    <div class="ayah-row">
+        <div class="ayah-num">177</div>
+        <div class="ayah-text">
+            <div class="arabic">إِنَّ الَّذِينَ اشْتَرَوُا الْكُفْرَ بِالْإِيمَانِ ...</div>
+            <div class="translit">Inna alladhīna ishtarawul-kufra bil-īmān...</div>
+            <div class="translation">Those who purchase disbelief at the price of faith harm Allah not at all...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="177"
+            onclick="toggleBookmark(event,177,'إِنَّ الَّذِينَ...','Those who purchase disbelief at the price of faith...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 178 -->
+<article id="ayah-178" class="ayah" data-ayah="178">
+    <div class="ayah-row">
+        <div class="ayah-num">178</div>
+        <div class="ayah-text">
+            <div class="arabic">وَلَا يَحْسَبَنَّ الَّذِينَ كَفَرُوا أَنَّمَا نُمْلِي لَهُمْ ...</div>
+            <div class="translit">Wa lā yaḥsabanna alladhīna kafarū annamā numlī lahum...</div>
+            <div class="translation">And let not those who disbelieve think that Our granting them respite is good for them...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="178"
+            onclick="toggleBookmark(event,178,'وَلَا يَحْسَبَنَّ...','Let not those who disbelieve think Our respite is good...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 179 -->
+<article id="ayah-179" class="ayah" data-ayah="179">
+    <div class="ayah-row">
+        <div class="ayah-num">179</div>
+        <div class="ayah-text">
+            <div class="arabic">مَا كَانَ اللَّهُ لِيَذَرَ الْمُؤْمِنِينَ عَلَىٰ مَا أَنْتُمْ عَلَيْهِ ...</div>
+            <div class="translit">Mā kānallāhu liyadharal-mu’minīna ‘alā mā antum ‘alayh...</div>
+            <div class="translation">Allah is not about to leave the believers in the state you are in...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="179"
+            onclick="toggleBookmark(event,179,'مَا كَانَ اللَّهُ...','Allah is not about to leave the believers...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+
+<!-- AYAH 180 -->
+<article id="ayah-180" class="ayah" data-ayah="180">
+    <div class="ayah-row">
+        <div class="ayah-num">180</div>
+        <div class="ayah-text">
+            <div class="arabic">وَلَا يَحْسَبَنَّ الَّذِينَ يَبْخَلُونَ بِمَا آتَاهُمُ اللَّهُ مِنْ فَضْلِهِ ...</div>
+            <div class="translit">Wa lā yaḥsabanna alladhīna yabkhalūna bimā ātāhumullāhu min faḍlihī...</div>
+            <div class="translation">And let not those who hoard what Allah has given them think it is good for them...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="180"
+            onclick="toggleBookmark(event,180,'وَلَا يَحْسَبَنَّ الَّذِينَ...','Let not those who hoard what Allah has given think it is good...')">
+            Bookmark
+        </button>
+    </div>
+</article>
+<!-- AYAH 181 -->
+<article id="ayah-181" class="ayah" data-ayah="181">
+    <div class="ayah-row">
+        <div class="ayah-num">181</div>
+        <div class="ayah-text">
+            <div class="arabic">لَقَدْ سَمِعَ اللَّهُ قَوْلَ الَّذِينَ قَالُوا إِنَّ اللَّهَ فَقِيرٌ وَنَحْنُ أَغْنِيَاءُ ۘ سَنَكْتُبُ مَا قَالُوا وَقَتْلَهُمُ الْأَنْبِيَاءَ بِغَيْرِ حَقٍّ ۚ وَنَقُولُ ذُوقُوا عَذَابَ الْحَرِيقِ</div>
+            <div class="translit">Laqad sami‘a Allahu qawla alladhīna qālū inna Allāha faqīrun wa naḥnu aghniyā’. Sanaktubu mā qālū wa qatlahumu l-anbiyā’a bighayri ḥaqq, wa naqūlu dhūqū ‘adhāba l-ḥarīq.</div>
+            <div class="translation">Allah has certainly heard the statement of those who said, “Indeed, Allah is poor while we are rich.” We will record what they said, and their killing of the prophets unjustly. And We will say, “Taste the punishment of the Burning Fire.”</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="181" onclick="toggleBookmark(event,181,'لَقَدْ سَمِعَ اللَّهُ...','Allah has certainly heard...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 182 -->
+<article id="ayah-182" class="ayah" data-ayah="182">
+    <div class="ayah-row">
+        <div class="ayah-num">182</div>
+        <div class="ayah-text">
+            <div class="arabic">ذَٰلِكَ بِمَا قَدَّمَتْ أَيْدِيكُمْ وَأَنَّ اللَّهَ لَيْسَ بِظَلَّامٍ لِلْعَبِيدِ</div>
+            <div class="translit">Dhālika bimā qaddamat aydīkum wa anna Allāha laysa biẓallāmin lil‘abīd.</div>
+            <div class="translation">That is because of what your hands have sent ahead, and Allah is not unjust to His servants.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="182" onclick="toggleBookmark(event,182,'ذَٰلِكَ بِمَا...','That is because of what your hands...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 183 -->
+<article id="ayah-183" class="ayah" data-ayah="183">
+    <div class="ayah-row">
+        <div class="ayah-num">183</div>
+        <div class="ayah-text">
+            <div class="arabic">الَّذِينَ قَالُوا إِنَّ اللَّهَ عَهِدَ إِلَيْنَا أَلَّا نُؤْمِنَ لِرَسُولٍ حَتَّى يَأْتِيَنَا بِقُرْبَانٍ تَأْكُلُهُ النَّارُ ۗ قُلْ قَدْ جَاءَكُمْ رُسُلٌ مِنْ قَبْلِي بِالْبَيِّنَاتِ وَبِالَّذِي قُلْتُمْ فَلِمَ قَتَلْتُمُوهُمْ إِنْ كُنْتُمْ صَادِقِينَ</div>
+            <div class="translit">Alladhīna qālū inna Allāha ‘ahida ilaynā allā nu’mina lirasūlin ḥattā ya’tiyanā biqurbānin ta’kuluhu n-nār...</div>
+            <div class="translation">Those who said, “Allah has commanded us not to believe in a messenger unless he brings us an offering consumed by fire.” Say, “Messengers before me came to you with proofs and with what you requested. Why then did you kill them, if you are truthful?”</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="183" onclick="toggleBookmark(event,183,'الَّذِينَ قَالُوا...','Those who said...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 184 -->
+<article id="ayah-184" class="ayah" data-ayah="184">
+    <div class="ayah-row">
+        <div class="ayah-num">184</div>
+        <div class="ayah-text">
+            <div class="arabic">فَإِنْ كَذَّبُوكَ فَقَدْ كُذِّبَ رُسُلٌ مِنْ قَبْلِكَ جَاءُوا بِالْبَيِّنَاتِ وَالزُّبُرِ وَالْكِتَابِ الْمُنِيرِ</div>
+            <div class="translit">Fa-in kadhdhabūka faqad kudhdhiba rusulun min qablika jā’ū bil-bayyināti wa z-zuburi wa l-kitābi l-munīr.</div>
+            <div class="translation">If they deny you, then messengers before you were also denied, who came with clear proofs, scriptures, and the enlightening Book.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="184" onclick="toggleBookmark(event,184,'فَإِنْ كَذَّبُوكَ...','If they deny you...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 185 -->
+<article id="ayah-185" class="ayah" data-ayah="185">
+    <div class="ayah-row">
+        <div class="ayah-num">185</div>
+        <div class="ayah-text">
+            <div class="arabic">كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ الْقِيَامَةِ...</div>
+            <div class="translit">Kullu nafsin dhā’iqatul-mawt, wa innamā tuwaffawna ujurakum yawma l-qiyāmah...</div>
+            <div class="translation">Every soul shall taste death. And you will only be given your full reward on the Day of Resurrection...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="185" onclick="toggleBookmark(event,185,'كُلُّ نَفْسٍ...','Every soul shall taste death...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 186 -->
+<article id="ayah-186" class="ayah" data-ayah="186">
+    <div class="ayah-row">
+        <div class="ayah-num">186</div>
+        <div class="ayah-text">
+            <div class="arabic">لَتُبْلَوُنَّ فِي أَمْوَالِكُمْ وَأَنْفُسِكُمْ...</div>
+            <div class="translit">Latublawunna fī amwālikum wa anfusikum...</div>
+            <div class="translation">You will certainly be tested in your possessions and yourselves...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="186" onclick="toggleBookmark(event,186,'لَتُبْلَوُنَّ...','You will certainly be tested...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 187 -->
+<article id="ayah-187" class="ayah" data-ayah="187">
+    <div class="ayah-row">
+        <div class="ayah-num">187</div>
+        <div class="ayah-text">
+            <div class="arabic">وَإِذْ أَخَذَ اللَّهُ مِيثَاقَ الَّذِينَ أُوتُوا الْكِتَابَ...</div>
+            <div class="translit">Wa idh akhadha Allahu mīthāqa alladhīna ūtū l-kitāba...</div>
+            <div class="translation">And when Allah took a covenant from those who were given the Scripture...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="187" onclick="toggleBookmark(event,187,'وَإِذْ أَخَذَ اللَّهُ...','And when Allah took a covenant...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 188 -->
+<article id="ayah-188" class="ayah" data-ayah="188">
+    <div class="ayah-row">
+        <div class="ayah-num">188</div>
+        <div class="ayah-text">
+            <div class="arabic">لَا تَحْسَبَنَّ الَّذِينَ يَفْرَحُونَ بِمَا أَتَوْا...</div>
+            <div class="translit">Lā taḥsabanna alladhīna yafraḥūna bimā ataw...</div>
+            <div class="translation">Do not think those who rejoice in what they have done...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="188" onclick="toggleBookmark(event,188,'لَا تَحْسَبَنَّ...','Do not think those who rejoice...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 189 -->
+<article id="ayah-189" class="ayah" data-ayah="189">
+    <div class="ayah-row">
+        <div class="ayah-num">189</div>
+        <div class="ayah-text">
+            <div class="arabic">وَلِلَّهِ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ ۚ وَاللَّهُ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+            <div class="translit">Wa lillāhi mulkus-samāwāti wa l-arḍ, wa Allāhu ‘alā kulli shay’in qadīr.</div>
+            <div class="translation">To Allah belongs the dominion of the heavens and the earth, and Allah is over all things competent.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="189" onclick="toggleBookmark(event,189,'وَلِلَّهِ مُلْكُ...','To Allah belongs the dominion...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 190 -->
+<article id="ayah-190" class="ayah" data-ayah="190">
+    <div class="ayah-row">
+        <div class="ayah-num">190</div>
+        <div class="ayah-text">
+            <div class="arabic">إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ...</div>
+            <div class="translit">Inna fī khalqi s-samāwāti wa l-arḍ...</div>
+            <div class="translation">Indeed, in the creation of the heavens and the earth...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="190" onclick="toggleBookmark(event,190,'إِنَّ فِي خَلْقِ...','Indeed, in the creation...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 191 -->
+<article id="ayah-191" class="ayah" data-ayah="191">
+    <div class="ayah-row">
+        <div class="ayah-num">191</div>
+        <div class="ayah-text">
+            <div class="arabic">الَّذِينَ يَذْكُرُونَ اللَّهَ قِيَامًا وَقُعُودًا...</div>
+            <div class="translit">Alladhīna yadhkurūna Allāha qiyāman wa qu‘ūdan...</div>
+            <div class="translation">Those who remember Allah while standing, sitting, and lying on their sides...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="191" onclick="toggleBookmark(event,191,'الَّذِينَ يَذْكُرُونَ...','Those who remember Allah...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 192 -->
+<article id="ayah-192" class="ayah" data-ayah="192">
+    <div class="ayah-row">
+        <div class="ayah-num">192</div>
+        <div class="ayah-text">
+            <div class="arabic">رَبَّنَا إِنَّكَ مَنْ تُدْخِلِ النَّارَ فَقَدْ أَخْزَيْتَهُ...</div>
+            <div class="translit">Rabbana innaka man tudkhili n-nāra faqad akhzaytahu...</div>
+            <div class="translation">Our Lord, indeed whoever You admit to the Fire, You have disgraced him...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="192" onclick="toggleBookmark(event,192,'رَبَّنَا إِنَّكَ...','Our Lord, indeed whoever You admit...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 193 -->
+<article id="ayah-193" class="ayah" data-ayah="193">
+    <div class="ayah-row">
+        <div class="ayah-num">193</div>
+        <div class="ayah-text">
+            <div class="arabic">رَبَّنَا إِنَّنَا سَمِعْنَا مُنَادِيًا يُنَادِي لِلْإِيمَانِ...</div>
+            <div class="translit">Rabbana innanā sami‘nā munādiyan yunādī lil-īmān...</div>
+            <div class="translation">Our Lord, indeed we have heard a caller calling to faith...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="193" onclick="toggleBookmark(event,193,'رَبَّنَا إِنَّنَا...','Our Lord, indeed we have heard...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 194 -->
+<article id="ayah-194" class="ayah" data-ayah="194">
+    <div class="ayah-row">
+        <div class="ayah-num">194</div>
+        <div class="ayah-text">
+            <div class="arabic">رَبَّنَا وَآتِنَا مَا وَعَدْتَنَا عَلَى رُسُلِكَ...</div>
+            <div class="translit">Rabbana wa ātinā mā wa‘adtanā ‘alā rusulik...</div>
+            <div class="translation">Our Lord, grant us what You promised us through Your messengers...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="194" onclick="toggleBookmark(event,194,'رَبَّنَا وَآتِنَا...','Our Lord, grant us what You promised...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 195 -->
+<article id="ayah-195" class="ayah" data-ayah="195">
+    <div class="ayah-row">
+        <div class="ayah-num">195</div>
+        <div class="ayah-text">
+            <div class="arabic">فَاسْتَجَابَ لَهُمْ رَبُّهُمْ أَنِّي لَا أُضِيعُ عَمَلَ عَامِلٍ مِنْكُمْ...</div>
+            <div class="translit">Fa-istajāba lahum rabbuhum annī lā uḍī‘u ‘amala ‘āmilin minkum...</div>
+            <div class="translation">So their Lord answered them, “I will never allow the deeds of any worker among you to be lost...”</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="195" onclick="toggleBookmark(event,195,'فَاسْتَجَابَ لَهُمْ...','So their Lord answered them...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 196 -->
+<article id="ayah-196" class="ayah" data-ayah="196">
+    <div class="ayah-row">
+        <div class="ayah-num">196</div>
+        <div class="ayah-text">
+            <div class="arabic">لَا يَغُرَّنَّكَ تَقَلُّبُ الَّذِينَ كَفَرُوا فِي الْبِلَادِ</div>
+            <div class="translit">Lā yaghurrannaka taqallubu alladhīna kafarū fī l-bilād.</div>
+            <div class="translation">Do not be deceived by the prosperity of the disbelievers throughout the land.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="196" onclick="toggleBookmark(event,196,'لَا يَغُرَّنَّكَ...','Do not be deceived...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 197 -->
+<article id="ayah-197" class="ayah" data-ayah="197">
+    <div class="ayah-row">
+        <div class="ayah-num">197</div>
+        <div class="ayah-text">
+            <div class="arabic">مَتَاعٌ قَلِيلٌ ثُمَّ مَأْوَاهُمْ جَهَنَّمُ ۚ وَبِئْسَ الْمِهَادُ</div>
+            <div class="translit">Matā‘un qalīlun thumma ma’wāhum jahannam, wa bi’sa l-mihād.</div>
+            <div class="translation">A brief enjoyment; then their final refuge is Hell, and wretched is the resting place.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="197" onclick="toggleBookmark(event,197,'مَتَاعٌ قَلِيلٌ...','A brief enjoyment...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 198 -->
+<article id="ayah-198" class="ayah" data-ayah="198">
+    <div class="ayah-row">
+        <div class="ayah-num">198</div>
+        <div class="ayah-text">
+            <div class="arabic">لَكِنِ الَّذِينَ اتَّقَوْا رَبَّهُمْ لَهُمْ جَنَّاتٌ...</div>
+            <div class="translit">Lākin alladhīna ttaqaw rabbahum lahum jannāt...</div>
+            <div class="translation">But those who fear their Lord will have gardens beneath which rivers flow...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="198" onclick="toggleBookmark(event,198,'لَكِنِ الَّذِينَ...','But those who fear their Lord...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 199 -->
+<article id="ayah-199" class="ayah" data-ayah="199">
+    <div class="ayah-row">
+        <div class="ayah-num">199</div>
+        <div class="ayah-text">
+            <div class="arabic">وَإِنَّ مِنْ أَهْلِ الْكِتَابِ لَمَنْ يُؤْمِنُ بِاللَّهِ...</div>
+            <div class="translit">Wa inna min ahli l-kitābi laman yu’minu billāh...</div>
+            <div class="translation">And indeed, among the People of the Book are those who believe in Allah...</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="199" onclick="toggleBookmark(event,199,'وَإِنَّ مِنْ أَهْلِ...','Among the People of the Book...')">Bookmark</button>
+    </div>
+</article>
+
+<!-- AYAH 200 -->
+<article id="ayah-200" class="ayah" data-ayah="200">
+    <div class="ayah-row">
+        <div class="ayah-num">200</div>
+        <div class="ayah-text">
+            <div class="arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا اصْبِرُوا وَصَابِرُوا...</div>
+            <div class="translit">Yā ayyuhā alladhīna āmanū iṣbirū wa ṣābirū...</div>
+            <div class="translation">O you who believe, be patient, persevere, stand firm, and fear Allah so that you may succeed.</div>
+        </div>
+    </div>
+    <div class="ayah-footer">
+        <button class="bookmark" data-ayah="200" onclick="toggleBookmark(event,200,'يَا أَيُّهَا الَّذِينَ...','O you who believe, be patient...')">Bookmark</button>
+    </div>
+</article>
+
+</div>
+
+<!-- toast -->
+<div id="toast" class="sd-toast" role="status" aria-live="polite"></div>
+
+<script>
+/* Smart Deen bookmark storage key */
+const KEY = 'sd_bookmarks_v1';
+
+/* helper: load bookmarks */
+function loadBookmarks(){
+  try{ return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ return []; }
+}
+
+/* helper: save */
+function saveBookmarks(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+/* show toast */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(()=> t.classList.remove('show'), 1700);
+}
+
+/* update UI button states */
+function updateUI(){
+  const arr = loadBookmarks();
+  document.querySelectorAll('.bookmark').forEach(btn=>{
+    const ay = Number(btn.getAttribute('data-ayah'));
+    const found = arr.find(x => x.surah==='Al-Imrān' && x.ayah===ay);
+    if(found) btn.classList.add('active'); else btn.classList.remove('active');
+  });
+}
+
+/* toggleBookmark called from buttons */
+function toggleBookmark(ev, ayah, arabic, translation){
+  ev.stopPropagation();
+  let arr = loadBookmarks();
+  const exists = arr.find(x => x.surah==='Al-Imrān' && x.ayah===ayah);
+  if(exists){
+    arr = arr.filter(x => !(x.surah==='Al-Imrān' && x.ayah===ayah));
+    saveBookmarks(arr);
+    updateUI();
+    showToast('Removed from Bookmarks');
+  } else {
+    arr.push({
+      surah: 'Al-Imrān',
+      surahNo: 3,
+      ayah: ayah,
+      arabic: arabic,
+      translation: translation,
+      file: 'imran-1-20.html', // pointer for this page
+    });
+    saveBookmarks(arr);
+    updateUI();
+    showToast('Bookmarked');
+  }
+  // notify other tabs
+  localStorage.setItem('sd_bookmarks_update', Date.now());
+}
+
+/* on load */
+window.addEventListener('load', ()=>{
+  updateUI();
+});
+
+/* storage listener */
+window.addEventListener('storage', (e)=>{
+  if(e.key === KEY || e.key === 'sd_bookmarks_update') updateUI();
+});
+</script>
+
+</body>
+</html>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

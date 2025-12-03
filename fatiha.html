@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Surah Al-Fatiha — Smart Deen</title>
+<style>
+  :root{
+    --bg:#0b0e10;
+    --card:#0f1416;
+    --text:#e6f7f1;
+    --muted:#9fbfb0;
+    --accent-deep:#0b6b4a;   /* deep green edge */
+    --accent-soft:#24b689;   /* softer glow color */
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* HEADER */
+  .top {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+  }
+  .back {
+    width:44px;height:44px;border-radius:10px;display:grid;place-items:center;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18));
+    border:1px solid rgba(255,255,255,0.02);
+    cursor:pointer;color:var(--accent-deep);font-weight:700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  }
+  .title { font-size:18px;font-weight:700; }
+
+  .meta { padding:12px 18px; color:var(--muted); font-size:13px; }
+
+  /* container */
+  .wrap { padding-bottom: 48px; }
+
+  /* AYAH CARD */
+  .ayah {
+    margin:14px 16px;
+    padding:16px;
+    border-radius:14px;
+    background: linear-gradient(180deg, var(--card), rgba(14,17,18,0.9));
+    border: 1px solid rgba(10,13,13,0.2);
+    box-shadow: 0 10px 30px rgba(2,6,4,0.6);
+    position:relative;
+    transition: transform 240ms cubic-bezier(.2,.9,.25,1), box-shadow 240ms;
+    overflow: hidden;
+  }
+
+  /* subtle 3D animated edge accent */
+  .ayah::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:14px;
+    pointer-events:none;
+    box-shadow: inset 0 0 0 2px rgba(11,107,74,0.06), 0 6px 18px rgba(11,107,74,0.02);
+    transform:translateZ(0);
+  }
+  .ayah:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba(2,6,4,0.8);
+  }
+
+  .ayah-row {
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+
+  .ayah-num {
+    width:46px;height:46px;border-radius:10px;
+    display:grid;place-items:center;
+    background: linear-gradient(180deg, rgba(11,107,74,0.08), rgba(0,0,0,0.08));
+    color:var(--muted);
+    font-weight:700;
+    border:1px solid rgba(11,107,74,0.06);
+    flex-shrink:0;
+  }
+
+  .ayah-text { flex:1; min-width:0; }
+  .arabic {
+    direction:rtl;
+    text-align:right;
+    font-family: "Amiri", serif;
+    font-size:24px;
+    color: #ffffff;
+    line-height:1.7;
+    margin-bottom:8px;
+  }
+
+  .translation {
+    color: var(--accent-soft);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+
+  .translit { color:var(--muted); font-size:13px; margin-bottom:6px; }
+
+  /* bookmark pill */
+  .bookmark {
+    border-radius:999px;
+    padding:7px 10px;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.03);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    color:var(--muted);
+    transition: transform 140ms, background 160ms, color 160ms;
+  }
+  .bookmark.active {
+    background: linear-gradient(180deg, var(--accent-deep), var(--accent-soft));
+    color: #00110a;
+    box-shadow: 0 6px 18px rgba(11,107,74,0.14), inset 0 -6px 16px rgba(0,0,0,0.12);
+  }
+
+  .ayah-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:6px; }
+
+  /* subtle toast */
+  .sd-toast {
+    position:fixed; left:50%; transform:translateX(-50%); bottom:26px;
+    background: rgba(6,10,8,0.92); color:var(--text); padding:10px 14px;
+    border-radius:12px; border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6); opacity:0; pointer-events:none;
+    transition:all .28s;
+  }
+  .sd-toast.show { opacity:1; pointer-events:auto; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width:480px){
+    .arabic{ font-size:20px; }
+    .ayah-num{ width:40px;height:40px;font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="back" title="Back to Quran" onclick="location.href='quran.html'">←</div>
+  <div class="title">Al-Fatiha</div>
+</div>
+
+<div class="meta">Revealed: Makkah • Verses: 7 • Meaning: The Opening</div>
+
+<div class="wrap">
+
+  <!-- AYAH 1 -->
+  <article id="ayah-1" class="ayah" data-ayah="1" role="article" aria-label="Ayah 1">
+    <div class="ayah-row">
+      <div class="ayah-num">1</div>
+      <div class="ayah-text">
+        <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
+        <div class="translit">Bismillāhi ar-Raḥmāni ar-Raḥīm</div>
+        <div class="translation">In the name of Allah, the Most Merciful, the Most Compassionate.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="1" onclick="toggleBookmark(event,1,'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ','In the name of Allah, the Most Merciful, the Most Compassionate.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 2 -->
+  <article id="ayah-2" class="ayah" data-ayah="2" role="article" aria-label="Ayah 2">
+    <div class="ayah-row">
+      <div class="ayah-num">2</div>
+      <div class="ayah-text">
+        <div class="arabic">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</div>
+        <div class="translit">Al-ḥamdu lillāhi rabbi al-ʿālamīn</div>
+        <div class="translation">All praise is due to Allah, Lord of the worlds.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="2" onclick="toggleBookmark(event,2,'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ','All praise is due to Allah, Lord of the worlds.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 3 -->
+  <article id="ayah-3" class="ayah" data-ayah="3" role="article" aria-label="Ayah 3">
+    <div class="ayah-row">
+      <div class="ayah-num">3</div>
+      <div class="ayah-text">
+        <div class="arabic">الرَّحْمَـٰنِ الرَّحِيمِ</div>
+        <div class="translit">Ar-Raḥmān ir-Raḥīm</div>
+        <div class="translation">The Most Merciful, the Most Compassionate.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="3" onclick="toggleBookmark(event,3,'الرَّحْمَـٰنِ الرَّحِيمِ','The Most Merciful, the Most Compassionate.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 4 -->
+  <article id="ayah-4" class="ayah" data-ayah="4" role="article" aria-label="Ayah 4">
+    <div class="ayah-row">
+      <div class="ayah-num">4</div>
+      <div class="ayah-text">
+        <div class="arabic">مَالِكِ يَوْمِ الدِّينِ</div>
+        <div class="translit">Māliki yawm id-dīn</div>
+        <div class="translation">Master of the Day of Judgement.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="4" onclick="toggleBookmark(event,4,'مَالِكِ يَوْمِ الدِّينِ','Master of the Day of Judgement.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 5 -->
+  <article id="ayah-5" class="ayah" data-ayah="5" role="article" aria-label="Ayah 5">
+    <div class="ayah-row">
+      <div class="ayah-num">5</div>
+      <div class="ayah-text">
+        <div class="arabic">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</div>
+        <div class="translit">Iyyāka naʿbudu wa iyyāka nastaʿīn</div>
+        <div class="translation">You alone we worship and You alone we ask for help.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="5" onclick="toggleBookmark(event,5,'إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ','You alone we worship and You alone we ask for help.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 6 -->
+  <article id="ayah-6" class="ayah" data-ayah="6" role="article" aria-label="Ayah 6">
+    <div class="ayah-row">
+      <div class="ayah-num">6</div>
+      <div class="ayah-text">
+        <div class="arabic">اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</div>
+        <div class="translit">Ihdinā ṣ-ṣirāṭ al-mustaqīm</div>
+        <div class="translation">Guide us to the straight path.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="6" onclick="toggleBookmark(event,6,'اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ','Guide us to the straight path.')">Bookmark</button>
+    </div>
+  </article>
+
+  <!-- AYAH 7 -->
+  <article id="ayah-7" class="ayah" data-ayah="7" role="article" aria-label="Ayah 7">
+    <div class="ayah-row">
+      <div class="ayah-num">7</div>
+      <div class="ayah-text">
+        <div class="arabic">صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</div>
+        <div class="translit">Ṣirāṭ al-laḏīna anʿamta ʿalayhim …</div>
+        <div class="translation">The path of those upon whom You have bestowed favour — not of those who have earned anger, nor of those who go astray.</div>
+      </div>
+    </div>
+    <div class="ayah-footer">
+      <button class="bookmark" data-ayah="7" onclick="toggleBookmark(event,7,'صِرَاطَ الَّذِينَ ...','The path of those upon whom You have bestowed favour — not of those who have earned anger, nor of those who go astray.')">Bookmark</button>
+    </div>
+  </article>
+
+</div>
+
+<!-- toast -->
+<div id="toast" class="sd-toast" role="status" aria-live="polite"></div>
+
+<script>
+/* keys */
+const KEY = 'sd_bookmarks_v1';
+
+/* show toast */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(()=> t.classList.remove('show'), 1800);
+}
+
+/* load bookmarks array */
+function loadBookmarks(){
+  try{
+    return JSON.parse(localStorage.getItem(KEY)) || [];
+  }catch(e){ return []; }
+}
+
+/* save */
+function saveBookmarks(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+/* toggle bookmark */
+function toggleBookmark(ev, ayah, arabic, translation){
+  ev.stopPropagation();
+  let arr = loadBookmarks();
+  const exists = arr.find(x => x.surah==='Al-Fatiha' && x.ayah===ayah);
+  if(exists){
+    arr = arr.filter(x => !(x.surah==='Al-Fatiha' && x.ayah===ayah));
+    saveBookmarks(arr);
+    updateUI();
+    showToast('Removed from Bookmarks');
+  } else {
+    arr.push({ surah:'Al-Fatiha', surahNo:1, ayah:ayah, arabic: arabic, translation: translation, file:'surah-al-fatiha.html' });
+    saveBookmarks(arr);
+    updateUI();
+    showToast('Bookmarked');
+  }
+  // let other tabs know
+  localStorage.setItem('sd_bookmarks_update', Date.now());
+}
+
+/* update button states */
+function updateUI(){
+  const arr = loadBookmarks();
+  document.querySelectorAll('.bookmark').forEach(btn=>{
+    const ay = Number(btn.getAttribute('data-ayah'));
+    const found = arr.find(x => x.surah==='Al-Fatiha' && x.ayah===ay);
+    if(found) btn.classList.add('active'); else btn.classList.remove('active');
+  });
+}
+
+/* on load: set initial states and scroll if requested */
+window.addEventListener('load', ()=>{
+  updateUI();
+  // auto scroll if bookmark/navigation requested:
+  const jump = localStorage.getItem('sd_jumpTo');
+  if(jump && jump.startsWith('surah-al-fatiha#')){
+    const part = jump.split('#')[1];
+    localStorage.removeItem('sd_jumpTo');
+    const el = document.getElementById(part);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+});
+
+/* allow quran.html/bookmarks.html to update if storage changes elsewhere */
+window.addEventListener('storage', (e)=>{
+  if(e.key === 'sd_bookmarks_v1' || e.key==='sd_bookmarks_update') updateUI();
+});
+</script>
+
+</body>
+</html>

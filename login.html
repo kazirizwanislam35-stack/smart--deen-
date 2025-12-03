@@ -1,128 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Deen Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Deen Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0c0f0e;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0d0f12;
-            font-family: "Poppins", sans-serif;
-            color: white;
-            text-align: center;
-        }
+    .container {
+      width: 90%;
+      max-width: 380px;
+    }
 
-        .container {
-            max-width: 420px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      animation: fade 0.8s ease;
+    }
 
-        .logo-float {
-            width: 170px;
-            height: 170px;
-            margin: 20px auto;
-            background: radial-gradient(circle, rgba(39,255,171,0.30), transparent);
-            border-radius: 50%;
-            animation: float 3s ease-in-out infinite;
-        }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0); }
-        }
+    h2 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
 
-        h2 {
-            margin-top: 20px;
-            font-size: 30px;
-            font-weight: 600;
-        }
+    label {
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
-        h2 span {
-            color: #2df4a6;
-        }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+    }
 
-        form {
-            margin-top: 35px;
-            text-align: left;
-        }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: #00e89a;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
 
-        label {
-            font-size: 16px;
-            margin-bottom: 8px;
-            display: block;
-            color: #cfcfcf;
-        }
+    .btn:hover {
+      opacity: 0.8;
+    }
 
-        input, select {
-            width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            background: #14171c;
-            border: 1px solid #24272d;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 22px;
-            outline: none;
-        }
+    .small-text {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 15px;
+      opacity: 0.7;
+    }
 
-        input:focus, select:focus {
-            border-color: #2df4a6;
-            box-shadow: 0 0 8px rgba(39,255,171,0.5);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: #2df4a6;
-            color: black;
-            font-size: 18px;
-            font-weight: 600;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-    </style>
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <div class="card" id="step1">
+      <h2>Smart Deen Login</h2>
 
-    <div class="container">
+      <label>Enter Your Name</label>
+      <input type="text" id="name" placeholder="Your Name" />
 
-        <div class="logo-float"></div>
+      <label>Mobile Number</label>
+      <input type="number" id="mobile" placeholder="Your Mobile" />
 
-        <h2>Smart <span>Deen</span></h2>
-
-        <form>
-
-            <label>Your Name</label>
-            <input type="text" placeholder="Enter your name" required>
-
-            <label>Select Madhab</label>
-            <select required>
-                <option value="">Choose one</option>
-                <option>Hanafi</option>
-                <option>Shafi'i</option>
-                <option>Maliki</option>
-                <option>Hanbali</option>
-            </select>
-
-            <button class="btn" type="button" onclick="location.href='dashboard.html'">
-    Continue
-</button>
-
-        </form>
-
+      <button class="btn" onclick="nextStep()">Continue</button>
     </div>
 
+    <div class="card" id="step2" style="display:none;">
+      <h2>Your Details</h2>
+
+      <label>Date of Birth</label>
+      <input type="date" id="dob" />
+
+      <button class="btn" onclick="finish()">Finish</button>
+    </div>
+  </div>
+
+  <script>
+    function nextStep() {
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'block';
+    }
+
+    function finish() {
+      let name = document.getElementById('name').value;
+      let mobile = document.getElementById('mobile').value;
+      let dob = document.getElementById('dob').value;
+
+      localStorage.setItem('user_name', name);
+      localStorage.setItem('user_mobile', mobile);
+      localStorage.setItem('user_dob', dob);
+
+      window.location.href = 'dashboard.html';
+    }
+  </script>
 </body>
 </html>

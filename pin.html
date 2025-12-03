@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarks</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #0B1622;
+        font-family: "Poppins", sans-serif;
+        color: white;
+    }
+
+    /* HEADER */
+    .header-bar {
+        display: flex;
+        align-items: center;
+        padding: 18px;
+        background: #0F1C2E;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-bar .back {
+        font-size: 24px;
+        cursor: pointer;
+        padding-right: 15px;
+    }
+
+    .header-title {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    /* AYAH CARD */
+    .ayah-card {
+        background: #101C2B;
+        margin: 15px;
+        padding: 18px;
+        border-radius: 18px;
+        box-shadow: 0 0 15px rgba(0,255,180,0.10);
+        border: 1px solid rgba(0,255,180,0.08);
+        transition: transform .15s ease;
+    }
+
+    .ayah-card:hover {
+        transform: scale(1.02);
+    }
+
+    .ayah-number {
+        color: #00E6A8;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .ayah-arabic {
+        font-family: "Amiri", serif;
+        font-size: 28px;
+        text-align: right;
+        margin-bottom: 12px;
+        line-height: 1.8;
+    }
+
+    .ayah-translation {
+        opacity: 0.9;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    /* DELETE BUTTON */
+    .delete-btn {
+        background: #1A2A3A;
+        border: 1px solid rgba(255,0,0,0.3);
+        padding: 8px 14px;
+        border-radius: 10px;
+        color: #FF6B6B;
+        cursor: pointer;
+        float: right;
+        transition: 0.2s;
+    }
+
+    .delete-btn:hover {
+        background: rgba(255,0,0,0.15);
+    } 
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+    <div class="back" onclick="history.back()">←</div>
+    <div class="header-title">Bookmarks</div>
+</div>
+
+<!-- AYAH CARD EXAMPLE — You will add dynamically from JS -->
+<div class="ayah-card">
+    <div class="ayah-number">Surah 1 • Ayah 2</div>
+
+    <div class="ayah-arabic">ٱلْحَمْدُ لِلَّـهِ رَبِّ الْعَالَمِينَ</div>
+
+    <div class="ayah-translation">
+        All praise is due to Allah, Lord of the worlds.
+    </div>
+
+    <button class="delete-btn" onclick="deleteAyah(this)">Delete</button>
+</div>
+
+<div class="ayah-card">
+    <div class="ayah-number">Surah 36 • Ayah 58</div>
+
+    <div class="ayah-arabic">سَلَامٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ</div>
+
+    <div class="ayah-translation">
+        “Peace!” — a word from a Merciful Lord.
+    </div>
+
+    <button class="delete-btn" onclick="deleteAyah(this)">Delete</button>
+</div>
+
+<script>
+function deleteAyah(button){
+    const card = button.parentElement;
+    card.style.opacity = "0";
+    card.style.transform = "scale(0.85)";
+    setTimeout(()=> card.remove(), 200);
+}
+</script>
+
+</body>
+</html>

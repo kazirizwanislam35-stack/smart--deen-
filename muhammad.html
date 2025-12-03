@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Prophet Muhammad ﷺ — Smart Deen (Seerah & Lessons)</title>
+<meta name="description" content="Comprehensive Seerah of Prophet Muhammad ﷺ — life, teachings, lessons, and practical reflections in the Smart Deen theme."/>
+<style>
+  /* ====== SMART DEEN HUD-STYLE SEERAH PAGE ====== */
+  :root{
+    --bg:#0b0e10;
+    --panel:#0f1416;
+    --card:#0e1513;
+    --muted:#99b3a8;
+    --accent:#2df4a6;      /* neon green */
+    --accent-deep:#10a476;
+    --glass: rgba(255,255,255,0.02);
+    --text:#eaf6ef;
+    --radius:14px;
+    --maxw:980px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: linear-gradient(180deg,var(--bg) 0%, #0d1113 60%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.8;
+    padding-bottom:48px;
+  }
+
+  /* Top bar */
+  .topbar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    position:sticky; top:0; z-index:1200;
+    background: linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.06));
+    border-bottom:1px solid rgba(255,255,255,0.02);
+  }
+  .back {
+    width:48px; height:44px; border-radius:12px;
+    background: linear-gradient(180deg, rgba(0,35,55,0.9), rgba(0,20,35,0.9));
+    display:grid; place-items:center; cursor:pointer;
+    border:1px solid rgba(16,140,110,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+  .back .arrow{
+    width:20px; height:20px; display:inline-block;
+    transform: rotate(45deg); border-left:3px solid var(--accent);
+    border-bottom:3px solid var(--accent); margin-left:4px;
+  }
+  .title-wrap{ display:flex; flex-direction:column; }
+  .page-title{ font-size:20px; font-weight:800; letter-spacing:0.2px; }
+  .page-sub{ font-size:13px; color:var(--muted); margin-top:4px; }
+
+  /* container */
+  .wrap{ max-width:var(--maxw); margin:16px auto; padding:8px 16px; }
+
+  /* main card */
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));
+    border-radius:var(--radius);
+    padding:22px;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    margin-bottom:18px;
+  }
+
+  h1{ color:var(--accent); margin:0 0 8px; font-size:22px; }
+  h2{ color:var(--accent); margin:22px 0 10px; font-size:18px; }
+  h3{ color:var(--accent-deep); margin:14px 0 8px; font-size:16px; }
+
+  p{ margin:10px 0; font-size:15px; color:var(--text); }
+  ul{ margin:10px 0 10px 20px; }
+  li{ margin:6px 0; }
+
+  .quote{
+    background: linear-gradient(90deg, rgba(45,244,166,0.04), rgba(45,244,166,0.02));
+    padding:12px 14px; border-radius:10px; border-left:4px solid var(--accent);
+    color:#dff9ef; margin:14px 0;
+  }
+
+  .reflection{
+    margin:18px 0;padding:14px;border-radius:12px;background:#0e1715;border:1px solid rgba(45,244,166,0.08);
+    color:#dff9ef;
+  }
+  .reflection b{ color:var(--accent); font-size:15px; display:block; margin-bottom:8px; }
+
+  .small{font-size:13px;color:var(--muted)}
+
+  .toc{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 14px;}
+  .chip{ background: rgba(255,255,255,0.02); padding:8px 10px; border-radius:999px; border:1px solid rgba(255,255,255,0.02); cursor:pointer; color:var(--muted); font-weight:700; font-size:13px}
+  .chip:hover{ color:var(--accent); border-color: rgba(45,244,166,0.12) }
+
+  .meta{ color:var(--muted); font-size:13px; margin-top:4px }
+
+  /* timeline block */
+  .timeline{ margin:12px 0 6px; display:flex; flex-direction:column; gap:12px; }
+  .tl-item{ padding:12px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); border:1px solid rgba(255,255,255,0.02) }
+
+  /* footer */
+  .footer{ text-align:center; color:var(--muted); margin-top:18px; font-size:13px }
+
+  @media (max-width:720px){
+    .wrap{ padding:8px }
+    .back{ width:44px; height:40px }
+    .page-title{ font-size:18px }
+    h1{ font-size:18px } 
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="back" onclick="goBack()"><span class="arrow" aria-hidden="true"></span></div>
+    <div class="title-wrap">
+      <div class="page-title">Prophet Muḥammad ﷺ — Seerah (Smart Deen)</div>
+      <div class="page-sub">A long, respectful, and reflective Seerah: life, teachings, and lasting lessons</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- INTRO CARD -->
+    <section class="card" id="intro">
+      <h1>Introduction</h1>
+      <p>
+        This page presents a detailed, reverent account of the life and mission of Prophet Muḥammad ﷺ.
+        The goal is not to replace classical Seerah literature but to give a long, carefully written, accessible,
+        and reflective narrative that you can include in Smart Deen. Read with respect — the text presents
+        events, moral lessons, and practical reflections for students and seekers of knowledge.
+      </p>
+
+      <div class="meta small">Tip: use the chips below to jump to sections.</div>
+      <div class="toc" aria-hidden="true">
+        <div class="chip" onclick="scrollToId('birth')">Birth & Lineage</div>
+        <div class="chip" onclick="scrollToId('early')">Early Life</div>
+        <div class="chip" onclick="scrollToId('call')">Prophethood</div>
+        <div class="chip" onclick="scrollToId('mecca')">Makkah Years</div>
+        <div class="chip" onclick="scrollToId('hijrah')">Hijrah & Medina</div>
+        <div class="chip" onclick="scrollToId('battles')">Battles & Treaties</div>
+        <div class="chip" onclick="scrollToId('teach')">Teachings</div>
+        <div class="chip" onclick="scrollToId('character')">Character</div>
+        <div class="chip" onclick="scrollToId('legacy')">Legacy & Lessons</div>
+        <div class="chip" onclick="scrollToId('reflections')">Reflections</div>
+      </div>
+
+      <div class="small">Made with reverence — this page avoids detailed chains or attributions; for academic citation, consult classical biographies and authenticated hadith collections.</div>
+    </section>
+
+    <!-- BIRTH & LINEAGE -->
+    <section class="card" id="birth">
+      <h2>Birth, Lineage & Early Portents</h2>
+
+      <p>
+        Muḥammad ibn ʿAbdullāh was born in Makkah in the Year of the Elephant (approx. 570 CE), into the Banū Hāshim,
+        a respected clan of the Quraysh tribe. His lineage connected him to Ismāʿīl and Ibrāhīm (peace be upon them),
+        a fact later emphasized as part of his spiritual legacy. Orphaned early — his father passed before his birth
+        and his mother, Āminah, died while he was still a child — Muḥammad grew up under the care of his grandfather
+        ʿAbdul Muṭṭalib and later his uncle Abū Ṭālib.
+      </p>
+
+      <p>
+        From early life, accounts show signs of a reflective, honest, and contemplative temperament. He earned the nicknames
+        al-Ṣidq (the Truthful) and al-Amīn (the Trustworthy). Merchants preferred him for journeys due to his integrity.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Character matters more than pedigree. Even in hardship, upright conduct builds trust — a lesson for leaders and learners.
+      </div>
+
+      <h3>Society in Makkah</h3>
+      <p>
+       Makkah was an important mercantile and pilgrimage center with the Kaʿbah at its heart; polytheistic practices prevailed.
+        Social structures favored wealthy clans; inequalities and some moral lapses existed. Into this setting Muḥammad ﷺ
+        emerged — a man who would challenge spiritual blind spots while appealing to conscience and reason.
+      </p>
+    </section>
+
+    <!-- EARLY LIFE -->
+    <section class="card" id="early">
+      <h2>Early Life: Trade, Integrity, and Contemplation</h2>
+
+      <p>
+        As a young man, Muḥammad worked in trade and accompanied caravans to Syria and Yemen. He learned practical commerce,
+        negotiated with integrity, and developed cross-cultural exposure. He later married Khadījah bint Khuwaylid, a wealthy widow
+        and respected businessperson; their marriage was a partnership of mutual respect and deep love. Khadījah supported him
+        emotionally and financially during the early years of the message.
+      </p>
+
+      <p>
+        As he matured, Muḥammad often retreated to the cave of Hira for reflection and meditation. He was deeply troubled by
+        social injustices: neglect of orphans, mistreatment of the poor, meaningless rituals devoid of ethical substance.
+        In these retreats his heart sought clarity and purity.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Regular retreat and sincere reflection are spiritual tools. In a noisy world, carve space to think and to purify intention.
+      </div>
+    </section>
+
+    <!-- CALL -->
+    <section class="card" id="call">
+      <h2>The Call: First Revelation</h2>
+
+      <p>
+        In the month of Ramaḍān, while in Hira, Muḥammad received the first revelation. The angel Jibrīl (Gabriel) conveyed
+        the first verses instructing reading in the name of the Lord. The experience was profound, disorienting, and sacred.
+        Terrified at first, he returned to Khadījah who comforted and reassured him; she believed and became the first to embrace
+        the message.} From that moment the prophetic mission began — to call humanity to the oneness of God (tawḥīd),
+        to moral accountability, and to a just social order.
+      </p>
+
+      <p>
+        The earliest preaching was private and gentle, focusing on close friends and family. Gradually the call became public,
+        confronting entrenched interests, and promising both spiritual fulfillment and moral reformation.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Courage begins with a single truthful word. When a truth is heavy, share it with compassion, then with clarity.
+      </div>
+    </section>
+
+    <!-- MAKKAH YEARS -->
+    <section class="card" id="mecca">
+      <h2>Makkah Years: Message, Persecution, and Patience</h2>
+
+      <p>
+       As the message of tawḥīd spread, social and economic elites reacted. The Quraysh feared social upheaval and loss
+        of status tied to the pilgrimage trade. Persecution followed: social boycott, ridicule, physical abuse, and economic
+        pressure. Early believers included the poor, slaves, and marginalised — groups often first to respond to the message’s
+        moral promise.
+      </p>
+
+      <p>
+       Despite severe trials, the Prophet ﷺ displayed remarkable patience, responding with dignified perseverance. He upheld
+        the rights of vulnerable people, declared the moral value of all human souls, and repeatedly appealed to reason and mercy.
+      </p>
+
+      <h3>Key Episodes</h3>
+      <div class="timeline">
+        <div class="tl-item"><strong>Public Preaching:</strong> The call moved from private circles to public assembly, challenging idol worship and inviting to one God.</div>
+        <div class="tl-item"><strong>Ta’if Visit:</strong> After sustained opposition, Muḥammad ﷺ went to Ṭa’if to seek support; he was met with harsh rejection but chose prayerful patience over vengeance.</div>
+        <div class="tl-item"><strong>Migratory Calls:</strong> Converts found refuge in Abyssinia when life in Makkah became dangerous; a small diaspora preserved faith and solidarity.</div>
+      </div>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        When society resists justice, the faithful must protect vulnerable people first. Moral conviction requires strategic patience and compassionate action.
+      </div>
+    </section>
+
+    <!-- NIGHT JOURNEY & ASCENSION (Al-Isra' wal-Mi'raj) -->
+    <section class="card" id="isra">
+      <h2>Al-Isrāʾ wal-Miʿrāj — Night Journey and Ascension</h2>
+
+      <p>
+        In a moment both miraculous and spiritually profound, Muḥammad ﷺ experienced the Night Journey from Makkah to Jerusalem
+        and then the Ascension through the heavens. There he encountered earlier prophets, stood in prayer before the Divine,
+        and received the command to establish five daily prayers — a central pillar of Muslim life. The event strengthened the community’s
+        faith and provided consolation in times of trial.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Spiritual experiences anchor missions. Prayer transforms personal revelation into communal practice.
+      </div>
+    </section>
+
+    <!-- HIJRAH -->
+    <section class="card" id="hijrah">
+      <h2>The Hijrah: Migration to Medina</h2>
+
+      <p>
+        The Hijrah (migration) from Makkah to Yathrib (later Medina) marks a turning point: from a persecuted minority to a civic community
+        entrusted with building an ethical polity. The migration was planned carefully; the Prophet ﷺ’s companions displayed courage and
+        sacrifice. In Medina, a plural society took shape: Muslims, Jews, and other tribes negotiated a social compact — the Constitution of Medina —
+        laying the foundations for mutual rights, religious freedom, and collective security.
+      </p>
+
+      <p>
+       This phase shifted the mission from preaching to institution-building: courts, charity, communal worship, and organized defense.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Faithful communities must architect justice into institutions. Spiritual movements that ignore public structures fail those they serve.
+      </div>
+    </section>
+
+    <!-- MEDINA & COMMUNITY BUILDING -->
+    <section class="card" id="medina">
+      <h2>Medina: The Islamic City — Constitution, Brotherhood, and Welfare</h2>
+
+      <p>
+       Medina became a laboratory for practical Islam: legislation on family, rights, commerce, and criminal justice; systems for welfare and charity;
+        and communal bonds like brotherhood between Muhājirūn (migrants) and Anṣār (helpers). The Prophet ﷺ mediated disputes, issued ethical guidance,
+        and led by example in humility, consultation, and accessible leadership.
+      </p>
+
+      <p>
+       The Prophet’s mosque functioned as a civic center where education, dispute resolution, and social welfare occurred. Zakat (charity) was institutionalised,
+        linking spiritual duty with social justice.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Religious vision becomes enduring when embedded in fair institutions that protect the weak and enable human dignity.
+      </div>
+
+      <h3>Family & Personal Life</h3>
+      <p>
+       The Prophet ﷺ’s personal life exemplified mercy: his kindness with children, his respect for women, and his ethical dealings. His marriages served social,
+        protective, and communal roles, and many wives became scholars preserving the prophetic legacy.
+      </p>
+    </section>
+
+    <!-- CONFLICTS & BATTLES -->
+    <section class="card" id="battles">
+      <h2>Defence & Battles: Badr, Uhud, and the Trench</h2>
+
+      <p>
+       As the young community grew, conflict with Meccan forces erupted. Key engagements include:
+      </p>
+      <ul>
+        <li><strong>Badr:</strong> A decisive early victory that boosted morale and proved that the cause of justice can triumph despite small numbers.</li>
+        <li><strong>Uhud:</strong> A painful battle where tactical mistakes led to heavy losses — a lesson in discipline and communal responsibility.</li>
+        <li><strong>The Trench (Khandaq):</strong> A defensive engineering success where alliances and innovative strategy preserved Medina from siege.</li>
+      </ul>
+
+      <p>
+       Even in battle, ethical limits were maintained: non-combatants and protected categories were to be spared. The Prophet’s leadership balanced courage with mercy.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Justice requires defense but defense must remain moral. The dignity of foes and innocents remains sacred even in conflict.
+      </div>
+
+      <h3>Treaties & Diplomacy — Hudaybiyyah</h3>
+      <p>
+       The Treaty of Hudaybiyyah—though initially seen as a compromise—proved strategically vital. It established peace, opened diplomatic channels,
+        and allowed the message to spread more freely, culminating in the peaceful conquest of Makkah.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Patience and wise negotiation sometimes achieve what force cannot. Long-term vision outweighs short-term pride.
+      </div>
+    </section>
+
+    <!-- CONQUEST & FINAL YEARS -->
+    <section class="card" id="conquest">
+      <h2>Conquest of Makkah & Final Years</h2>
+
+      <p>
+       In a remarkable display of mercy, when Muslims returned to Makkah in strength, the Prophet ﷺ declared general amnesty. Those who had persecuted early Muslims were forgiven,
+        idols were destroyed, and the Kaʿbah was restored to monotheistic worship. This event demonstrated that a movement built upon moral principle could triumph with compassion.
+      </p>
+
+      <p>
+       The Prophet’s final years included consolidating law, delivering the Farewell Pilgrimage, and offering the Farewell Sermon — a masterful summary of ethical directives: equality, rights of women, honest commerce, abolition of unjust practices, and the centrality of worship.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Victory without vindictiveness is the highest moral triumph. True leadership forgives and heals.
+      </div>
+    </section>
+
+    <!-- CHARACTER & TEACHINGS -->
+    <section class="card" id="teach">
+      <h2>Core Teachings & Moral Example</h2>
+
+      <p>
+       Muḥammad ﷺ preached tawḥīd (the oneness of God), ethical conduct, compassion, justice, and spiritual accountability. Central features include:
+      </p>
+      <ul>
+        <li><strong>Prayer (Ṣalāh):</strong> a disciplined, communal anchor that develops spiritual accountability;</li>
+        <li><strong>Charity (Zakāt & Sadaqah):</strong> social redistributive mechanisms to protect the poor;</li>
+        <li><strong>Ethical Commerce:</strong> honest dealings and prohibition of exploitative practices;</li>
+        <li><strong>Rights of Women & Family:</strong> dignity, inheritance rights, and protections uncommon in the milieu of the time;</li>
+        <li><strong>Rule of Law:</strong> dispute resolution and institutionalized justice.</li>
+      </ul>
+
+      <p>
+       His everyday conduct—truthfulness, humility, honoring neighbors, kindness to animals, and patience under persecution—was the living commentary on his message.
+      </p>
+
+      <div class="quote">
+        “The best among you are those who have the best manners.” — (Summary of prophetic ethic)
+      </div>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Moral transformation requires both habit and law. Spiritual training (prayer, fasting) supports public virtue.
+      </div>
+    </section>
+
+    <!-- TEACHINGS: WOMEN, SLAVERY, MERCY -->
+    <section class="card" id="social">
+      <h2>Social Reforms: Women, Slavery, and Rights</h2>
+
+      <p>
+       The Prophet’s reforms improved the status of marginalized groups. Women received rights in marriage, guardianship, and inheritance compared to prevailing practices. Slavery began to be regulated and discouraged with incentives for emancipation. Widows, orphans, and travelers received protections.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Justice is a gradual project: laws can shift culture when accompanied by moral education and incentives.
+      </div>
+    </section>
+
+    <!-- EDUCATION & SCHOLARSHIP -->
+    <section class="card" id="education">
+      <h2>Education, Companions, and Transmission</h2>
+
+      <p>
+       The Prophet invested in companions who preserved the message: men and women who memorized revelations, served the community, and later became scholars and transmitters. This network enabled the Qur’an and the Prophet’s example (Sunnah) to be preserved, studied, and applied across generations.
+      </p>
+
+      <p>
+       Examples include major figures who mediated legal rulings, taught communities, and compiled traditions. The Prophet fostered a culture that prized learning, reflection, and moral formation.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Knowledge without humility is dangerous; humility with knowledge benefits communities. Invest in teachers and institutions that combine both.
+      </div>
+    </section>
+
+    <!-- SPIRITUAL PRACTICES -->
+    <section class="card" id="spirit">
+      <h2>Spirituality: Prayer, Fasting, & Remembrance</h2>
+
+      <p>
+       Beyond outward law, the Prophet emphasized inner formation: sincere prayer, voluntary fasting (e.g., Ramaḍān and extra fasts), night prayer (qiyām), charity with sincere intention, repentance, and remembering God. Spiritual disciplines were the inner engine that kept the ethical program alive.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Rituals that are mechanical lose power. Pair ritual with intention (niyyah) to transform actions into spiritual progress.
+      </div>
+    </section>
+
+    <!-- CHARACTER STUDIES -->
+    <section class="card" id="character">
+      <h2>Character Portrait: Mercy, Humility, & Leadership</h2>
+
+      <p>
+       Descriptions from early witnesses highlight the Prophet’s humility: he mended his own clothes, served guests, and never displayed haughtiness. His mercy extended to enemies; even in conquest he urged restraint. Leadership for him meant first serving the people and embodying the laws he taught.
+      </p>
+
+      <div class="quote">
+        “He was a mercy to the worlds” — a concise summary of the prophetic mission.
+      </div>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Leaders who serve reduce suffering and inspire obedience through respect, not force.
+      </div>
+    </section>
+
+    <!-- LEGACY -->
+    <section class="card" id="legacy">
+      <h2>Legacy: Civilization, Law, and Global Impact</h2>
+
+      <p>
+       Within a century the message spread across continents; legal systems, scientific inquiry, and philosophical reflection later flourished in many Muslim lands. The Prophet’s moral and legal framework shaped long-term institutions — schools, courts, hospitals — that improved human welfare.
+      </p>
+
+      <p>
+       His legacy is not just a religious community but a living tradition that has engaged justice, learning, the arts, and governance across cultures.
+      </p>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        A moral system that balances spiritual depth and civic structures can generate flourishing across centuries.
+      </div>
+    </section>
+
+    <!-- PRACTICAL LESSONS -->
+    <section class="card" id="lessons">
+      <h2>Practical Lessons & Actionable Steps</h2>
+
+      <ol>
+        <li><strong>Daily small acts:</strong> emulate prophetic kindness — small consistent habits matter.</li>
+        <li><strong>Protect the vulnerable:</strong> prioritize orphans, widows, and the poor in policy and charity.</li>
+        <li><strong>Justice in commerce:</strong> insist on fair trade and transparent contracts.</li>
+        <li><strong>Promote learning:</strong> build local schools and support teachers who combine ethics with expertise.</li>
+        <li><strong>Engage in wise diplomacy:</strong> prefer negotiation when long-term peace benefits the community.</li>
+        <li><strong>Lead by example:</strong> public virtue creates public trust more than rhetoric.</li>
+      </ol>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        Translate values into institutions. If you love mercy, design hospitals; if you value knowledge, fund schools.
+      </div>
+    </section>
+
+    <!-- TIMELINE SUMMARY -->
+    <section class="card" id="timeline">
+      <h2>Concise Timeline (Key Milestones)</h2>
+      <div class="timeline">
+        <div class="tl-item"><strong>570 CE:</strong> Birth in Makkah (Year of the Elephant)</div>
+        <div class="tl-item"><strong>595 CE:</strong> Marriage to Khadījah (approx.)</div>
+        <div class="tl-item"><strong>610 CE:</strong> First Revelation in Hira</div>
+        <div class="tl-item"><strong>613–622 CE:</strong> Public preaching and persecution</div>
+        <div class="tl-item"><strong>622 CE:</strong> Hijrah to Medina — start of Islamic polity</div>
+        <div class="tl-item"><strong>624–627 CE:</strong> Battles of Badr, Uhud, Trench</div>
+        <div class="tl-item"><strong>628 CE:</strong> Treaty of Hudaybiyyah</div>
+        <div class="tl-item"><strong>630 CE:</strong> Peaceful Conquest of Makkah</div>
+        <div class="tl-item"><strong>632 CE:</strong> Farewell Pilgrimage and passing away in Medina</div>
+      </div>
+
+      <div class="small">Each date is simplified for narrative; consult classical chronology for details and variant reports.</div>
+    </section>
+
+    <!-- REFLECTIONS & PRACTICAL EXERCISE -->
+    <section class="card" id="reflections">
+      <h2>Deep Reflections & Exercises</h2>
+
+      <p>
+       Use these to internalize the Seerah:
+      </p>
+      <ul>
+        <li>Write a short plan to implement one prophetic habit (e.g., daily charity, evening reflection).</li>
+        <li>Organize a local study circle to discuss one chapter of the Prophet’s life per month.</li>
+        <li>Identify a local institution (clinic, school, shelter) and propose one ethical improvement inspired by prophetic teachings.</li>
+      </ul>
+
+      <div class="reflection">
+        <b>Smart Deen Reflection:</b>
+        The Seerah is a manual for ethical living — turn reading into action. Small civic steps multiply across a community.
+      </div>
+    </section>
+
+    <!-- CLOSING & RESOURCES -->
+    <section class="card" id="closing">
+      <h2>Closing Words & Suggested Resources</h2>
+
+      <p>
+       This narration is a compiled, respectful overview. For deeper study, consult classical Seerah works (Ibn Ishaq/Ibn Hisham), authenticated hadith collections (Bukhari, Muslim), and reputable modern biographies that provide scholarly footnotes and source chains.
+      </p>
+
+      <div class="quote">
+        <strong>Final Smart Deen Note:</strong><br>
+        Emulate what is good in the life of the Prophet ﷺ: truth, compassion, humility, and justice. That legacy is not static — it is a living challenge to make communities more humane.
+      </div>
+
+      <div class="footer small">Made with reverence — Smart Deen. Save, share, and teach responsibly.</div>
+    </section>
+
+  </main>
+
+<script>
+  function goBack(){
+    if(document.referrer && document.referrer.includes('prophets')) history.back();
+    else location.href = 'prophets.html';
+  }
+  function scrollToId(id){
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+</script>
+
+</body>
+</html>

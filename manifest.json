@@ -1,0 +1,10 @@
+{
+  "name": "Smart Deen",
+  "short_name": "SmartDeen",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a3d62",
+  "theme_color": "#0a3d62",
+  "description": "A modern Islamic learning dashboard for Muslims worldwide.",
+  "icons": []
+}

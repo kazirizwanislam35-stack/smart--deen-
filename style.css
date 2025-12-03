@@ -1,0 +1,20 @@
+/* Fix header overlay */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    background: rgba(10, 10, 10, 0.92); /* solid dark */
+    backdrop-filter: blur(12px); /* smooth */
+    -webkit-backdrop-filter: blur(12px);
+
+    padding: 20px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Push page down below header */
+.page-content {
+    padding-top: 130px; /* adjust if header is bigger */
+}

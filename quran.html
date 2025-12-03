@@ -2,114 +2,974 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Al-Quran | Smart Deen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qur'an – Surah Al-Fatiha</title>
 
 <style>
     body {
         margin: 0;
-        background: #0a0d10;
-        color: #ffffff;
-        font-family: Poppins, sans-serif;
-        padding: 20px;
+        background: #0d1117;
+        font-family: "Poppins", sans-serif;
+        color: white;
     }
 
-    .container {
-        max-width: 760px;
-        margin: auto;
+    /* Top Bar */
+    .top-bar {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        font-size: 22px;
+        font-weight: 600;
+        background: #0d1117;
     }
 
-    .back {
-        background: none;
-        color: #2df4a6;
-        border: 1px solid #2df4a6;
-        padding: 8px 14px;
-        border-radius: 8px;
+    .top-bar i {
+        font-size: 26px;
+        margin-right: 15px;
         cursor: pointer;
     }
-    .back:hover {
-        background: #2df4a6;
-        color: #000;
-    }
 
-    h1 {
-        text-align: center;
-        font-size: 28px;
-        margin: 20px 0 25px;
-    }
-
-    /* SURAH CARD */
-    .surah-box {
-        background: #121418;
-        padding: 25px;
-        border-radius: 14px;
-        box-shadow: 0 0 18px rgba(45,244,166,0.18);
-    }
-
-    .arabic {
-        font-size: 26px;
-        text-align: right;
-        line-height: 1.9;
-        margin-bottom: 18px;
-    }
-
-    .english {
-        font-size: 17px;
-        line-height: 1.6;
-        color: #dcdcdc;
-    }
-
-    .coming {
-        margin-top: 25px;
-        padding: 16px;
-        text-align: center;
-        background: #121418;
-        border-radius: 10px;
-        color: #2df4a6;
-        border: 1px solid #1e2126;
+    /* Quick Access */
+    .section-title {
+        margin: 20px 16px 10px;
         font-size: 18px;
+        font-weight: 600;
+        opacity: 0.9;
     }
-</style>
 
+    .quick-grid {
+        display: flex;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    .quick-card {
+        flex: 1;
+        padding: 18px;
+        background: #161b22;
+        border-radius: 16px;
+        box-shadow: 0 0 10px rgba(0,255,180,0.08);
+        transition: 0.2s ease;
+    }
+
+    .quick-card:hover {
+        transform: scale(1.03);
+    }
+
+    .quick-card-title {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .quick-card-sub {
+        opacity: 0.55;
+        margin-top: 6px;
+        font-size: 13px;
+    }
+
+    /* Surah List */
+    .surah-list {
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+
+    .surah-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #11161d;
+        padding: 16px;
+        border-radius: 14px;
+        margin: 10px 6px;
+        box-shadow: 0 0 8px rgba(0,255,180,0.08);
+        transition: transform .15s ease;
+        cursor: pointer;
+        border: 1px solid rgba(0,255,180,0.06);
+    }
+
+    .surah-item:active {
+        transform: scale(0.97);
+    }
+
+    .surah-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    /* Star Number Badge */
+    .num-star {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #00e89a;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .surah-name {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .surah-info {
+        font-size: 12px;
+        opacity: 0.6;
+        margin-top: 3px;
+    }
+
+    .arabic-name {
+        font-size: 22px;
+        font-weight: 500;
+        font-family: "Scheherazade", serif;
+    }
+
+    *:focus {
+        outline: none !important;
+    }
+    
+    <style>
+
+   ... (all other CSS above)
+
+   /* Remove blue tap highlight */
+   *:focus {
+        outline: none !important;
+        box-shadow: none !important;
+   }
+
+   .surah-item, .quick-card, .top-bar i {
+        -webkit-tap-highlight-color: transparent;
+   }
+
+</style>
+</style>
 </head>
+
 <body>
 
-<div class="container">
-
-    <button class="back" onclick="window.history.back()">← Back</button>
-
-    <h1>📖 Surah Al-Fatiha</h1>
-
-    <div class="surah-box">
-
-        <div class="arabic">
-            بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ<br>
-            اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ<br>
-            الرَّحْمٰنِ الرَّحِيْمِ<br>
-            مٰلِكِ يَوْمِ الدِّيْنِ<br>
-            اِيَّاكَ نَعْبُدُ وَ اِيَّاكَ نَسْتَعِيْنُ<br>
-            اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ<br>
-            صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّآلِّيْنَ
-        </div>
-
-        <div class="english">
-            <b>English Translation:</b><br><br>
-            In the name of Allah—the Most Gracious, the Most Merciful.<br>
-            All praise is for Allah—Lord of all worlds.<br>
-            The Most Gracious—the Most Merciful.<br>
-            Master of the Day of Judgment.<br>
-            You alone we worship, and You alone we ask for help.<br>
-            Guide us to the straight path—<br>
-            the path of those whom You have blessed, not of those who earned Your anger nor of those who go astray.
-        </div>
-
-    </div>
-
-    <div class="coming">
-        ⭐ More Surahs Coming Soon...
-    </div>
-
+<!-- Top Bar -->
+<div class="top-bar">
+    <i onclick="history.back()">&#8592;</i>
+    Al-Quran
 </div>
+
+<!-- Quick Access -->
+<div class="section-title">Quick Access</div>
+
+<div class="surah-item" onclick="window.location.href='bookmarks.html'">
+    <div class="left">★</div>
+    <div class="middle"><h3>Bookmarks</h3><p>Your saved Ayahs</p></div>
+    <div class="right">🔖</div>
+</div>
+
+<!-- SURAH LIST -->
+<div class="surah-list">
+
+ <!-- 1 -->
+<div class="surah-item" onclick="openSurah('fatiha.html')">
+  <div class="left">1</div>
+  <div class="middle"><h3>Al-Fatiha</h3><p>Verses: 7 | Meccan</p></div>
+  <div class="right">ٱلْفَاتِحَة</div>
+</div>
+
+<!-- 2 -->
+<div class="surah-item" onclick="openSurah('bakara.html')">
+  <div class="left">2</div>
+  <div class="middle"><h3>Al-Baqarah</h3><p>Verses: 286 | Medinan</p></div>
+  <div class="right">ٱلْبَقَرَة</div>
+</div>
+
+<!-- 3 -->
+<div class="surah-item" onclick="openSurah('imran.html')">
+  <div class="left">3</div>
+  <div class="middle"><h3>Aal-e-Imran</h3><p>Verses: 200 | Medinan</p></div>
+  <div class="right">آلِ عِمْرَان</div>
+</div>
+
+<!-- 4 -->
+<div class="surah-item" onclick="openSurah('4-an-nisa.html')">
+  <div class="left">4</div>
+  <div class="middle"><h3>An-Nisa</h3><p>Verses: 176 | Medinan</p></div>
+  <div class="right">ٱلنِّسَاء</div>
+</div>
+
+<!-- 5 -->
+<div class="surah-item" onclick="openSurah('5-al-maidah.html')">
+  <div class="left">5</div>
+  <div class="middle"><h3>Al-Ma'idah</h3><p>Verses: 120 | Medinan</p></div>
+  <div class="right">ٱلْمَائِدَة</div>
+</div>
+
+<!-- 6 -->
+<div class="surah-item" onclick="openSurah('6-al-anam.html')">
+  <div class="left">6</div>
+  <div class="middle"><h3>Al-An'am</h3><p>Verses: 165 | Meccan</p></div>
+  <div class="right">ٱلْأَنْعَام</div>
+</div>
+
+<!-- 7 -->
+<div class="surah-item" onclick="openSurah('7-al-araf.html')">
+  <div class="left">7</div>
+  <div class="middle"><h3>Al-A'raf</h3><p>Verses: 206 | Meccan</p></div>
+  <div class="right">ٱلْأَعْرَاف</div>
+</div>
+
+<!-- 8 -->
+<div class="surah-item" onclick="openSurah('8-al-anfal.html')">
+  <div class="left">8</div>
+  <div class="middle"><h3>Al-Anfal</h3><p>Verses: 75 | Medinan</p></div>
+  <div class="right">ٱلْأَنْفَال</div>
+</div>
+
+<!-- 9 -->
+<div class="surah-item" onclick="openSurah('9-at-tawbah.html')">
+  <div class="left">9</div>
+  <div class="middle"><h3>At-Tawbah</h3><p>Verses: 129 | Medinan</p></div>
+  <div class="right">ٱلتَّوْبَة</div>
+</div>
+
+<!-- 10 -->
+<div class="surah-item" onclick="openSurah('10-yunus.html')">
+  <div class="left">10</div>
+  <div class="middle"><h3>Yunus</h3><p>Verses: 109 | Meccan</p></div>
+  <div class="right">يُونُس</div>
+</div>
+
+<!-- 11 -->
+<div class="surah-item" onclick="openSurah('11-hud.html')">
+  <div class="left">11</div>
+  <div class="middle"><h3>Hud</h3><p>Verses: 123 | Meccan</p></div>
+  <div class="right">هُود</div>
+</div>
+
+<!-- 12 -->
+<div class="surah-item" onclick="openSurah('12-yusuf.html')">
+  <div class="left">12</div>
+  <div class="middle"><h3>Yusuf</h3><p>Verses: 111 | Meccan</p></div>
+  <div class="right">يُوسُف</div>
+</div>
+
+<!-- 13 -->
+<div class="surah-item" onclick="openSurah('13-ar-rad.html')">
+  <div class="left">13</div>
+  <div class="middle"><h3>Ar-Ra'd</h3><p>Verses: 43 | Medinan</p></div>
+  <div class="right">ٱلرَّعْد</div>
+</div>
+
+<!-- 14 -->
+<div class="surah-item" onclick="openSurah('14-ibrahim.html')">
+  <div class="left">14</div>
+  <div class="middle"><h3>Ibrahim</h3><p>Verses: 52 | Meccan</p></div>
+  <div class="right">إِبْرَاهِيم</div>
+</div>
+
+<!-- 15 -->
+<div class="surah-item" onclick="openSurah('15-al-hijr.html')">
+  <div class="left">15</div>
+  <div class="middle"><h3>Al-Hijr</h3><p>Verses: 99 | Meccan</p></div>
+  <div class="right">ٱلْحِجْر</div>
+</div>
+
+<!-- 16 -->
+<div class="surah-item" onclick="openSurah('16-an-nahl.html')">
+  <div class="left">16</div>
+  <div class="middle"><h3>An-Nahl</h3><p>Verses: 128 | Meccan</p></div>
+  <div class="right">ٱلنَّحْل</div>
+</div>
+
+<!-- 17 -->
+<div class="surah-item" onclick="openSurah('17-al-isra.html')">
+  <div class="left">17</div>
+  <div class="middle"><h3>Al-Isra</h3><p>Verses: 111 | Meccan</p></div>
+  <div class="right">ٱلْإِسْرَاء</div>
+</div>
+
+<!-- 18 -->
+<div class="surah-item" onclick="openSurah('18-al-kahf.html')">
+  <div class="left">18</div>
+  <div class="middle"><h3>Al-Kahf</h3><p>Verses: 110 | Meccan</p></div>
+  <div class="right">ٱلْكَهْف</div>
+</div>
+
+<!-- 19 -->
+<div class="surah-item" onclick="openSurah('19-maryam.html')">
+  <div class="left">19</div>
+  <div class="middle"><h3>Maryam</h3><p>Verses: 98 | Meccan</p></div>
+  <div class="right">مَرْيَم</div>
+</div>
+
+<!-- 20 -->
+<div class="surah-item" onclick="openSurah('20-ta-ha.html')">
+  <div class="left">20</div>
+  <div class="middle"><h3>Ta-Ha</h3><p>Verses: 135 | Meccan</p></div>
+  <div class="right">طه</div>
+</div>
+
+<!-- 21 -->
+<div class="surah-item" onclick="openSurah('21-al-anbiya.html')">
+  <div class="left">21</div>
+  <div class="middle"><h3>Al-Anbiya</h3><p>Verses: 112 | Meccan</p></div>
+  <div class="right">ٱلْأَنْبِيَاء</div>
+</div>
+
+<!-- 22 -->
+<div class="surah-item" onclick="openSurah('22-al-hajj.html')">
+  <div class="left">22</div>
+  <div class="middle"><h3>Al-Hajj</h3><p>Verses: 78 | Medinan</p></div>
+  <div class="right">ٱلْحَجّ</div>
+</div>
+
+<!-- 23 -->
+<div class="surah-item" onclick="openSurah('23-al-muminun.html')">
+  <div class="left">23</div>
+  <div class="middle"><h3>Al-Mu'minun</h3><p>Verses: 118 | Meccan</p></div>
+  <div class="right">ٱلْمُؤْمِنُون</div>
+</div>
+
+<!-- 24 -->
+<div class="surah-item" onclick="openSurah('24-an-nur.html')">
+  <div class="left">24</div>
+  <div class="middle"><h3>An-Nur</h3><p>Verses: 64 | Medinan</p></div>
+  <div class="right">ٱلنُّور</div>
+</div>
+
+<!-- 25 -->
+<div class="surah-item" onclick="openSurah('25-al-furqan.html')">
+  <div class="left">25</div>
+  <div class="middle"><h3>Al-Furqan</h3><p>Verses: 77 | Meccan</p></div>
+  <div class="right">ٱلْفُرْقَان</div>
+</div>
+
+<!-- 26 -->
+<div class="surah-item" onclick="openSurah('26-ash-shuara.html')">
+  <div class="left">26</div>
+  <div class="middle"><h3>Ash-Shu'ara</h3><p>Verses: 227 | Meccan</p></div>
+  <div class="right">ٱلشُّعَرَاء</div>
+</div>
+
+<!-- 27 -->
+<div class="surah-item" onclick="openSurah('27-an-naml.html')">
+  <div class="left">27</div>
+  <div class="middle"><h3>An-Naml</h3><p>Verses: 93 | Meccan</p></div>
+  <div class="right">ٱلنَّمْل</div>
+</div>
+
+<!-- 28 -->
+<div class="surah-item" onclick="openSurah('28-al-qasas.html')">
+  <div class="left">28</div>
+  <div class="middle"><h3>Al-Qasas</h3><p>Verses: 88 | Meccan</p></div>
+  <div class="right">ٱلْقَصَص</div>
+</div>
+
+<!-- 29 -->
+<div class="surah-item" onclick="openSurah('29-al-ankabut.html')">
+  <div class="left">29</div>
+  <div class="middle"><h3>Al-Ankabut</h3><p>Verses: 69 | Meccan</p></div>
+  <div class="right">ٱلْعَنْكَبُوت</div>
+</div>
+
+<!-- 30 -->
+<div class="surah-item" onclick="openSurah('30-ar-rum.html')">
+  <div class="left">30</div>
+  <div class="middle"><h3>Ar-Rum</h3><p>Verses: 60 | Meccan</p></div>
+  <div class="right">ٱلرُّوم</div>
+</div>
+<!-- 31 -->
+<div class="surah-item" onclick="openSurah('31-luqman.html')">
+  <div class="left">31</div>
+  <div class="middle"><h3>Luqman</h3><p>Verses: 34 | Meccan</p></div>
+  <div class="right">لُقْمَان</div>
+</div>
+
+<!-- 32 -->
+<div class="surah-item" onclick="openSurah('32-as-sajdah.html')">
+  <div class="left">32</div>
+  <div class="middle"><h3>As-Sajdah</h3><p>Verses: 30 | Meccan</p></div>
+  <div class="right">السَّجْدَة</div>
+</div>
+
+<!-- 33 -->
+<div class="surah-item" onclick="openSurah('33-al-ahzab.html')">
+  <div class="left">33</div>
+  <div class="middle"><h3>Al-Ahzab</h3><p>Verses: 73 | Medinan</p></div>
+  <div class="right">الأَحْزَاب</div>
+</div>
+
+<!-- 34 -->
+<div class="surah-item" onclick="openSurah('34-saba.html')">
+  <div class="left">34</div>
+  <div class="middle"><h3>Saba</h3><p>Verses: 54 | Meccan</p></div>
+  <div class="right">سَبَأ</div>
+</div>
+
+<!-- 35 -->
+<div class="surah-item" onclick="openSurah('35-fatir.html')">
+  <div class="left">35</div>
+  <div class="middle"><h3>Fatir</h3><p>Verses: 45 | Meccan</p></div>
+  <div class="right">فَاطِر</div>
+</div>
+
+<!-- 36 -->
+<div class="surah-item" onclick="openSurah('36-ya-sin.html')">
+  <div class="left">36</div>
+  <div class="middle"><h3>Ya-Sin</h3><p>Verses: 83 | Meccan</p></div>
+  <div class="right">يس</div>
+</div>
+
+<!-- 37 -->
+<div class="surah-item" onclick="openSurah('37-as-saffat.html')">
+  <div class="left">37</div>
+  <div class="middle"><h3>As-Saffat</h3><p>Verses: 182 | Meccan</p></div>
+  <div class="right">الصَّافَّات</div>
+</div>
+
+<!-- 38 -->
+<div class="surah-item" onclick="openSurah('38-sad.html')">
+  <div class="left">38</div>
+  <div class="middle"><h3>Sad</h3><p>Verses: 88 | Meccan</p></div>
+  <div class="right">ص</div>
+</div>
+
+<!-- 39 -->
+<div class="surah-item" onclick="openSurah('39-az-zumar.html')">
+  <div class="left">39</div>
+  <div class="middle"><h3>Az-Zumar</h3><p>Verses: 75 | Meccan</p></div>
+  <div class="right">الزُّمَر</div>
+</div>
+
+<!-- 40 -->
+<div class="surah-item" onclick="openSurah('40-ghafir.html')">
+  <div class="left">40</div>
+  <div class="middle"><h3>Ghafir</h3><p>Verses: 85 | Meccan</p></div>
+  <div class="right">غَافِر</div>
+</div>
+
+<!-- 41 -->
+<div class="surah-item" onclick="openSurah('41-fussilat.html')">
+  <div class="left">41</div>
+  <div class="middle"><h3>Fussilat</h3><p>Verses: 54 | Meccan</p></div>
+  <div class="right">فُصِّلَت</div>
+</div>
+
+<!-- 42 -->
+<div class="surah-item" onclick="openSurah('42-ash-shura.html')">
+  <div class="left">42</div>
+  <div class="middle"><h3>Ash-Shura</h3><p>Verses: 53 | Meccan</p></div>
+  <div class="right">الشُّورَى</div>
+</div>
+
+<!-- 43 -->
+<div class="surah-item" onclick="openSurah('43-az-zukhruf.html')">
+  <div class="left">43</div>
+  <div class="middle"><h3>Az-Zukhruf</h3><p>Verses: 89 | Meccan</p></div>
+  <div class="right">الزُّخْرُف</div>
+</div>
+
+<!-- 44 -->
+<div class="surah-item" onclick="openSurah('44-ad-dukhan.html')">
+  <div class="left">44</div>
+  <div class="middle"><h3>Ad-Dukhan</h3><p>Verses: 59 | Meccan</p></div>
+  <div class="right">الدُّخَان</div>
+</div>
+
+<!-- 45 -->
+<div class="surah-item" onclick="openSurah('45-al-jathiyah.html')">
+  <div class="left">45</div>
+  <div class="middle"><h3>Al-Jathiyah</h3><p>Verses: 37 | Meccan</p></div>
+  <div class="right">الجَاثِيَة</div>
+</div>
+
+<!-- 46 -->
+<div class="surah-item" onclick="openSurah('46-al-ahqaf.html')">
+  <div class="left">46</div>
+  <div class="middle"><h3>Al-Ahqaf</h3><p>Verses: 35 | Meccan</p></div>
+  <div class="right">الأَحْقَاف</div>
+</div>
+
+<!-- 47 -->
+<div class="surah-item" onclick="openSurah('47-muhammad.html')">
+  <div class="left">47</div>
+  <div class="middle"><h3>Muhammad</h3><p>Verses: 38 | Medinan</p></div>
+  <div class="right">مُحَمَّد</div>
+</div>
+
+<!-- 48 -->
+<div class="surah-item" onclick="openSurah('48-al-fath.html')">
+  <div class="left">48</div>
+  <div class="middle"><h3>Al-Fath</h3><p>Verses: 29 | Medinan</p></div>
+  <div class="right">الفَتْح</div>
+</div>
+
+<!-- 49 -->
+<div class="surah-item" onclick="openSurah('49-al-hujurat.html')">
+  <div class="left">49</div>
+  <div class="middle"><h3>Al-Hujurat</h3><p>Verses: 18 | Medinan</p></div>
+  <div class="right">الحُجُرَات</div>
+</div>
+
+<!-- 50 -->
+<div class="surah-item" onclick="openSurah('50-qaf.html')">
+  <div class="left">50</div>
+  <div class="middle"><h3>Qaf</h3><p>Verses: 45 | Meccan</p></div>
+  <div class="right">ق</div>
+</div>
+
+<!-- 51 -->
+<div class="surah-item" onclick="openSurah('51-adh-dhariyat.html')">
+  <div class="left">51</div>
+  <div class="middle"><h3>Adh-Dhariyat</h3><p>Verses: 60 | Meccan</p></div>
+  <div class="right">الذَّارِيَات</div>
+</div>
+
+<!-- 52 -->
+<div class="surah-item" onclick="openSurah('52-at-tur.html')">
+  <div class="left">52</div>
+  <div class="middle"><h3>At-Tur</h3><p>Verses: 49 | Meccan</p></div>
+  <div class="right">الطُّور</div>
+</div>
+
+<!-- 53 -->
+<div class="surah-item" onclick="openSurah('53-an-najm.html')">
+  <div class="left">53</div>
+  <div class="middle"><h3>An-Najm</h3><p>Verses: 62 | Meccan</p></div>
+  <div class="right">النَّجْم</div>
+</div>
+
+<!-- 54 -->
+<div class="surah-item" onclick="openSurah('54-al-qamar.html')">
+  <div class="left">54</div>
+  <div class="middle"><h3>Al-Qamar</h3><p>Verses: 55 | Meccan</p></div>
+  <div class="right">القَمَر</div>
+</div>
+
+<!-- 55 -->
+<div class="surah-item" onclick="openSurah('55-ar-rahman.html')">
+  <div class="left">55</div>
+  <div class="middle"><h3>Ar-Rahman</h3><p>Verses: 78 | Medinan</p></div>
+  <div class="right">الرَّحْمَٰن</div>
+</div>
+
+<!-- 56 -->
+<div class="surah-item" onclick="openSurah('56-al-waqiah.html')">
+  <div class="left">56</div>
+  <div class="middle"><h3>Al-Waqi’ah</h3><p>Verses: 96 | Meccan</p></div>
+  <div class="right">الْوَاقِعَة</div>
+</div>
+
+<!-- 57 -->
+<div class="surah-item" onclick="openSurah('57-al-hadid.html')">
+  <div class="left">57</div>
+  <div class="middle"><h3>Al-Hadid</h3><p>Verses: 29 | Medinan</p></div>
+  <div class="right">الحَدِيد</div>
+</div>
+
+<!-- 58 -->
+<div class="surah-item" onclick="openSurah('58-al-mujadilah.html')">
+  <div class="left">58</div>
+  <div class="middle"><h3>Al-Mujadilah</h3><p>Verses: 22 | Medinan</p></div>
+  <div class="right">المُجَادِلَة</div>
+</div>
+
+<!-- 59 -->
+<div class="surah-item" onclick="openSurah('59-al-hashr.html')">
+  <div class="left">59</div>
+  <div class="middle"><h3>Al-Hashr</h3><p>Verses: 24 | Medinan</p></div>
+  <div class="right">الحَشْر</div>
+</div>
+
+<!-- 60 -->
+<div class="surah-item" onclick="openSurah('60-al-mumtahanah.html')">
+  <div class="left">60</div>
+  <div class="middle"><h3>Al-Mumtahanah</h3><p>Verses: 13 | Medinan</p></div>
+  <div class="right">المُمْتَحَنَة</div>
+</div>
+<!-- 61 -->
+<div class="surah-item" onclick="openSurah('61-as-saff.html')">
+  <div class="left">61</div>
+  <div class="middle"><h3>As-Saff</h3><p>Verses: 14 | Medinan</p></div>
+  <div class="right">الصَّفّ</div>
+</div>
+
+<!-- 62 -->
+<div class="surah-item" onclick="openSurah('62-al-jumuah.html')">
+  <div class="left">62</div>
+  <div class="middle"><h3>Al-Jumu'ah</h3><p>Verses: 11 | Medinan</p></div>
+  <div class="right">الجُمُعَة</div>
+</div>
+
+<!-- 63 -->
+<div class="surah-item" onclick="openSurah('63-al-munafiqun.html')">
+  <div class="left">63</div>
+  <div class="middle"><h3>Al-Munafiqun</h3><p>Verses: 11 | Medinan</p></div>
+  <div class="right">المُنَافِقُون</div>
+</div>
+
+<!-- 64 -->
+<div class="surah-item" onclick="openSurah('64-at-taghabun.html')">
+  <div class="left">64</div>
+  <div class="middle"><h3>At-Taghabun</h3><p>Verses: 18 | Medinan</p></div>
+  <div class="right">التَّغَابُن</div>
+</div>
+
+<!-- 65 -->
+<div class="surah-item" onclick="openSurah('65-at-talaq.html')">
+  <div class="left">65</div>
+  <div class="middle"><h3>At-Talaq</h3><p>Verses: 12 | Medinan</p></div>
+  <div class="right">الطَّلَاق</div>
+</div>
+
+<!-- 66 -->
+<div class="surah-item" onclick="openSurah('66-at-tahrim.html')">
+  <div class="left">66</div>
+  <div class="middle"><h3>At-Tahrim</h3><p>Verses: 12 | Medinan</p></div>
+  <div class="right">التَّحْرِيم</div>
+</div>
+
+<!-- 67 -->
+<div class="surah-item" onclick="openSurah('67-al-mulk.html')">
+  <div class="left">67</div>
+  <div class="middle"><h3>Al-Mulk</h3><p>Verses: 30 | Meccan</p></div>
+  <div class="right">المُلْك</div>
+</div>
+
+<!-- 68 -->
+<div class="surah-item" onclick="openSurah('68-al-qalam.html')">
+  <div class="left">68</div>
+  <div class="middle"><h3>Al-Qalam</h3><p>Verses: 52 | Meccan</p></div>
+  <div class="right">القَلَم</div>
+</div>
+
+<!-- 69 -->
+<div class="surah-item" onclick="openSurah('69-al-haqqah.html')">
+  <div class="left">69</div>
+  <div class="middle"><h3>Al-Haqqah</h3><p>Verses: 52 | Meccan</p></div>
+  <div class="right">الحَاقَّة</div>
+</div>
+
+<!-- 70 -->
+<div class="surah-item" onclick="openSurah('70-al-maarij.html')">
+  <div class="left">70</div>
+  <div class="middle"><h3>Al-Ma'arij</h3><p>Verses: 44 | Meccan</p></div>
+  <div class="right">المَعَارِج</div>
+</div>
+
+<!-- 71 -->
+<div class="surah-item" onclick="openSurah('71-nuh.html')">
+  <div class="left">71</div>
+  <div class="middle"><h3>Nuh</h3><p>Verses: 28 | Meccan</p></div>
+  <div class="right">نُوح</div>
+</div>
+
+<!-- 72 -->
+<div class="surah-item" onclick="openSurah('72-al-jinn.html')">
+  <div class="left">72</div>
+  <div class="middle"><h3>Al-Jinn</h3><p>Verses: 28 | Meccan</p></div>
+  <div class="right">الجِنّ</div>
+</div>
+
+<!-- 73 -->
+<div class="surah-item" onclick="openSurah('73-al-muzzammil.html')">
+  <div class="left">73</div>
+  <div class="middle"><h3>Al-Muzzammil</h3><p>Verses: 20 | Meccan</p></div>
+  <div class="right">المُزَّمِّل</div>
+</div>
+
+<!-- 74 -->
+<div class="surah-item" onclick="openSurah('74-al-muddathir.html')">
+  <div class="left">74</div>
+  <div class="middle"><h3>Al-Muddathir</h3><p>Verses: 56 | Meccan</p></div>
+  <div class="right">المُدَّثِّر</div>
+</div>
+
+<!-- 75 -->
+<div class="surah-item" onclick="openSurah('75-al-qiyamah.html')">
+  <div class="left">75</div>
+  <div class="middle"><h3>Al-Qiyamah</h3><p>Verses: 40 | Meccan</p></div>
+  <div class="right">القِيَامَة</div>
+</div>
+
+<!-- 76 -->
+<div class="surah-item" onclick="openSurah('76-al-insan.html')">
+  <div class="left">76</div>
+  <div class="middle"><h3>Al-Insan</h3><p>Verses: 31 | Medinan</p></div>
+  <div class="right">الإِنسَان</div>
+</div>
+
+<!-- 77 -->
+<div class="surah-item" onclick="openSurah('77-al-mursalat.html')">
+  <div class="left">77</div>
+  <div class="middle"><h3>Al-Mursalat</h3><p>Verses: 50 | Meccan</p></div>
+  <div class="right">المُرْسَلَات</div>
+</div>
+
+<!-- 78 -->
+<div class="surah-item" onclick="openSurah('78-an-naba.html')">
+  <div class="left">78</div>
+  <div class="middle"><h3>An-Naba</h3><p>Verses: 40 | Meccan</p></div>
+  <div class="right">النَّبَأ</div>
+</div>
+
+<!-- 79 -->
+<div class="surah-item" onclick="openSurah('79-an-naziat.html')">
+  <div class="left">79</div>
+  <div class="middle"><h3>An-Nazi'at</h3><p>Verses: 46 | Meccan</p></div>
+  <div class="right">النَّازِعَات</div>
+</div>
+
+<!-- 80 -->
+<div class="surah-item" onclick="openSurah('80-abasa.html')">
+  <div class="left">80</div>
+  <div class="middle"><h3>Abasa</h3><p>Verses: 42 | Meccan</p></div>
+  <div class="right">عَبَس</div>
+</div>
+
+<!-- 81 -->
+<div class="surah-item" onclick="openSurah('81-at-takwir.html')">
+  <div class="left">81</div>
+  <div class="middle"><h3>At-Takwir</h3><p>Verses: 29 | Meccan</p></div>
+  <div class="right">التَّكْوِير</div>
+</div>
+
+<!-- 82 -->
+<div class="surah-item" onclick="openSurah('82-al-infitar.html')">
+  <div class="left">82</div>
+  <div class="middle"><h3>Al-Infitar</h3><p>Verses: 19 | Meccan</p></div>
+  <div class="right">الانْفِطَار</div>
+</div>
+
+<!-- 83 -->
+<div class="surah-item" onclick="openSurah('83-al-mutaffifin.html')">
+  <div class="left">83</div>
+  <div class="middle"><h3>Al-Mutaffifin</h3><p>Verses: 36 | Meccan</p></div>
+  <div class="right">المُطَفِّفِين</div>
+</div>
+
+<!-- 84 -->
+<div class="surah-item" onclick="openSurah('84-al-inshiqaq.html')">
+  <div class="left">84</div>
+  <div class="middle"><h3>Al-Inshiqaq</h3><p>Verses: 25 | Meccan</p></div>
+  <div class="right">الانْشِقَاق</div>
+</div>
+
+<!-- 85 -->
+<div class="surah-item" onclick="openSurah('85-al-buruj.html')">
+  <div class="left">85</div>
+  <div class="middle"><h3>Al-Buruj</h3><p>Verses: 22 | Meccan</p></div>
+  <div class="right">البُرُوج</div>
+</div>
+
+<!-- 86 -->
+<div class="surah-item" onclick="openSurah('86-at-tariq.html')">
+  <div class="left">86</div>
+  <div class="middle"><h3>At-Tariq</h3><p>Verses: 17 | Meccan</p></div>
+  <div class="right">الطَّارِق</div>
+</div>
+
+<!-- 87 -->
+<div class="surah-item" onclick="openSurah('87-al-ala.html')">
+  <div class="left">87</div>
+  <div class="middle"><h3>Al-A'la</h3><p>Verses: 19 | Meccan</p></div>
+  <div class="right">الأَعْلَى</div>
+</div>
+
+<!-- 88 -->
+<div class="surah-item" onclick="openSurah('88-al-ghashiyah.html')">
+  <div class="left">88</div>
+  <div class="middle"><h3>Al-Ghashiyah</h3><p>Verses: 26 | Meccan</p></div>
+  <div class="right">الغَاشِيَة</div>
+</div>
+
+<!-- 89 -->
+<div class="surah-item" onclick="openSurah('89-al-fajr.html')">
+  <div class="left">89</div>
+  <div class="middle"><h3>Al-Fajr</h3><p>Verses: 30 | Meccan</p></div>
+  <div class="right">الفَجْر</div>
+</div>
+
+<!-- 90 -->
+<div class="surah-item" onclick="openSurah('90-al-balad.html')">
+  <div class="left">90</div>
+  <div class="middle"><h3>Al-Balad</h3><p>Verses: 20 | Meccan</p></div>
+  <div class="right">البَلَد</div>
+</div>
+
+<!-- 91 -->
+<div class="surah-item" onclick="openSurah('91-ash-shams.html')">
+  <div class="left">91</div>
+  <div class="middle"><h3>Ash-Shams</h3><p>Verses: 15 | Meccan</p></div>
+  <div class="right">الشَّمْس</div>
+</div>
+
+<!-- 92 -->
+<div class="surah-item" onclick="openSurah('92-al-lail.html')">
+  <div class="left">92</div>
+  <div class="middle"><h3>Al-Lail</h3><p>Verses: 21 | Meccan</p></div>
+  <div class="right">اللَّيْل</div>
+</div>
+
+<!-- 93 -->
+<div class="surah-item" onclick="openSurah('93-ad-duha.html')">
+  <div class="left">93</div>
+  <div class="middle"><h3>Ad-Duha</h3><p>Verses: 11 | Meccan</p></div>
+  <div class="right">الضُّحَى</div>
+</div>
+
+<!-- 94 -->
+<div class="surah-item" onclick="openSurah('94-ash-sharh.html')">
+  <div class="left">94</div>
+  <div class="middle"><h3>Ash-Sharh</h3><p>Verses: 8 | Meccan</p></div>
+  <div class="right">الشَّرْح</div>
+</div>
+
+<!-- 95 -->
+<div class="surah-item" onclick="openSurah('95-at-tin.html')">
+  <div class="left">95</div>
+  <div class="middle"><h3>At-Tin</h3><p>Verses: 8 | Meccan</p></div>
+  <div class="right">التِّين</div>
+</div>
+
+<!-- 96 -->
+<div class="surah-item" onclick="openSurah('96-al-alak.html')">
+  <div class="left">96</div>
+  <div class="middle"><h3>Al-Alaq</h3><p>Verses: 19 | Meccan</p></div>
+  <div class="right">العَلَق</div>
+</div>
+
+<!-- 97 -->
+<div class="surah-item" onclick="openSurah('97-al-qadr.html')">
+  <div class="left">97</div>
+  <div class="middle"><h3>Al-Qadr</h3><p>Verses: 5 | Meccan</p></div>
+  <div class="right">القَدْر</div>
+</div>
+
+<!-- 98 -->
+<div class="surah-item" onclick="openSurah('98-al-bayyinah.html')">
+  <div class="left">98</div>
+  <div class="middle"><h3>Al-Bayyinah</h3><p>Verses: 8 | Medinan</p></div>
+  <div class="right">البَيِّنَة</div>
+</div>
+
+<!-- 99 -->
+<div class="surah-item" onclick="openSurah('99-az-zalzalah.html')">
+  <div class="left">99</div>
+  <div class="middle"><h3>Az-Zalzalah</h3><p>Verses: 8 | Medinan</p></div>
+  <div class="right">الزَّلْزَلَة</div>
+</div>
+
+<!-- 100 -->
+<div class="surah-item" onclick="openSurah('100-al-adiyat.html')">
+  <div class="left">100</div>
+  <div class="middle"><h3>Al-Adiyat</h3><p>Verses: 11 | Meccan</p></div>
+  <div class="right">العَادِيَات</div>
+</div>
+
+<!-- 101 -->
+<div class="surah-item" onclick="openSurah('101-al-qariah.html')">
+  <div class="left">101</div>
+  <div class="middle"><h3>Al-Qari'ah</h3><p>Verses: 11 | Meccan</p></div>
+  <div class="right">القَارِعَة</div>
+</div>
+
+<!-- 102 -->
+<div class="surah-item" onclick="openSurah('102-at-takathur.html')">
+  <div class="left">102</div>
+  <div class="middle"><h3>At-Takathur</h3><p>Verses: 8 | Meccan</p></div>
+  <div class="right">التَّكَاثُر</div>
+</div>
+
+<!-- 103 -->
+<div class="surah-item" onclick="openSurah('103-al-asr.html')">
+  <div class="left">103</div>
+  <div class="middle"><h3>Al-Asr</h3><p>Verses: 3 | Meccan</p></div>
+  <div class="right">العَصْر</div>
+</div>
+
+<!-- 104 -->
+<div class="surah-item" onclick="openSurah('104-al-humazah.html')">
+  <div class="left">104</div>
+  <div class="middle"><h3>Al-Humazah</h3><p>Verses: 9 | Meccan</p></div>
+  <div class="right">الهُمَزَة</div>
+</div>
+
+<!-- 105 -->
+<div class="surah-item" onclick="openSurah('105-al-fil.html')">
+  <div class="left">105</div>
+  <div class="middle"><h3>Al-Fil</h3><p>Verses: 5 | Meccan</p></div>
+  <div class="right">الفِيل</div>
+</div>
+
+<!-- 106 -->
+<div class="surah-item" onclick="openSurah('106-quraysh.html')">
+  <div class="left">106</div>
+  <div class="middle"><h3>Quraysh</h3><p>Verses: 4 | Meccan</p></div>
+  <div class="right">قُرَيْش</div>
+</div>
+
+<!-- 107 -->
+<div class="surah-item" onclick="openSurah('107-al-maun.html')">
+  <div class="left">107</div>
+  <div class="middle"><h3>Al-Ma'un</h3><p>Verses: 7 | Meccan</p></div>
+  <div class="right">المَاعُون</div>
+</div>
+
+<!-- 108 -->
+<div class="surah-item" onclick="openSurah('108-al-kawthar.html')">
+  <div class="left">108</div>
+  <div class="middle"><h3>Al-Kawthar</h3><p>Verses: 3 | Meccan</p></div>
+  <div class="right">الكَوْثَر</div>
+</div>
+
+<!-- 109 -->
+<div class="surah-item" onclick="openSurah('109-al-kafirun.html')">
+  <div class="left">109</div>
+  <div class="middle"><h3>Al-Kafirun</h3><p>Verses: 6 | Meccan</p></div>
+  <div class="right">الكَافِرُون</div>
+</div>
+
+<!-- 110 -->
+<div class="surah-item" onclick="openSurah('110-an-nasr.html')">
+  <div class="left">110</div>
+  <div class="middle"><h3>An-Nasr</h3><p>Verses: 3 | Medinan</p></div>
+  <div class="right">النَّصْر</div>
+</div>
+
+<!-- 111 -->
+<div class="surah-item" onclick="openSurah('111-al-masad.html')">
+  <div class="left">111</div>
+  <div class="middle"><h3>Al-Masad</h3><p>Verses: 5 | Meccan</p></div>
+  <div class="right">المَسَد</div>
+</div>
+
+<!-- 112 -->
+<div class="surah-item" onclick="openSurah('112-al-ikhlas.html')">
+  <div class="left">112</div>
+  <div class="middle"><h3>Al-Ikhlas</h3><p>Verses: 4 | Meccan</p></div>
+  <div class="right">الإِخْلَاص</div>
+</div>
+
+<!-- 113 -->
+<div class="surah-item" onclick="openSurah('113-al-falaq.html')">
+  <div class="left">113</div>
+  <div class="middle"><h3>Al-Falaq</h3><p>Verses: 5 | Meccan</p></div>
+  <div class="right">الفَلَق</div>
+</div>
+
+<!-- 114 -->
+<div class="surah-item" onclick="openSurah('114-an-nas.html')">
+  <div class="left">114</div>
+  <div class="middle"><h3>An-Nas</h3><p>Verses: 6 | Meccan</p></div>
+  <div class="right">النَّاس</div>
+</div>
+
+<script>
+function openSurah(page) {
+    window.location.href = page;
+}
+</script>
 
 </body>
 </html>

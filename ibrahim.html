@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Prophet Ibrahim (A.S) — Smart Deen</title>
+<style>
+  :root{
+    --bg:#080a0b;
+    --card:#0f1717;
+    --muted:#9aa9a2;
+    --text:#eefaf0;
+    --accent:#18b286; /* deep teal/green */
+    --accent-2:#0ea6a0; /* supporting shade */
+    --glass: rgba(255,255,255,0.02);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Arial;
+    background: linear-gradient(180deg,#060708 0%, #0b0f10 60%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.7;
+    padding-bottom:36px;
+  }
+
+  /* top bar */
+  .topbar{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    padding:14px 18px;
+    position:sticky;
+    top:0;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.10));
+    z-index:30;
+    border-bottom:1px solid rgba(255,255,255,0.02);
+  }
+  .back {
+    width:54px;
+    height:44px;
+    background: linear-gradient(180deg, rgba(24,178,134,0.12), rgba(24,178,134,0.06));
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    border: 1px solid rgba(24,178,134,0.14);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 12px rgba(24,178,134,0.05) inset;
+  }
+  .back .arrow{
+    display:inline-block;
+    width:20px;height:20px;
+    transform: translateX(-1px);
+    border-left: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    transform: rotate(45deg);
+    margin-left:6px;
+  }
+  .heading{
+    font-size:20px;
+    font-weight:700;
+    margin-left:6px;
+  }
+  .sub{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:4px;
+    margin-left:6px;
+    font-weight:500;
+  }
+
+  /* content */
+  .wrap{
+    max-width:820px;
+    margin:18px auto;
+    padding:10px;
+  }
+
+  .hero{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    margin:10px 6px 18px;
+  }
+  .title{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:-0.6px;
+  }
+  .lead{
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius: var(--radius);
+    padding:22px;
+    margin:18px 6px;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.65);
+  }
+
+  h2 {
+    color: var(--accent);
+    margin-top:0;
+    font-size:20px;
+  }
+
+  p{
+    color:var(--text);
+    margin:12px 0;
+    font-size:16px;
+  }
+
+  .reflection{
+    margin-top:18px;
+    background:linear-gradient(180deg, rgba(10,20,18,0.6), rgba(6,12,10,0.6));
+    border-left:6px solid rgba(24,178,134,0.9);
+    padding:14px 16px;
+    border-radius:12px;
+    color:#dff8ef;
+  }
+  .reflection strong{ display:block; margin-bottom:8px; font-size:15px; color:var(--accent-2); }
+
+  .footer{
+    text-align:center;
+    margin-top:26px;
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  /* responsive tweaks */
+  @media (max-width:700px){
+    .wrap{ padding:8px; }
+    .title{ font-size:22px; }
+    .topbar{ padding:12px; }
+    .back{ width:48px; height:40px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="back" onclick="goBack()">
+      <span class="arrow" aria-hidden="true"></span>
+    </div>
+    <div>
+      <div class="heading">Prophet Ibrahim (A.S)</div>
+      <div class="sub">The Friend of Allah — conviction, sacrifice, trust</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- intro -->
+    <div class="hero">
+      <div style="flex:1">
+        <div class="title">Prophet Ibrahim (A.S) — A story of conviction & sacrifice</div>
+        <div class="lead">Ibrahim’s life is the classical testimony of a heart that recognized the One God, rejected idols, and submitted fully. Below is a condensed, thoughtful account with reflections for the reader.</div>
+      </div>
+    </div>
+
+    <!-- opening card -->
+    <article class="card" id="story">
+      <h2>Overview</h2>
+      <p>
+        Ibrahim (peace be upon him) appears in the Qur'an and prophetic tradition as an exemplar of monotheism, trust, and willing sacrifice. Called from falsehood and culture to a simple, firm faith in God, Ibrahim challenged the idols of his people, patiently taught tawhīd, and accepted tests that purified his heart and mission.
+      </p>
+
+      <h2>Early Life and Awakening</h2>
+      <p>
+        Ibrahim grew up in an environment where making and worshipping idols was the social norm. But his heart and intellect led him beyond inherited practice. He reflected on the sky, stars, sun and moon and realized that creation itself pointed to a Creator, not to the created. This inner inquiry matured into an unshakable conviction: worship belongs to the One who brings life, gives provision, and possesses power over the heavens and the earth.
+      </p>
+
+      <p>
+        The story of Ibrahim breaking the idols (as narrated in the Qur'an and classical biography) is not merely an act of vandalism. It is a pedagogical moment: he exposed false claims of divinity and forced his people to confront reason. When his people questioned him, he calmly demonstrated that the idols could not respond nor benefit, and he invited them to think, repent, and return to worshipping God alone.
+      </p>
+
+      <div class="reflection">
+        <strong>Smart Deen Reflection:</strong>
+        Consider your own inherited practices — which of them are habit, and which are worship? Reflection and gentle questioning of assumed beliefs can clear the way for sincere faith.
+      </div>
+
+      <h2>Confrontation with Power</h2>
+      <p>
+        Ibrahim's message brought him into conflict with established authorities and powerful rulers who were invested in maintaining the status quo. Tradition records his firm conversations with tyrants who demanded submission to their authority. Ibrahim refused to equate political might with divine right. When threatened, he relied upon God's protection and justice.
+      </p>
+
+      <p>
+        A pivotal moment shows Ibrahim's courage: he once challenged his people publicly, and when asked who had broken the idols, he suggested asking the largest statue — to highlight the absurdity of worshipping what cannot speak. His people reacted angrily and cast him into a blazing fire. Yet by God's mercy the fire was made cool and safe for him, and he emerged unscathed. This miracle underlines a truth: steadfast trust in God does not exempt one from trials, but it changes the outcome according to Divine wisdom.
+      </p>
+
+      <div class="reflection">
+        <strong>Smart Deen Reflection:</strong>
+        Trials can confirm truth. When faced with pressure to conform, remember that courage tempered by wisdom is the path the Prophets walked.
+      </div>
+
+      <h2>Family, Migration, and the Ka‘bah</h2>
+      <p>
+        Ibrahim's life is also one of motion — physical and spiritual. He was commanded to leave certain lands and to trust God with his family and future. One of the most significant events is the settlement of Hajar (Hagar) and their son Isma'il (Ishmael) in the barren valley that later became Makkah. In that landscape God opened a miraculous spring — Zamzam — to sustain them.
+      </p>
+
+      <p>
+        Later, Ibrahim and Isma'il together rebuilt the Ka‘bah, the first house of worship dedicated to God. This act had both practical and symbolic meaning: it established a focal point for pilgrimage, unity, and a return to genuine monotheistic worship. The Ka‘bah remains a timeless symbol of humanity turning toward the One Creator.
+      </p>
+
+      <div class="reflection">
+        <strong>Smart Deen Reflection:</strong>
+        Trusting God with family decisions and uncertain journeys can yield sources of life and blessing where none seemed possible.
+      </div>
+
+      <h2>The Test of Sacrifice</h2>
+      <p>
+        Perhaps the most moving trial in Ibrahim's life is the command to sacrifice his beloved son — a test of submission that examines the heart's attachment. The traditions describe Ibrahim preparing to obey, and his son Isma'il responding with willing submission. In the final instant God provided a substitute and spared the son. This test emphasizes that sincere submission to God's will — even when it asks for the most precious things — is the highest form of worship.
+      </p>
+
+      <p>
+        The story became the foundation of the ritual of qurban (sacrifice) observed by millions each year — not as a celebration of loss, but as a communal reminder that devotion may require letting go of what we cherish most in obedience to God.
+      </p>
+
+      <div class="reflection">
+        <strong>Smart Deen Reflection:</strong>
+        Reflect: What would you be willing to give up to preserve your integrity and faith? Small daily sacrifices of ego, habit, or time for reflection build the character of the believer.
+      </div>
+
+      <h2>Legacy of Prayer and Invitation</h2>
+      <p>
+        Ibrahim's life was threaded with sincere supplication. His prayers for righteous offspring, for a community established upon truth, and for guidance were heartfelt and repeated. Many of his supplications are preserved in the Qur'an, serving as a template for believers: prayers for filial piety, for righteous communities, and for submission to God’s command.
+      </p>
+
+      <p>
+        He did not merely argue; he lived a life consistent with his message. He exemplified that true leadership is service and that calling others requires patience, wisdom, and heartfelt prayer.
+      </p>
+
+      <div class="reflection">
+        <strong>Smart Deen Reflection:</strong>
+        Make a short personal supplication inspired by Ibrahim's prayers — for guidance, for family, and for a community that loves what God loves. Writing a prayer helps turn intention into action.
+      </div>
+
+      <h2>Lessons for Today</h2>
+      <p>
+        Ibrahim teaches timeless lessons: the primacy of reason and conscience over inherited blind practice; the dignity of submitting to the One Creator; a balance between public witness and personal worship; and the readiness to act on conviction even when it brings hardship.
+      </p>
+
+      <p>
+        His life shows that faith is lived in both thought and deed: reflection that leads to right belief, and action that aligns with that belief. The community he envisioned is one where hearts are linked in sincere worship and hands are lifted in service.
+      </p>
+
+      <div class="reflection">
+        <strong>Smart Deen Reflection — Personal Practice:</strong>
+        Pick one concrete habit this week (short daily prayer, reading a passage, an act of kindness) that expresses your faith through action — small, consistent, transformative.
+      </div>
+
+      <h2>Conclusion</h2>
+      <p>
+        Ibrahim's story is not merely historical: it is an enduring invitation. He calls us to clear-eyed reflection, to a humble yet courageous submission, and to build communities around worship that ennoble the individual and the collective. His legacy remains a compass for anyone who seeks truth and is ready to live by it.
+      </p>
+
+    </article>
+
+    <div class="footer">Made with ♥ — Smart Deen</div>
+
+  </main>
+
+<script>
+  function goBack(){
+    // prefer history back — otherwise go to prophets list
+    if(document.referrer && document.referrer.includes('prophets')){
+      history.back();
+    } else {
+      // fallback
+      location.href = 'prophets.html';
+    }
+  }
+
+  // Accessibility: allow keyboard ESC to go back
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') goBack();
+  });
+</script>
+
+</body>
+</html>

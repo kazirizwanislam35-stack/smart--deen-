@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bookmarks — Smart Deen</title>
+<style>
+  :root{
+    --bg:#0b0e10; --card:#0f1416; --text:#e6f7f1; --muted:#9fbfb0; --accent-deep:#0b6b4a; --accent-soft:#24b689;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{ margin:0; font-family:Poppins, system-ui; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
+
+  .top { display:flex; gap:12px; align-items:center; padding:14px 16px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border-bottom:1px solid rgba(255,255,255,0.02); }
+  .back { width:44px;height:44px;border-radius:10px;display:grid;place-items:center; cursor:pointer; color:var(--accent-deep); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08)); border:1px solid rgba(255,255,255,0.02); }
+  .title { font-weight:700; font-size:18px; }
+
+  .empty { padding:30px; text-align:center; color:var(--muted); }
+
+  .list { padding:12px; }
+
+  .card {
+    margin:12px 6px; padding:14px; border-radius:12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+    border:1px solid rgba(11,107,74,0.06);
+    display:flex; gap:10px; align-items:flex-start; transition: transform .18s, box-shadow .18s;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow: 0 18px 36px rgba(2,6,4,0.6); }
+
+  .meta { flex:1; min-width:0; }
+  .meta .s { color:var(--muted); font-size:13px; margin-bottom:8px; }
+  .arabic { font-family:Amiri, serif; text-align:right; font-size:20px; line-height:1.6; margin-bottom:8px; color:#fff; }
+  .trans { color:var(--accent-soft); font-size:14px; margin-bottom:8px; }
+
+  .actions { display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+  .openBtn, .delBtn {
+    padding:8px 12px; border-radius:10px; border:none; cursor:pointer; font-weight:700;
+  }
+  .openBtn { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); color:var(--muted); border:1px solid rgba(255,255,255,0.03); }
+  .delBtn { background: rgba(255,0,0,0.08); color:#ffb3b3; border:1px solid rgba(255,0,0,0.08); }
+
+  @media(max-width:520px){
+    .actions{ flex-direction:row; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="back" onclick="location.href='quran.html'">←</div>
+  <div class="title">Bookmarks</div>
+</div>
+
+<div id="list" class="list"></div>
+
+<script>
+const KEY = 'sd_bookmarks_v1';
+
+function load(){
+  const raw = JSON.parse(localStorage.getItem(KEY) || '[]');
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  if(!raw.length){
+    list.innerHTML = '<div class="empty">No bookmarks yet — open a surah and tap Bookmark.</div>';
+    return;
+  }
+
+  raw.forEach((b, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="meta">
+        <div class="s"><strong>${escapeHtml(b.surah)}</strong> • Ayah ${b.ayah}</div>
+        <div class="arabic">${escapeHtml(b.arabic)}</div>
+        <div class="trans">${escapeHtml(b.translation)}</div>
+      </div>
+      <div class="actions">
+        <button class="openBtn" onclick="openTo(${idx})">Open</button>
+        <button class="delBtn" onclick="remove(${idx})">Delete</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function escapeHtml(s){ return (s||'').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* open: set jump key and go to file */
+function openTo(i){
+  const arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+  const b = arr[i];
+  if(!b) return;
+  // set a temporary key that surah page will read on load and scroll
+  localStorage.setItem('sd_jumpTo', (b.file || ('surah-' + (b.surahNo||'') + '.html')) + '#ayah-' + b.ayah);
+  // if file path stored absolute, use it; else assume same folder
+  const dest = b.file || ('surah-al-fatiha.html'); // fallback
+  location.href = dest;
+}
+
+/* delete */
+function remove(i){
+  let arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+  arr.splice(i,1);
+  localStorage.setItem(KEY, JSON.stringify(arr));
+  load();
+}
+
+/* react to storage change from other tabs */
+window.addEventListener('storage', (e)=>{
+  if(e.key === KEY) load();
+});
+
+load();
+</script>
+
+</body>
+</html>
